@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import productImg from '../img/full_2022_spectral-cf-9_3190_gr-gr_P5.png';
 
 const ProductCard = ({ productData }) => {
   const displayData = productData.map((data, i) => (
@@ -8,7 +9,7 @@ const ProductCard = ({ productData }) => {
       key={i}
     >
       <div>
-        <img src={data.productImage} alt="" />
+        <img src={productImg} alt="" className="object-cover" />
       </div>
       <div className="py-5">
         <p>{data.name}</p>
