@@ -1,15 +1,10 @@
 import React from 'react';
+import ProductFeatured from '../components/productComponents/ProductFeatured';
 
 const ProductPage = () => {
   return (
-    <div className="grid grid-cols-2">
-      <div>
-        <img src="" alt="" />
-      </div>
-      <div>
-        <h1>Product Title</h1>
-        <p>product describtion</p>
-      </div>
+    <div>
+      <ProductFeatured />
     </div>
   );
 };

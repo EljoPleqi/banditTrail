@@ -23,19 +23,19 @@ const Sidebar = ({ productData }) => {
     <div className="h-full bg-slate-200 flex flex-col items-center pt-8">
       <div className="flex flex-col">
         <label htmlFor="category">Search by Product Category</label>
-        <select name="category" className="my-5 py-5 px-8">
-          {displayItems(createSet(getProductDetails('categories')))}
+        <select name="category" className="my-5 py-5 rounded-md">
+          {displayItems(createSet(getProductDetails('category')))}
         </select>
         <label htmlFor="type">Search by Bike Category</label>
-        <select name="type" className="my-5 py-5 px-8">
+        <select name="type" className="my-5 py-5 rounded-md">
           {displayItems(createSet(getProductDetails('type')))}
         </select>
         <label htmlFor="Brand">Search by Brand</label>
-        <select name="brand" className="my-5 py-5 px-8">
+        <select name="brand" className="my-5 py-5 rounded-md">
           {displayItems(createSet(getProductDetails('brand')))}
         </select>
         <label htmlFor="ridingStyle">Search by Riding Style</label>
-        <select name="ridingStyle" className="my-5 py-5 px-8">
+        <select name="ridingStyle" className="my-5 py-5 rounded-md">
           {displayItems(createSet(getProductDetails('ridingStyle')))}
         </select>
         <span>
