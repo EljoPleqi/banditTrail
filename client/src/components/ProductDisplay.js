@@ -18,7 +18,7 @@ const ProductDisplay = () => {
     <div className="grid grid-cols-products">
       <Sidebar productData={productData} />
       <div className="flex flex-col  justify-center items-center py-8">
-        <h1 className="text-7xl font-bold"> Riders Favourite</h1>
+        <h1 className="text-6xl font-bold"> Riders Favourite</h1>
         <div>
           <ProductCard productData={productData} />
         </div>

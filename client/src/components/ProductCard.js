@@ -5,7 +5,7 @@ import productImg from '../img/full_2022_spectral-cf-9_3190_gr-gr_P5.png';
 const ProductCard = ({ productData }) => {
   const displayData = productData.map((data, i) => (
     <div
-      className="flex flex-col px-5 mx-5 rounded-xl md:flex  bg-slate-50"
+      className="flex flex-col px-5 py-5 rounded-xl md:flex  bg-slate-50"
       key={i}
     >
       <div>
@@ -27,7 +27,7 @@ const ProductCard = ({ productData }) => {
   ));
   return (
     <div>
-      <div className="grid grid-cols-4 gap-3 py-32">
+      <div className="grid grid-cols-4 gap-3 py-12">
         {displayData} {displayData}
       </div>
     </div>
