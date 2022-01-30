@@ -15,14 +15,13 @@ const ProductDisplay = () => {
     getProductData();
   }, []);
   return (
-    <div className="grid grid-cols-products">
+    <div className="grid grid-cols-products bg-neutral-100">
       <Sidebar productData={productData} />
       <div className="flex flex-col  justify-center items-center py-8">
-        <h1 className="text-6xl font-bold"> Riders Favourite</h1>
+        <h3 className="text-3xl font-bold"> Riders Favourite</h3>
         <div>
           <ProductCard productData={productData} />
         </div>
-        <Button />
       </div>
     </div>
   );
