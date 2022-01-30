@@ -2,8 +2,8 @@ import React from 'react';
 
 const CtaSection = () => {
   return (
-    <div className="bg-orange-500 flex flex-col items-center justify-center py-40">
-      <h1 className="text-6xl font-bold">Never Miss a Deal</h1>
+    <div className="bg-[#464d3d] flex flex-col items-center justify-center py-40">
+      <h1 className="text-6xl text-white font-bold">Never Miss a Deal</h1>
       <div className="flex items-center justify-center pt-16">
         <span>
           <input

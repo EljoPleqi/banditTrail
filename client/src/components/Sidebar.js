@@ -20,7 +20,7 @@ const Sidebar = ({ productData }) => {
   };
 
   return (
-    <div className="h-full bg-slate-200 flex flex-col items-center pt-8">
+    <div className="h-full bg-neutral-100 flex flex-col items-center pt-8">
       <div className="flex flex-col">
         <label htmlFor="category">Search by Product Category</label>
         <select name="category" className="my-5 py-5 rounded-md">

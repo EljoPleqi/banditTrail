@@ -7,10 +7,12 @@ import F404 from './components/F404';
 import LogIn from './pages/LogIn';
 import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
+import PreHeader from './components/PreHeader';
 function App() {
   return (
     <>
       <Router>
+        <PreHeader />
         <Header></Header>
         <Routes>
           <Route path="/signup" element={<SignUp />} />

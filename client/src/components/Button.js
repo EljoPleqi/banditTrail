@@ -6,7 +6,7 @@ function Button() {
     <div className="mt-5">
       <Link
         to="/product-overview"
-        className="bg-orange-500 px-8 py-4 rounded-lg"
+        className="bg-neutral-700 text-white px-8 py-4 rounded-md"
       >
         View Product
       </Link>
