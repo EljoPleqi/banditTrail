@@ -6,6 +6,7 @@ import Header from './components/Header';
 import F404 from './components/F404';
 import LogIn from './pages/LogIn';
 import ProductPage from './pages/ProductPage';
+import CartPage from './pages/CartPage';
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/product-overview" element={<ProductPage />} />
+          <Route path="/cart" element={<CartPage />}></Route>
           <Route path="/" element={<Home />} />
           <Route path="*" element={F404} />
         </Routes>
