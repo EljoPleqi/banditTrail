@@ -8,6 +8,7 @@ import LogIn from './pages/LogIn';
 import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
 import PreHeader from './components/PreHeader';
+import Footer from './components/Footer';
 function App() {
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="*" element={F404} />
         </Routes>
+        <Footer />
       </Router>
     </>
   );

@@ -7,8 +7,9 @@ const ProductCard = ({ productData }) => {
     <a
       href="/product-overview"
       className="hover:shadow-md hover:scale-105 hover:transition-all"
+      key={i}
     >
-      <div className="flex flex-col px-5 py-5 min-h-full bg-white" key={i}>
+      <div className="flex flex-col px-5 py-5 min-h-full bg-white">
         <div>
           <img src={productImg} alt="" className="object-cover" />
         </div>

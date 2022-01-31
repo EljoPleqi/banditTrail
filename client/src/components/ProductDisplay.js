@@ -14,6 +14,7 @@ const ProductDisplay = () => {
     }
     getProductData();
   }, []);
+
   return (
     <div className="grid grid-cols-products bg-neutral-100">
       <Sidebar productData={productData} />
