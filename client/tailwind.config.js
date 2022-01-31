@@ -8,6 +8,9 @@ module.exports = {
         productFeatured: '3fr 1fr',
         cart: '3fr 2fr',
       },
+      fontFamily: {
+        sans: ['Overpass'],
+      },
     },
     plugins: [],
   },
