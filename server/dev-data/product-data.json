@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Santa Cruz Bronson Carbon S 2022",
     "price": 5949,
-    "currency": "USD",
+    "currency": "US$",
     "productImage": "hgVwn-pBu-2R8O7JN179KF-YY.jpeg",
     "details": {
       "category": "Mountain Bike",
@@ -27,7 +27,7 @@
     "id": 2,
     "name": "Spectral LTD AXS 29",
     "price": 8449,
-    "currency": "USD",
+    "currency": "US$",
     "productImage": ".server/img/full_2022_spectral-cf-29-axs-ltd_2679_bk-wh_P5.webp",
     "details": {
       "category": "Mountain Bike",
@@ -50,7 +50,7 @@
     "id": 3,
     "name": "Specialized S-Works Demo 8 Fsr Carbon 2018",
     "price": 7500,
-    "currency": "USD",
+    "currency": "US$",
     "productImage": "specialized.jpeg",
     "details": {
       "category": "Mountain Bike",
@@ -72,7 +72,7 @@
     "id": 4,
     "name": "Devinci Kobain Slx 12s 29 Mtb 2021",
     "price": 1899,
-    "currency": "USD",
+    "currency": "US$",
     "productImage": "devici.jpeg",
     "details": {
       "category": "Mountain Bike",
@@ -94,7 +94,7 @@
     "id": 5,
     "name": "SRAM PG-1050 10 Speed Cassette",
     "price": 68,
-    "currency": "USD",
+    "currency": "US$",
     "productImage": "",
     "details": {
       "category": "Component",

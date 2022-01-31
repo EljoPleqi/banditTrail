@@ -12,9 +12,7 @@ const CartPage = () => {
         style={{ backgroundImage: `url(${img})` }}
       >
         <div className="mb-16 flex flex-col items-center  p-12">
-          <h1 className="divide-solid divide-x-2 divide-gray-500">
-            Lorem Ispum
-          </h1>
+          <h1 className="">Lorem Ispum</h1>
 
           <h3>PRICE</h3>
           <AddToCartButton />

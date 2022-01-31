@@ -12,8 +12,10 @@ const ProductInCart = () => {
   };
   return (
     <div className="flex flex-col items-center mt-6 gap-8">
-      <div className="flex items-center gap-12 bg-gray-200 h-48 w-[47rem] rounded-lg">
-        <img src={productImg} alt="" className="h-24 pl-6" />
+      <div className="flex items-center gap-12 bg-neutral-2ß00 h-48 w-[47rem] ">
+        <div className="bg-white ml-6 p-5 rounded-lg">
+          <img src={productImg} alt="" className="h-24  " />
+        </div>
         <h2>Product titles</h2>
         <p>Short description</p>
         <div className="flex flex-col items-center justify-center">
