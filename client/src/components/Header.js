@@ -11,7 +11,13 @@ const Header = () => {
       <div className="navigation flex ">
         <ul className="flex items-center ">
           <li className="px-5 text-lg text-333 hover:text-orange-500 active:text-green-600 cursor-pointer">
-            nav-item
+            Bikes
+          </li>
+          <li className="px-5 text-lg text-333 hover:text-orange-500 active:text-green-600 cursor-pointer">
+            Gear
+          </li>
+          <li className="px-5 text-lg text-333 hover:text-orange-500 active:text-green-600 cursor-pointer">
+            Trails
           </li>
           <li className="flex items-center gap-2 px-5 text-lg text-333 hover:text-orange-500 active:text-green-600 cursor-pointer">
             Search <SearchIcon className="w-5 h-5" />
