@@ -1,24 +1,23 @@
 import React from 'react';
-import { AdjustmentsIcon } from '@heroicons/react/outline';
 
 const Sidebar = ({ productData }) => {
-  const getProductDetails = (prop) => {
-    const x = productData.map((data) => data.details[prop]);
-    return x;
-  };
+  // const getProductDetails = (prop) => {
+  //   const x = productData.map((data) => data.details[prop]);
+  //   return x;
+  // };
 
-  const createSet = (arr) => [...new Set(arr)];
+  // const createSet = (arr) => [...new Set(arr)];
 
-  const displayItems = (arr) => {
-    const el = arr.map((data, i) => {
-      return (
-        <option key={i} value={data}>
-          {data}
-        </option>
-      );
-    });
-    return [...el];
-  };
+  // const displayItems = (arr) => {
+  //   const el = arr.map((data, i) => {
+  //     return (
+  //       <option key={i} value={data}>
+  //         {data}
+  //       </option>
+  //     );
+  //   });
+  //   return [...el];
+  // };
 
   return (
     <div className="flex flex-col">
@@ -29,19 +28,19 @@ const Sidebar = ({ productData }) => {
         <div className="flex flex-col">
           <label htmlFor="category">Search by Product Category</label>
           <select name="category" className="my-5 py-5 rounded-md">
-            {displayItems(createSet(getProductDetails('category')))}
+            {/* {displayItems(createSet(getProductDetails('category')))} */}
           </select>
           <label htmlFor="type">Search by Bike Category</label>
           <select name="type" className="my-5 py-5 rounded-md">
-            {displayItems(createSet(getProductDetails('type')))}
+            {/* {displayItems(createSet(getProductDetails('type')))} */}
           </select>
           <label htmlFor="Brand">Search by Brand</label>
           <select name="brand" className="my-5 py-5 rounded-md">
-            {displayItems(createSet(getProductDetails('brand')))}
+            {/* {displayItems(createSet(getProductDetails('brand')))} */}
           </select>
           <label htmlFor="ridingStyle">Search by Riding Style</label>
           <select name="ridingStyle" className="my-5 py-5 rounded-md">
-            {displayItems(createSet(getProductDetails('ridingStyle')))}
+            {/* {displayItems(createSet(getProductDetails('ridingStyle')))} */}
           </select>
           <span>
             <input type="checkbox" id="new" />
