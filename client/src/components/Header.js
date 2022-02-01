@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className="flex items-center bg-white h-16 px-5 justify-between">
       <div className="px-5 logo text-3xl font-bold">
-        <Link to="/">LOGO</Link>
+        <Link to="/">BANDIT TRAIL</Link>
       </div>
       <div className="navigation flex ">
         <ul className="flex items-center ">

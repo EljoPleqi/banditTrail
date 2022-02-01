@@ -8,7 +8,7 @@ const ProductDisplay = () => {
 
   useEffect(() => {
     async function getProductData() {
-      let res = await fetch('http://127.0.0.1:3007/api');
+      let res = await fetch('http://127.0.0.1:3007/api/products');
       res = await res.json();
       setProductData(res);
     }
@@ -19,7 +19,6 @@ const ProductDisplay = () => {
     <div className="grid grid-cols-products bg-neutral-100">
       <Sidebar productData={productData} />
       <div className="flex flex-col  justify-center items-center py-8">
-        {/* <h3 className="text-3xl font-bold"> Riders Favourite</h3> */}
         <div>
           <ProductCard productData={productData} />
         </div>

@@ -6,7 +6,7 @@ const CustomerReviewCard = () => {
     <div className="flex flex-col gap-6 ml-4">
       <StarRating />
       <div className="flex flex-col gap-2">
-        <h3>This was a good seller</h3>
+        <h2 className="text-xl font-semibold">This was a good seller</h2>
         <p>
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
           nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
