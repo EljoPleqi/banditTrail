@@ -5,7 +5,12 @@ module.exports = (sequelize, DataTypes) => {
     currency: { type: DataTypes.STRING, allowNull: false },
     productDescription: { type: DataTypes.STRING, allowNull: false },
     username: { type: DataTypes.STRING, allowNull: false },
-    condition: { type: DataTypes.BOOLEAN, allowNULL: false },
   });
+
+  Products.associate = (models) => {
+    Products.hasOne(models.ProductDetails, {
+      onDelete: 'cascade',
+    });
+  };
   return Products;
 };

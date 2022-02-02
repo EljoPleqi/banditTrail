@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import productImg from '../img/full_2022_spectral-cf-9_3190_gr-gr_P5.png';
 const ProductCard = ({ productData }) => {
   const displayData = productData.map((data, i) => (
-    <a
-      href="/product-overview"
+    <Link
+      to={`products/${data.id}`}
       className="hover:shadow-md hover:scale-105 hover:transition-all"
       key={i}
     >
@@ -19,7 +20,7 @@ const ProductCard = ({ productData }) => {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   ));
 
   return (
