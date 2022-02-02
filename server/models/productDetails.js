@@ -11,7 +11,10 @@ module.exports = (sequelize, DataTypes) => {
     material: { type: DataTypes.STRING, allowNull: false },
     wheelSize: { type: DataTypes.SMALLINT, allowNull: false },
     condition: { type: DataTypes.BOOLEAN, allowNULL: false },
-    bestseller: true,
   });
+
+  // ProductDetails.associate = (models) => {
+  //   ProductDetails.hasOne(models.Products);
+  // };
   return ProductDetails;
 };

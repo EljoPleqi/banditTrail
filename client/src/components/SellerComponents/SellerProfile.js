@@ -13,7 +13,6 @@ const SellerProfile = ({ setSeller, seller }) => {
     const getSeller = async () => {
       try {
         await axios.get('https://randomuser.me/api/').then((res) => {
-          console.log(res);
           setSeller(res.data.results[0]);
           setHasLoaded(!hasLoaded);
         });
@@ -24,8 +23,6 @@ const SellerProfile = ({ setSeller, seller }) => {
 
     getSeller();
   }, []);
-
-  console.log(seller);
 
   return (
     <div className="grid grid-cols-cart gap-8 mt-24 pb-20 ">
