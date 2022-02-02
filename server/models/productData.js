@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     currency: { type: DataTypes.STRING, allowNull: false },
     productDescription: { type: DataTypes.STRING, allowNull: false },
     username: { type: DataTypes.STRING, allowNull: false },
-    condition: { type: DataTypes.BOOLEAN, allowNULL: false },
   });
   return Products;
 };

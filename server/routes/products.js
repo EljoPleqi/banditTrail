@@ -12,6 +12,11 @@ router.post('/', async (req, res) => {
   await Products.create(product);
   res.json(product);
 });
+// router.post('/ProductDetail', async (req, res) => {
+//   const productDetail = req.body;
+//   await ProductsDetails.create(productDetail);
+//   res.json(productDetail);
+// });
 
 router.patch('/:id', async (req, res, next) => {
   await Products.update(
