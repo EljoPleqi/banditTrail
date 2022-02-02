@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LogInForm = () => {
   return (
@@ -18,9 +19,11 @@ const LogInForm = () => {
           />
         </div>
         <div className="flex gap-6 items-center">
-          <button className="py-4 px-16 text-white bg-slate-700 rounded-lg">
-            Log in
-          </button>
+          <Link to={'/user-dashboard'}>
+            <p className="py-4 px-16 text-white bg-slate-700 rounded-lg">
+              Log in
+            </p>
+          </Link>
           <a
             href="/"
             // className="py-4 px-16 border-solid border-2 border-slate-700 rounded-lg"

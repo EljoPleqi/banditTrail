@@ -10,6 +10,7 @@ import CartPage from './pages/CartPage';
 import PreHeader from './components/PreHeader';
 import Footer from './components/Footer';
 import ProductListingPage from './pages/ProductListingPage';
+import UserDashboard from './pages/UserDashboard';
 function App() {
   return (
     <>
@@ -20,7 +21,11 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/products/:id" element={<ProductPage />} />
-          <Route path="list-product/forSale" element={<ProductListingPage />} />
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route
+            path="/list-product/forSale"
+            element={<ProductListingPage />}
+          />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/" element={<Home />} />
           {/* <Route path="*" element={<F404 />} /> */}

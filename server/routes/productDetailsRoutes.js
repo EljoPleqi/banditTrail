@@ -8,8 +8,9 @@ const {
 
 const router = express.Router();
 
-router.param('id', checkID);
-router.route('/').get(getProductDetails).post(createProductDetail);
-router.route('/:id').get(getSingleProductDetail);
+router.param('ProductId', checkID);
+router.route('/').get(getProductDetails);
+router.route('/').post(createProductDetail);
+router.route('/:ProductId').get(getSingleProductDetail);
 
 module.exports = router;

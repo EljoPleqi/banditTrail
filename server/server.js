@@ -17,7 +17,7 @@ server.use(
 );
 //ROUTERS
 server.use('/api/products', productRouter);
-server.use('/api/products', productDetailsRouter);
+server.use('/api/product-details', productDetailsRouter);
 
 // connects server with DB and starts the server
 
