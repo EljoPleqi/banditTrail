@@ -1,5 +1,5 @@
 const express = require('express');
-const { Products } = require('../models');
+const { Products, ProductDetails } = require('../models');
 
 exports.checkID = (req, res, next, val) => {
   if (!req.params.id) {
@@ -26,7 +26,25 @@ exports.getSingleProduct =
 exports.listProduct =
   ('/',
   async (req, res) => {
-    const product = req.body;
-    await Products.create(product);
-    res.json(product);
+    await Products.create({
+      productTitle: req.body.productTitle,
+      price: req.body.price,
+      currency: req.body.currency,
+      productDescription: req.body.productDescription,
+      username: req.body.username,
+    }).then((product) => {
+      product.ProductDetails({
+        category: req.body.category,
+        brand: req.body.brand,
+        type: req.body.type,
+        primaryColor: req.body.primaryColor,
+        secondaryColor: req.body.secondaryColor,
+        size: req.body.size,
+        gender: req.body.gender,
+        ridingStyle: req.body.ridingStyle,
+        material: req.body.material,
+        condition: req.body.condition,
+      });
+    });
+    res.json(req.body);
   });
