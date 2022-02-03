@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import Sidebar from './Sidebar';
-import Button from './Button';
 import axios from 'axios';
 
+import { useDispatch } from 'react-redux';
+import { setProduct } from '../features/product';
+
 const ProductDisplay = () => {
-  const [productData, setProductData] = useState([]);
+  const dispatch = useDispatch();
   const [productDetail, setProductDetail] = useState([]);
 
   useEffect(() => {
-    async function getProductData() {
-      let res = await fetch('http://127.0.0.1:3007/api/products');
-      res = await res.json();
-      setProductData(res);
-    }
-    getProductData();
-  }, []);
+    axios
+      .get('http://127.0.0.1:3007/api/products')
+      .then((res) => dispatch(setProduct(res.data)));
+  }, [dispatch]);
 
   useEffect(() => {
     axios
@@ -28,7 +27,7 @@ const ProductDisplay = () => {
       <Sidebar productDetail={productDetail} />
       <div className="flex flex-col  justify-center items-center py-8">
         <div>
-          <ProductCard productData={productData} />
+          <ProductCard />
         </div>
       </div>
     </div>

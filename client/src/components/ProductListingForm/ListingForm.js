@@ -12,6 +12,7 @@ const ListingForm = () => {
       ) : (
         <ProductDetailsForm />
       )}
+      <ProductDetailsForm />
     </div>
   );
 };

@@ -3,36 +3,38 @@ import axios from 'axios';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import { useSelector } from 'react-redux';
 
 const ProductDetailsForm = () => {
-  useEffect(() => {
-    axios
-      .post('http://127.0.0.1:3007/api/product-details', data)
-      .then((res) => {
-        console.log(res);
-      });
-  }, []);
+  const productData = useSelector((state) => state.products);
+  console.log(productData);
+  // useEffect(() => {
+  //   axios.post('http://127.0.0.1:3007/api/product-details').then((res) => {
+  //     console.log(res);
+  //   });
+  // }, []);
 
-  const formValidation = yup.object().shape()({
-    category: yup.string().required(),
-    brand: yup.string().required(),
-    type: yup.string().required(),
-    primaryColor: yup.string().required(),
-    secondaryColor: yup.string(),
-    size: yup.string().required(),
-    gender: yup.string(),
-    ridingStyle: yup.string().required(),
-    material: yup.string().required(),
-    wheelSize: yup.number().required(),
-    condition: yup.boolean().required(),
-  });
+  // const formValidation = yup.object().shape()({
+  //   category: yup.string().required(),
+  //   brand: yup.string().required(),
+  //   type: yup.string().required(),
+  //   primaryColor: yup.string().required(),
+  //   secondaryColor: yup.string(),
+  //   size: yup.string().required(),
+  //   gender: yup.string(),
+  //   ridingStyle: yup.string().required(),
+  //   material: yup.string().required(),
+  //   wheelSize: yup.number().required(),
+  //   condition: yup.boolean().required(),
+  // });
 
   const onSubmit = (data) => {
     console.log(data);
   };
   return (
     <div>
-      <Formik onSubmit={onSubmit} validationSchema={formValidation}>
+      <h1>FORM 2</h1>
+      {/* <Formik onSubmit={onSubmit} validationSchema={formValidation}>
         <Form>
           <label></label>
           <ErrorMessage />
@@ -124,7 +126,7 @@ const ProductDetailsForm = () => {
           />
           <button type="submit"></button>
         </Form>
-      </Formik>
+      </Formik> */}
     </div>
   );
 };
