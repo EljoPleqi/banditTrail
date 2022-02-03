@@ -9,7 +9,7 @@ function Home() {
       <Hero />
       <ProductDisplay />
       <CtaSection />
-      <ProductDisplay />
+      {/* <ProductDisplay /> */}
       <InfoSections />
     </>
   );

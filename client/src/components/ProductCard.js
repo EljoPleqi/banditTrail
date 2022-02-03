@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import productImg from '../img/full_2022_spectral-cf-9_3190_gr-gr_P5.png';
-const ProductCard = ({ productData }) => {
+import { useSelector } from 'react-redux';
+
+const ProductCard = () => {
+  const productData = useSelector((state) => state.products);
+  // const { id } = useSelector((state) => state.products.id);
+
+  // const id = productData.at(-1).id;
+  // console.log(id);
   const displayData = productData.map((data, i) => (
     <Link
       to={`products/${data.id}`}

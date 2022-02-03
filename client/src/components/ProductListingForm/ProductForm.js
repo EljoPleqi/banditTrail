@@ -3,8 +3,12 @@ import axios from 'axios';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { setProduct } from '../../features/product';
 
 const ProductForm = ({ setSubmitted, submitted }) => {
+  const dispatch = useDispatch();
+
   const initialValues = {
     productTitle: '',
     price: 0,
@@ -26,6 +30,10 @@ const ProductForm = ({ setSubmitted, submitted }) => {
       console.log(res);
       setSubmitted(!submitted);
     });
+
+    axios
+      .get('http://127.0.0.1:3007/api/products')
+      .then((res) => dispatch(setProduct(res.data)));
   };
   return (
     <>
