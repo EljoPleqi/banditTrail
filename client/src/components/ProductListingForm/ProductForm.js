@@ -15,6 +15,17 @@ const ProductForm = () => {
     currency: 'US$',
     productDescription: '',
     username: '',
+    category: '',
+    brand: '',
+    type: '',
+    primaryColor: '',
+    secondaryColor: '',
+    size: '',
+    gender: '',
+    ridingStyle: '',
+    material: '',
+    wheelSize: 0,
+    condition: false,
   };
 
   const formValidation = yup.object().shape({
@@ -23,15 +34,27 @@ const ProductForm = () => {
     currency: yup.string().required(),
     productDescription: yup.string().required(),
     username: yup.string().required(),
+    category: yup.string().required(),
+    brand: yup.string().required(),
+    type: yup.string().required(),
+    primaryColor: yup.string().required(),
+    secondaryColor: yup.string(),
+    size: yup.string().required(),
+    gender: yup.string(),
+    ridingStyle: yup.string().required(),
+    material: yup.string().required(),
+    wheelSize: yup.number().required(),
+    condition: yup.boolean().required(),
   });
 
   const onSubmit = (data) => {
-    let id;
-    axios.post('http://127.0.0.1:3007/api/products', data).then((res) => {
-      id = res;
-      console.log(res);
-      return id;
-    });
+    // let id;
+    // axios.post('http://127.0.0.1:3007/api/products', data).then((res) => {
+    //   id = res;
+    //   console.log(res);
+    //   return id;
+    // });
+    console.log(data);
   };
   return (
     <>
@@ -109,43 +132,30 @@ const ProductForm = () => {
             </button>
           </Form>
         ) : (
-          <Form>
-            <label>Enter Product's Category</label>
-            <ErrorMessage />
-            <Field
-              as="select"
-              id="inputListItem"
-              name="category"
-              placeholder="Bike Category"
-            >
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-            </Field>
-            <label>Enter Product's Brand</label>
-            <ErrorMessage />
-            <Field
-              type="text"
-              id="inputListItem"
-              name="brand"
-              placeholder="Brand"
-            />
+          <Form className="flex flex-col gap-2 p-24">
             <label>Enter your Product's Type</label>
-            <ErrorMessage />
+            <ErrorMessage
+              name="type"
+              component="span"
+              className="text-red-500"
+            />
             <Field
               as="select"
               id="inputListItem"
               name="type"
               placeholder="Bike Type"
             >
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-              <option value="" key=""></option>
+              <option value="trail">Trail</option>
+              <option value="crossCountry">Cross Country</option>
+              <option value="downhill">Downhill</option>
+              <option value="dirtJump">Dirt Jump</option>
             </Field>
             <label>Enter the Primary Color</label>
-            <ErrorMessage />
+            <ErrorMessage
+              name="primaryColor"
+              component="span"
+              className="text-red-500"
+            />
             <Field
               type="text"
               id="inputListItem"
@@ -153,7 +163,11 @@ const ProductForm = () => {
               placeholder="Primary Color"
             />
             <label>Enter the Secondary Color</label>
-            <ErrorMessage />
+            <ErrorMessage
+              name="secondaryColor"
+              component="span"
+              className="text-red-500"
+            />
             <Field
               type="text"
               id="inputListItem"
@@ -161,46 +175,61 @@ const ProductForm = () => {
               placeholder="Secondary Color"
             />
             <label>Enter your Product's Size</label>
-            <ErrorMessage />
+            <ErrorMessage
+              name="size"
+              component="span"
+              className="text-red-500"
+            />
             <Field
               as="select"
               id="inputListItem"
               name="size"
               placeholder="Size"
             >
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-              <option value="" key=""></option>
+              <option value="sm">Small</option>
+              <option value="md">Medium</option>
+              <option value="lg">Large</option>
+              <option value="xl">XL</option>
             </Field>
             <label>What gender is it for</label>
-            <ErrorMessage />
+            <ErrorMessage
+              name="gender"
+              component="span"
+              className="text-red-500"
+            />
             <Field
               as="select"
               id="inputListItem"
               name="gender"
               placeholder="Gender"
             >
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-              <option value="" key=""></option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Unisex">Unisex</option>
             </Field>
             <label>Suitable Riding Style</label>
-            <ErrorMessage />
+            <ErrorMessage
+              name="ridingStyle"
+              component="span"
+              className="text-red-500"
+            />
             <Field
               as="select"
               id="inputListItem"
               name="ridingStyle"
               placeholder="Riding Style"
             >
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-              <option value="" key=""></option>
+              <option value="begginer">Begginer</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="dareDevil">Daredevil</option>
+              <option value="trailBlazer">Trailb lazer</option>
             </Field>
             <label>Materials Made Of</label>
-            <ErrorMessage />
+            <ErrorMessage
+              name="material"
+              component="span"
+              className="text-red-500"
+            />
             <Field
               type="text"
               id="inputListItem"
@@ -208,26 +237,37 @@ const ProductForm = () => {
               placeholder="Material"
             />
             <label>Wheel Size</label>
-            <ErrorMessage />
+            <ErrorMessage
+              name="wheelSize"
+              component="span"
+              className="text-red-500"
+            />
             <Field
               as="select"
               id="inputListItem"
               name="wheelSize"
               placeholder="Wheel Size"
             >
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-              <option value="" key=""></option>
-              <option value="" key=""></option>
+              <option value="26">26</option>
+              <option value="27.5">27.5</option>
+              <option value="29">29</option>
             </Field>
             <label>Is This Product Used?</label>
-            <ErrorMessage />
+            <ErrorMessage
+              name="condition"
+              component="span"
+              className="text-red-500"
+            />
             <Field
               as="select"
               id="inputListItem"
               name="condition"
               placeholder=""
-            />
+            >
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </Field>
+
             <button type="submit" className="bg-white">
               List Item
             </button>

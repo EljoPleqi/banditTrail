@@ -23,7 +23,7 @@ const ProductDisplay = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-products bg-neutral-100">
+    <div className="grid grid-cols-products">
       <Sidebar productDetail={productDetail} />
       <div className="flex flex-col  justify-center items-center py-8">
         <div>
