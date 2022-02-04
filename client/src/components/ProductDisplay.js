@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import Sidebar from './Sidebar';
 import axios from 'axios';
-
 import { useDispatch } from 'react-redux';
 import { setProduct } from '../features/product';
 

@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const { Products, ProductDetails } = require('../models');
 
 exports.checkID = (req, res, next, val) => {

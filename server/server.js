@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./models');
+const path = require('path');
 const productRouter = require('./routes/productsRoutes');
 const productDetailsRouter = require('./routes/productDetailsRoutes');
 const trailsRouter = require('./routes/trailsRouter');
@@ -19,7 +20,7 @@ server.use(
 
 //serve static files
 
-server.use(express.static('/'));
+server.use('/public', express.static(path.join(__dirname, 'public')));
 
 //ROUTERS
 server.use('/api/products', productRouter);
