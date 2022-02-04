@@ -16,6 +16,11 @@ server.use(
     origin: 'http://127.0.0.1:3000',
   })
 );
+
+//serve static files
+
+server.use(express.static('/'));
+
 //ROUTERS
 server.use('/api/products', productRouter);
 server.use('/api/product-details', productDetailsRouter);
