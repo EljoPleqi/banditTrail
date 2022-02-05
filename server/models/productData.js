@@ -1,10 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const Products = sequelize.define('Products', {
+    featuredImage: { type: DataTypes.STRING },
     productTitle: { type: DataTypes.STRING, allowNull: false },
-    price: { type: DataTypes.SMALLINT, allowNull: false },
+    price: { type: DataTypes.FLOAT, allowNull: false },
     currency: { type: DataTypes.STRING, allowNull: false },
-    productDescription: { type: DataTypes.STRING, allowNull: false },
-    username: { type: DataTypes.STRING, allowNull: false },
+    productDescription: { type: DataTypes.TEXT, allowNull: false },
   });
 
   Products.associate = (models) => {

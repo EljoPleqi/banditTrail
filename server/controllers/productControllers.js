@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require('multer');
+const path = require('path');
 const { Products, ProductDetails } = require('../models');
 
 exports.checkID = (req, res, next, val) => {
@@ -9,12 +10,16 @@ exports.checkID = (req, res, next, val) => {
   next();
 };
 
+// GET ALL PROUCT ENTRIES FROM THE DB
+
 exports.getAllProducts =
   ('/',
   async (req, res) => {
     const allProducts = await Products.findAll();
     res.json(allProducts);
   });
+
+// GET A UNIQUE PROUCT ENTRY FROM THE DB
 
 exports.getSingleProduct =
   ('/:id',
@@ -24,18 +29,18 @@ exports.getSingleProduct =
     res.json(product);
   });
 
+//  CREATE A NEW PRODUCT ENTRY IN THE DB
 exports.listProduct =
   ('/',
   async (req, res) => {
     await Products.create({
+      featuredImage: req.file.path,
       productTitle: req.body.productTitle,
       price: req.body.price,
       currency: req.body.currency,
       productDescription: req.body.productDescription,
-      username: req.body.username,
     }).then((product) => {
       product.ProductDetails({
-        category: req.body.category,
         brand: req.body.brand,
         type: req.body.type,
         primaryColor: req.body.primaryColor,
@@ -49,3 +54,39 @@ exports.listProduct =
     });
     res.json(req.body);
   });
+
+// UPLOAD PRODUCT IMG
+
+//  1) Store image on the computers disk
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public');
+  },
+  filename: (req, file, cb) => {
+    const uniqueFilename = Date.now() + '-' + path.extname(file.originalname);
+    cb(null, uniqueFilename);
+  },
+});
+
+// 2) Configure Mutler
+exports.uploadFeatureImg = multer({
+  storage: storage,
+  limits: { fileSize: '5000000' },
+  fileFilter: (req, file, cb) => {
+    // set acceptable extension
+
+    const fileTypes = /jpeg|jpg|png|gif|webp/;
+    //check if file extention matches extension
+    const extname = fileTypes.test(path.extname(file.originalname));
+    //check if file mimetype matches extension
+    const mimeType = fileTypes.test(file.mimetype);
+
+    // check if everything is ok
+
+    if (mimeType && extname) return cb(null, true);
+    if (!mimeType || !extname)
+      return cb(
+        'File type not supported please upload a jpeg,jpg,png,gif or webp '
+      );
+  },
+}).single('featuredImage');
