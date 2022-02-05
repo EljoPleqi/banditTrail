@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import Sidebar from './Sidebar';
 import axios from 'axios';
-
 import { useDispatch } from 'react-redux';
 import { setProduct } from '../features/product';
 
@@ -25,7 +24,7 @@ const ProductDisplay = () => {
   return (
     <div className="grid grid-cols-products">
       <Sidebar productDetail={productDetail} />
-      <div className="flex flex-col  justify-center items-center py-8">
+      <div className="flex flex-col justify-center items-center py-8">
         <div>
           <ProductCard />
         </div>

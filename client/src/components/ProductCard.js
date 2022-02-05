@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import productImg from '../img/full_2022_spectral-cf-9_3190_gr-gr_P5.png';
 import { useSelector } from 'react-redux';
 
 const ProductCard = () => {
@@ -17,7 +16,7 @@ const ProductCard = () => {
     >
       <div className="flex flex-col px-5 py-5 min-h-full bg-white">
         <div>
-          <img src={productImg} alt="" className="object-cover" />
+          <img src={data.featuredImage} alt="" className="object-cover" />
         </div>
         <div className="py-5">
           <p>{data.productTitle}</p>

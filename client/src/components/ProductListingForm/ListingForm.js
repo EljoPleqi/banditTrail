@@ -1,10 +1,10 @@
-import ProductForm from './ProductForm';
+import BikeListingForm from './BikeListingForm';
 const ListingForm = () => {
   //
 
   return (
     <div className="flex items-center justify-center">
-      <ProductForm />
+      <BikeListingForm />
     </div>
   );
 };

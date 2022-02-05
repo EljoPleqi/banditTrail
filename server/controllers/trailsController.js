@@ -1,4 +1,5 @@
 const { Trails } = require('../models');
+const multer = require('multer');
 
 exports.checkID = (req, res, next, val) => {
   if (!req.params.id) {
@@ -33,3 +34,39 @@ exports.createNewTrail =
       trailDifficulty: req.body.trailDifficulty,
     });
   });
+
+// UPLOAD TRAILS IMG
+
+//  1) Store image on the computers disk
+const storage = multer.diskStorage({
+  destination: (req, file, callb) => {
+    callb(null, `/public/img`);
+  },
+  filename: (req, file, callb) => {
+    const uniqueFilename = ` ${Date.now()}${path.extname(file.orginalname)}`;
+    callb(null, uniqueFilename);
+  },
+});
+
+// 2) Configure Mutler
+exports.uploadFeatureImg = multer({
+  storage,
+  limits: { fileSize: '5000000' },
+  fileFilter: (req, file, cb) => {
+    // set acceptable extension
+
+    const fileTypes = /jpeg|jpg|png|gif|webp/;
+    //check if file extention matches extension
+    const extname = fileTypes.test(path.extname(file.originalname));
+    //check if file mimetype matches extension
+    const mimeType = fileTypes.test(file.mimetype);
+
+    // check if everything is ok
+
+    if (mimeType && extname) return cd(null, true);
+    if (!mimeType || !extname)
+      return cb(
+        'File type not supported please upload a jpeg,jpg,png,gif or webp '
+      );
+  },
+}).single('featuredImage');

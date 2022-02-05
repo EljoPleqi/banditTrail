@@ -3,6 +3,7 @@ const {
   checkID,
   getAllTrails,
   getSingleTrail,
+  uploadFeatureImg,
   createNewTrail,
 } = require('../controllers/trailsController');
 
