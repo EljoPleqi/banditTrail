@@ -33,14 +33,16 @@ exports.getSingleProduct =
 exports.listProduct =
   ('/',
   async (req, res) => {
-    await Products.create({
-      featuredImage: req.file.path,
-      productTitle: req.body.productTitle,
-      price: req.body.price,
-      currency: req.body.currency,
-      productDescription: req.body.productDescription,
-    }).then((product) => {
-      product.ProductDetails({
+    try {
+      const product = await Products.create({
+        featuredImage: req.file.path,
+        productTitle: req.body.productTitle,
+        price: req.body.price,
+        currency: req.body.currency,
+        productDescription: req.body.productDescription,
+      });
+      const productId = product.id;
+      await ProductDetails.create({
         brand: req.body.brand,
         type: req.body.type,
         primaryColor: req.body.primaryColor,
@@ -48,11 +50,16 @@ exports.listProduct =
         size: req.body.size,
         gender: req.body.gender,
         ridingStyle: req.body.ridingStyle,
+        wheelSize: req.body.wheelSize,
         material: req.body.material,
         condition: req.body.condition,
+        ProductId: productId,
       });
-    });
-    res.json(req.body);
+      res.json(req.body);
+    } catch (error) {
+      console.log(error);
+      res.status(500);
+    }
   });
 
 // UPLOAD PRODUCT IMG
@@ -60,7 +67,7 @@ exports.listProduct =
 //  1) Store image on the computers disk
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'public');
+    cb(null, './public/img');
   },
   filename: (req, file, cb) => {
     const uniqueFilename = Date.now() + '-' + path.extname(file.originalname);

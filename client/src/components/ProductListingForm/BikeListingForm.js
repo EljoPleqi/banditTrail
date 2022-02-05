@@ -54,6 +54,7 @@ const BikeListingForm = () => {
     bike.append('primaryColor', primaryColor);
     bike.append('secondaryColor', secondaryColor);
     bike.append('size', size);
+    bike.append('ridingStyle', ridingStyle);
     bike.append('gender', gender);
     bike.append('material', material);
     bike.append('wheelSize', wheelSize);
@@ -157,10 +158,15 @@ const BikeListingForm = () => {
               <option value="Unisex">Unisex</option>
             </select>
             <label>Suitable Riding Style</label>
-            <select onChange={(e) => setRidingStyle(e.target.value)}>
-              <option value="beginer">Beginner</option>
+            <select
+              onChange={(e) => {
+                console.log(e.target.value);
+                setRidingStyle(e.target.value);
+              }}
+            >
+              <option value="beginner">Beginner</option>
               <option value="intermediate">Intermediate</option>
-              <option value="dareDevil">Daredevil</option>
+              <option value="Daredevil">Daredevil</option>
               <option value="trailBlazer">Trailblazer</option>
             </select>
             <label>Materials Made Of</label>
@@ -171,10 +177,10 @@ const BikeListingForm = () => {
               onChange={(e) => setMaterial(e.target.value)}
             />
             <label>Wheel Size</label>
-            <select onChange={(e) => setWheelSize(e.target.value)}>
-              <option value="26">26</option>
-              <option value="27.5">27.5</option>
-              <option value="29">29</option>
+            <select onChange={(e) => setWheelSize(Number(e.target.value))}>
+              <option value={26}>26</option>
+              <option value={27.5}>27.5</option>
+              <option value={29}>29</option>
             </select>
             <label>Is This Bike Used?</label>
             <input type="checkbox" onChange={() => setCondition(true)}></input>

@@ -16,7 +16,11 @@ const ProductCard = () => {
     >
       <div className="flex flex-col px-5 py-5 min-h-full bg-white">
         <div>
-          <img src={data.featuredImage} alt="" className="object-cover" />
+          <img
+            src={`http://127.0.0.1:3007/${data.featuredImage}`}
+            alt=""
+            className="object-cover"
+          />
         </div>
         <div className="py-5">
           <p>{data.productTitle}</p>
@@ -28,6 +32,8 @@ const ProductCard = () => {
       </div>
     </Link>
   ));
+
+  console.log(productData);
 
   return (
     <div>

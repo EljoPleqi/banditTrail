@@ -26,11 +26,7 @@ const Sidebar = ({ productDetail }) => {
       </p> */}
       <div className="h-full bg-neutral-100 flex flex-col items-center pt-8">
         <div className="flex flex-col">
-          <label htmlFor="category">Search by Product Category</label>
-          <select name="category" className="my-5 py-5 rounded-md">
-            {displayItems(createSet(getProductDetails('category')))}
-          </select>
-          <label htmlFor="type">Search by Bike Category</label>
+          <label htmlFor="type">Search by Bike Type</label>
           <select name="type" className="my-5 py-5 rounded-md">
             {displayItems(createSet(getProductDetails('type')))}
           </select>
