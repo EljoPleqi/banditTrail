@@ -10,6 +10,15 @@ module.exports = (sequelize, DataTypes) => {
     material: { type: DataTypes.STRING, allowNull: false },
     wheelSize: { type: DataTypes.SMALLINT, allowNull: false },
     condition: { type: DataTypes.BOOLEAN, allowNULL: false },
+    images: {
+      type: DataTypes.STRING,
+      get: function () {
+        return JSON.parse(this.getDataValue('images'));
+      },
+      set: function (data) {
+        return this.setDataValue('images', JSON.stringify(data));
+      },
+    },
   });
 
   // ProductDetails.associate = (models) => {

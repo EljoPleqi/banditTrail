@@ -53,6 +53,7 @@ exports.listProduct =
         wheelSize: req.body.wheelSize,
         material: req.body.material,
         condition: req.body.condition,
+        images: req.files,
         ProductId: productId,
       });
       res.json(req.body);
@@ -67,7 +68,7 @@ exports.listProduct =
 //  1) Store image on the computers disk
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './public/img');
+    cb(null, 'public/img/product-images');
   },
   filename: (req, file, cb) => {
     const uniqueFilename = Date.now() + '-' + path.extname(file.originalname);
@@ -97,3 +98,26 @@ exports.uploadFeatureImg = multer({
       );
   },
 }).single('featuredImage');
+
+exports.uploadProductImgs = multer({
+  storage: storage,
+  limits: { fileSize: '150000000' },
+  fileFilter: (req, file, cb) => {
+    console.log(1);
+    // set acceptable extension
+
+    const fileTypes = /jpeg|jpg|png|gif|webp/;
+    //check if file extention matches extension
+    const extname = fileTypes.test(path.extname(file.originalname));
+    //check if file mimetype matches extension
+    const mimeType = fileTypes.test(file.mimetype);
+
+    // check if everything is ok
+
+    if (mimeType && extname) return cb(null, true);
+    if (!mimeType || !extname)
+      return cb(
+        'File type not supported please upload a jpeg,jpg,png,gif or webp '
+      );
+  },
+}).array('images', 6);

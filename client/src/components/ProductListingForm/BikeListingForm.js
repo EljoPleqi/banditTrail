@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { ArrowRightIcon } from '@heroicons/react/outline';
+import {
+  ArrowRightIcon,
+  ArrowLeftIcon,
+  UploadIcon,
+  PlusCircleIcon,
+} from '@heroicons/react/outline';
 
 import axios from 'axios';
 
@@ -23,6 +28,7 @@ const BikeListingForm = () => {
   const [wheelSize, setWheelSize] = useState(0);
   const [condition, setCondition] = useState(false);
   const [uploading, setUploading] = useState(true);
+  const [images, setImages] = useState([]);
 
   // const formValidation = yup.object().shape({
   //   productTitle: yup.string().required(),
@@ -40,6 +46,8 @@ const BikeListingForm = () => {
   //   wheelSize: yup.number().required(),
   //   condition: yup.boolean().required(),
   // });
+
+  console.log({ productTitle, productDescription, price, currency });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,6 +67,7 @@ const BikeListingForm = () => {
     bike.append('material', material);
     bike.append('wheelSize', wheelSize);
     bike.append('condition', condition);
+    bike.append('images', images);
 
     axios.post('http://127.0.0.1:3007/api/products', bike).then((res) => {
       console.log(bike);
@@ -70,95 +79,130 @@ const BikeListingForm = () => {
   return (
     <>
       <form
-        className="flex flex-col gap-2 p-24 bg-neutral-100"
+        className="flex flex-col rounded-md bg-neutral-100 p-20"
         onSubmit={handleSubmit}
         method="POST"
         encType="multipart/form-data"
       >
         {!submitted ? (
-          <div className="flex flex-col">
-            <label>Product Title</label>
-            <input
-              type="text"
-              placeholder="Product Title"
-              onChange={(e) => setProductTitle(e.target.value)}
-            />
-            <label>Price</label>
-            <div className="flex gap-2 items-center">
-              <input
-                type="number"
-                placeholder="Price"
-                onChange={(e) => setPrice(e.target.value)}
-              />
-              <select onChange={(e) => setCurrency(e.target.value)}>
-                <option value="US$">USD</option>
-                <option value="Euro€">EURO</option>
-              </select>
+          <div className="flex flex-col gap-4">
+            <div className="grid-cols-threeTwo grid gap-4">
+              <div className="flex flex-col gap-1">
+                <label>Product Title</label>
+                <input
+                  className="rounded-md py-4 placeholder:px-4"
+                  type="text"
+                  placeholder="Product Title"
+                  onChange={(e) => setProductTitle(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label>Price</label>
+                <input
+                  className="rounded-md py-4 placeholder:px-4"
+                  type="number"
+                  placeholder="Price"
+                  onChange={(e) => setPrice(e.target.value)}
+                />
+              </div>
             </div>
-            <label>Product Description </label>
-            <textarea
-              placeholder="Product Description"
-              onChange={(e) => setProductDescription(e.target.value)}
-            />
-            <label>Feature Image</label>
-            <input
-              type="file"
-              name="featuredImage"
-              onChange={(e) => {
-                console.log(e.target);
-                setFeatureImage(e.target.files[0]);
-              }}
-            />
+            <div className="flex flex-col gap-1">
+              <label>Product Description </label>
+              <textarea
+                placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...."
+                className="rounded-md pb-16 pt-4 placeholder:justify-self-start placeholder:px-4"
+                onChange={(e) => setProductDescription(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label>Feature Image</label>
+              <input
+                className="rounded-md  py-1"
+                type="file"
+                name="featuredImage"
+                onChange={(e) => {
+                  console.log(e.target);
+                  setFeatureImage(e.target.files[0]);
+                }}
+              />
+            </div>
             <button
               onClick={() => {
                 setSubmitted(!submitted);
               }}
-              className="flex gap-4"
+              className="box-border flex items-center justify-center gap-2 rounded-md border-2 border-solid border-neutral-600 py-2 px-4 transition-all duration-500 hover:gap-4 hover:border-none hover:bg-neutral-700 hover:text-white"
             >
               Continue <ArrowRightIcon className="h-6 w-6" />
             </button>{' '}
           </div>
         ) : (
-          <div className="flex flex-col">
-            <label>Enter the Brand of the Bike </label>
-            <input type="text" onChange={(e) => setBrand(e.target.value)} />
-            <label>Enter your Bike's Type</label>
-            <select onChange={(e) => setType(e.target.value)}>
-              <option value="trail">Trail</option>
-              <option value="crossCountry">Cross Country</option>
-              <option value="downhill">Downhill</option>
-              <option value="dirtJump">Dirt Jump</option>
-            </select>
-            <label>Enter the Primary Color</label>
-
-            <input
-              type="text"
-              placeholder="Primary Color"
-              onChange={(e) => setPrimaryColor(e.target.value)}
-            />
-            <label>Enter the Secondary Color</label>
-
-            <input
-              type="text"
-              name="secondaryColor"
-              placeholder="Secondary Color"
-              onChange={(e) => setSecondaryColor(e.target.value)}
-            />
+          <div className="flex flex-col gap-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1">
+                <label>Enter the Brand of the Bike </label>
+                <input
+                  className="rounded-md py-4 placeholder:px-4"
+                  type="text"
+                  onChange={(e) => setBrand(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label>Enter your Bike's Type</label>
+                <select
+                  className="rounded-md py-4 placeholder:px-4"
+                  onChange={(e) => setType(e.target.value)}
+                >
+                  <option value="trail">Trail</option>
+                  <option value="crossCountry">Cross Country</option>
+                  <option value="downhill">Downhill</option>
+                  <option value="dirtJump">Dirt Jump</option>
+                </select>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1">
+                <label>Enter the Primary Color</label>
+                <input
+                  className="rounded-md py-4 placeholder:px-4"
+                  type="text"
+                  placeholder="Primary Color"
+                  onChange={(e) => setPrimaryColor(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label>Enter the Secondary Color</label>
+                <input
+                  className="rounded-md py-4 placeholder:px-4"
+                  type="text"
+                  name="secondaryColor"
+                  placeholder="Secondary Color"
+                  onChange={(e) => setSecondaryColor(e.target.value)}
+                />
+              </div>
+            </div>
             <label>Enter your Bike's Size</label>
-            <select onChange={(e) => setSize(e.target.value)}>
+            <select
+              className="rounded-md py-4 placeholder:px-4"
+              onChange={(e) => setSize(e.target.value)}
+            >
               <option value="sm">Small</option>
               <option value="md">Medium</option>
               <option value="lg">Large</option>
               <option value="xl">XL</option>
             </select>
             <label>What gender is it for</label>
-            <select value={gender} onChange={(e) => setGender(e.target.value)}>
+            <select
+              className="rounded-md py-4 placeholder:px-4"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+            >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Unisex">Unisex</option>
             </select>
             <label>Suitable Riding Style</label>
             <select
+              className="rounded-md py-4 placeholder:px-4"
               onChange={(e) => {
                 console.log(e.target.value);
                 setRidingStyle(e.target.value);
@@ -171,26 +215,65 @@ const BikeListingForm = () => {
             </select>
             <label>Materials Made Of</label>
             <input
+              className="rounded-md py-4 placeholder:px-4"
               type="text"
               name="material"
               placeholder="Material"
               onChange={(e) => setMaterial(e.target.value)}
             />
             <label>Wheel Size</label>
-            <select onChange={(e) => setWheelSize(Number(e.target.value))}>
+            <select
+              className="rounded-md py-4 placeholder:px-4"
+              onChange={(e) => setWheelSize(Number(e.target.value))}
+            >
               <option value={26}>26</option>
               <option value={27.5}>27.5</option>
               <option value={29}>29</option>
             </select>
             <label>Is This Bike Used?</label>
-            <input type="checkbox" onChange={() => setCondition(true)}></input>
-            {uploading ? (
-              <button type="submit" className="bg-white">
-                List Item{' '}
-              </button>
-            ) : (
-              <button disabled> 'Uploading...'</button>
-            )}
+            <input
+              className="rounded-md py-4 placeholder:px-4"
+              type="checkbox"
+              onChange={() => setCondition(true)}
+            ></input>
+            <label>Product Images</label>
+            <input
+              className="rounded-md py-4 placeholder:px-4"
+              type="file"
+              multiple
+              name="images"
+              onChange={(e) => {
+                console.log(e.target);
+                setImages(e.target.files);
+              }}
+            />
+            <div className="flex justify-between gap-2">
+              <button
+                onClick={() => {
+                  setSubmitted(!submitted);
+                }}
+                className="flex  items-center gap-4 rounded-md border-2 border-solid border-neutral-600 py-2 px-4"
+              >
+                <ArrowLeftIcon className="h-6 w-6" /> Go back
+              </button>{' '}
+              {uploading ? (
+                <button
+                  type="submit"
+                  className=" flex items-center gap-2 rounded-md bg-white py-2 px-4"
+                >
+                  List Item <PlusCircleIcon className="h-6 w-6" />
+                </button>
+              ) : (
+                <button
+                  className="rounded-md bg-[#283618] py-2 px-4"
+                  disabled
+                  on
+                >
+                  {' '}
+                  'Uploading...'
+                </button>
+              )}
+            </div>
           </div>
         )}
       </form>
