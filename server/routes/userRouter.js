@@ -9,8 +9,8 @@ const {
 
 const router = express.Router();
 
-router.param('id', checkID);
+router.param('username', checkID);
 router.route('/').get(getAllUsers).post(uploadAvatar, createUser);
-router.route('/:id').get(getSingleUser);
+router.route('/:username').get(getSingleUser);
 
 module.exports = router;

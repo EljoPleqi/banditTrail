@@ -1,9 +1,10 @@
 const multer = require('multer');
 const path = require('path');
 const { Users } = require('../models');
+const bcrypt = require('bcrypt');
 
 exports.checkID = (req, res, next, val) => {
-  if (!req.params.id) {
+  if (!req.params.username) {
     return res.status(404).json({ status: 'fail', message: 'Invalid ID' });
   }
   next();
@@ -21,7 +22,7 @@ exports.getAllUsers =
 // GET A UNIQUE PROUCT ENTRY FROM THE DB
 
 exports.getSingleUser =
-  ('/:id',
+  ('/:username',
   async (req, res) => {
     const id = req.params.id;
     const user = await Users.findByPk(id);
@@ -33,15 +34,53 @@ exports.createUser =
   ('/',
   async (req, res) => {
     try {
-      const user = await Products.create({
-        avatar: req.file.path,
-        username: req.body.username,
-        userEmail: req.body.userEmail,
-        userPhone: req.body.userPhone,
-        userDescription: req.body.userDescription,
-        userRidingStyle: req.body.userRidingStyle,
+      // Get Profile Picture
+
+      // Get User data
+      const {
+        username,
+        password,
+        userEmail,
+        userPhone,
+        userDescription,
+        userRidingStyle,
+      } = req.body;
+
+      // create user with hashed password
+      bcrypt.hash(password, 10).then((hash) =>
+        Users.create({
+          avatar: req.file.path,
+          username: username,
+          password: hash,
+          userEmail: userEmail,
+          userPhone: userPhone,
+          userDescription: userDescription,
+          userRidingStyle: userRidingStyle,
+        })
+      );
+
+      res.json('JOB DONE');
+    } catch (error) {
+      console.log(error);
+      res.status(500);
+    }
+  });
+
+exports.login =
+  ('/login',
+  async (req, res) => {
+    try {
+      // Get User data
+      const { username, password } = req.body;
+      const user = await Users.findOne({ where: { username: username } });
+
+      // check is user exists
+      if (!user) res.json({ error: 'Rider does not exist' });
+
+      // check if password is correct
+      bcrypt.compare(password, user.password).then((match) => {
+        if (!match) res.json({ error: 'Wrong password' });
       });
-      res.json(req.body);
     } catch (error) {
       console.log(error);
       res.status(500);
