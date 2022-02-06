@@ -5,8 +5,11 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import productReducer from './features/product';
+import usersReducer from './features/user';
 
-const store = configureStore({ reducer: { products: productReducer } });
+const store = configureStore({
+  reducer: { products: productReducer, users: usersReducer },
+});
 
 ReactDOM.render(
   <React.StrictMode>

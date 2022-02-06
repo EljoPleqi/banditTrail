@@ -1,24 +1,31 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../../features/user';
+
 const SignUpForm = () => {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [conPassword, setConPassword] = useState('');
+  const [userRidingStyle, setUserRidingStyle] = useState('');
   const [phone, setPhone] = useState(0);
   const [avatar, setAvatar] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = new FormData();
-    user.append('email', email);
+    user.append('userEmail', email);
     user.append('username', username);
     user.append('password', password);
-    user.append('conPassword', conPassword);
+    user.append('userRidingStyle', userRidingStyle);
     user.append('phone', phone);
     user.append('avatar', avatar);
 
-    axios.post('127.0.0.1:3007/users').then((res) => {});
+    axios.post('http://127.0.0.1:3007/api/users', user).then((res) => {
+      dispatch(setLogin(true));
+    });
   };
 
   return (
@@ -29,16 +36,28 @@ const SignUpForm = () => {
         affordable
       </h2>
       <div className="mt-12 flex flex-col px-12 ">
-        <form onSubmit={handleSubmit}>
+        <form
+          method="POST"
+          encType="multipart/form-data"
+          onSubmit={handleSubmit}
+        >
           <div className="flex flex-col gap-4">
             <label>Enter your Email</label>
             <input
-              type="email"
+              type="text"
               className="rounded-md bg-slate-100 py-4 px-16"
               onChange={(e) => setEmail(e.target.value)}
             />
             <div className="grid grid-cols-2 gap-4">
               <div className="flex gap-4">
+                <div className="flex flex-col py-1">
+                  <label>Enter your Username</label>
+                  <input
+                    type="text"
+                    className="rounded-md bg-slate-100 py-4 px-16"
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </div>
                 <div className="flex flex-col py-1">
                   <label>Enter your Password</label>
                   <input
@@ -47,25 +66,17 @@ const SignUpForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <div className="flex flex-col py-1">
-                  <label>Confirm Your Password</label>
-                  <input
-                    type="text"
-                    className="rounded-md bg-slate-100 py-4 px-16"
-                    onChange={(e) => setConPassword(e.target.value)}
-                  />
-                </div>
               </div>
             </div>
           </div>
           <div className="flex flex-col gap-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col py-1">
-                <label>Enter your Username</label>
+                <label>what is your riding experience</label>
                 <input
                   type="text"
                   className="rounded-md bg-slate-100 py-4 px-16"
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => setUserRidingStyle(e.target.value)}
                 />
               </div>
               <div className="flex flex-col py-1">
@@ -81,7 +92,11 @@ const SignUpForm = () => {
               <label>Upload your Profile Picture</label>
               <input
                 type="file"
-                onChange={(e) => setAvatar(e.target.value)}
+                name="avatar"
+                onChange={(e) => {
+                  console.log(e.target);
+                  setAvatar(e.target.files[0]);
+                }}
               ></input>
             </div>
 
@@ -92,7 +107,10 @@ const SignUpForm = () => {
               >
                 Login
               </a>
-              <button className="rounded-lg bg-neutral-700 py-4 px-24 text-white">
+              <button
+                type="submit"
+                className="rounded-lg bg-neutral-700 py-4 px-24 text-white"
+              >
                 Sign Up
               </button>
             </div>

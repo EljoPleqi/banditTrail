@@ -1,5 +1,6 @@
 const { Trails } = require('../models');
 const multer = require('multer');
+const path = require('path');
 
 exports.checkID = (req, res, next, val) => {
   if (!req.params.id) {
