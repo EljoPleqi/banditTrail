@@ -1,6 +1,6 @@
 import React from 'react';
 import Hero from '../components/Hero';
-import ProductDisplay from '../components/ProductDisplay';
+import ProductDisplay from '../components/productComponents/ProductDisplay';
 import CtaSection from '../components/CtaSection';
 import InfoSections from '../components/InfoSections';
 import TrailsSection from '../components/trails/TrailsSection';
