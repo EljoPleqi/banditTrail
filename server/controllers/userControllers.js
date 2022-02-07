@@ -43,6 +43,17 @@ exports.createUser =
         userRidingStyle,
       } = req.body;
 
+      const checkUsername = await Users.findOne({
+        where: { username: username },
+      });
+
+      const checkEmail = await Users.findOne({
+        where: { userEmail: userEmail },
+      });
+
+      if (checkUsername) return res.json({ error: ' Username taken' });
+      if (checkEmail) return res.json({ error: 'Email already exists' });
+
       // create user with hashed password
       bcrypt.hash(password, 10).then((hash) =>
         Users.create({
