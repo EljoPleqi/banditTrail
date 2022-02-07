@@ -68,7 +68,7 @@ exports.listProduct =
 //  1) Store image on the computers disk
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'public/img/product-images');
+    cb(null, 'public/img/product-imgs');
   },
   filename: (req, file, cb) => {
     const uniqueFilename = Date.now() + '-' + path.extname(file.originalname);

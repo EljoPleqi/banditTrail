@@ -4,13 +4,14 @@ const {
   uploadAvatar,
   getAllUsers,
   getSingleUser,
-  checkID,
+
+  login,
 } = require('../controllers/userControllers');
 
 const router = express.Router();
 
-router.param('username', checkID);
 router.route('/').get(getAllUsers).post(uploadAvatar, createUser);
+router.route('/login').post(login);
 router.route('/:username').get(getSingleUser);
 
 module.exports = router;

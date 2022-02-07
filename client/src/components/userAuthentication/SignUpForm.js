@@ -23,7 +23,7 @@ const SignUpForm = () => {
     user.append('phone', phone);
     user.append('avatar', avatar);
 
-    axios.post('http://127.0.0.1:3007/api/users', user).then((res) => {
+    axios.post('http://127.0.0.1:8000/users', user).then((res) => {
       dispatch(setLogin(true));
     });
   };
@@ -61,7 +61,7 @@ const SignUpForm = () => {
                 <div className="flex flex-col py-1">
                   <label>Enter your Password</label>
                   <input
-                    type="text"
+                    type="password"
                     className="rounded-md bg-slate-100 py-4 px-16"
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -73,11 +73,15 @@ const SignUpForm = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col py-1">
                 <label>what is your riding experience</label>
-                <input
-                  type="text"
+                <select
                   className="rounded-md bg-slate-100 py-4 px-16"
                   onChange={(e) => setUserRidingStyle(e.target.value)}
-                />
+                >
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="Daredevil">Daredevil</option>
+                  <option value="trailBlazer">Trailblazer</option>
+                </select>
               </div>
               <div className="flex flex-col py-1">
                 <label>Enter your phone</label>
@@ -102,7 +106,7 @@ const SignUpForm = () => {
 
             <div className="flex gap-4">
               <a
-                href="/Login"
+                href="login"
                 className="rounded-md border-2 border-solid border-neutral-700 py-4 px-8"
               >
                 Login

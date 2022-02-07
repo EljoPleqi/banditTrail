@@ -69,11 +69,17 @@ const BikeListingForm = () => {
     bike.append('condition', condition);
     bike.append('images', images);
 
-    axios.post('http://127.0.0.1:3007/api/products', bike).then((res) => {
-      console.log(bike);
-      console.log(res);
-      setUploading(false);
-    });
+    axios
+      .post('http://127.0.0.1:8000/api/products', bike, {
+        headers: { accessToken: sessionStorage.getItem('accessToken') },
+      })
+      .then((res) => {
+        if (res.data.error) {
+          alert(res.data.error);
+        } else {
+          setUploading(false);
+        }
+      });
     console.log(e.target);
   };
   return (
@@ -208,10 +214,10 @@ const BikeListingForm = () => {
                 setRidingStyle(e.target.value);
               }}
             >
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
               <option value="Daredevil">Daredevil</option>
-              <option value="trailBlazer">Trailblazer</option>
+              <option value="Trailblazer">Trailblazer</option>
             </select>
             <label>Materials Made Of</label>
             <input
