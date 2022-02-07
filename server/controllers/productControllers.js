@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const { Products, ProductDetails } = require('../models');
+const { Products } = require('../models');
 
 exports.checkID = (req, res, next, val) => {
   if (!req.params.id) {
@@ -34,15 +34,12 @@ exports.listProduct =
   ('/',
   async (req, res) => {
     try {
-      const product = await Products.create({
+      await Products.create({
         featuredImage: req.file.path,
         productTitle: req.body.productTitle,
         price: req.body.price,
         currency: req.body.currency,
         productDescription: req.body.productDescription,
-      });
-      const productId = product.id;
-      await ProductDetails.create({
         brand: req.body.brand,
         type: req.body.type,
         primaryColor: req.body.primaryColor,

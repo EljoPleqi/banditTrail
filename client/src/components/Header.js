@@ -1,32 +1,39 @@
 import React from 'react';
 import { ShoppingCartIcon, SearchIcon } from '@heroicons/react/outline';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+  const loggedIn = useSelector((state) => state.login);
   return (
-    <div className="flex items-center bg-white h-16 px-5 justify-between">
-      <div className="px-5 logo text-3xl font-bold">
+    <div className="flex h-16 items-center justify-between bg-white px-5">
+      <div className="logo px-5 text-3xl font-bold">
         <Link to="/">BANDIT TRAIL</Link>
       </div>
       <div className="navigation flex ">
         <ul className="flex items-center ">
-          <li className="px-5 text-lg text-333 hover:text-orange-500 active:text-green-600 cursor-pointer">
+          <li className="text-333 cursor-pointer px-5 text-lg hover:text-orange-500 active:text-green-600">
             Bikes
           </li>
-          <li className="px-5 text-lg text-333 hover:text-orange-500 active:text-green-600 cursor-pointer">
+          <li className="text-333 cursor-pointer px-5 text-lg hover:text-orange-500 active:text-green-600">
             Gear
           </li>
-          <li className="px-5 text-lg text-333 hover:text-orange-500 active:text-green-600 cursor-pointer">
+          <li className="text-333 cursor-pointer px-5 text-lg hover:text-orange-500 active:text-green-600">
             Trails
           </li>
-          <li className="flex items-center gap-2 px-5 text-lg text-333 hover:text-orange-500 active:text-green-600 cursor-pointer">
-            Search <SearchIcon className="w-5 h-5" />
+          <li className="text-333 flex cursor-pointer items-center gap-2 px-5 text-lg hover:text-orange-500 active:text-green-600">
+            Search <SearchIcon className="h-5 w-5" />
           </li>
-          <li className="px-5 text-lg text-333 hover:text-orange-500 active:text-green-600 cursor-pointer ">
+          <li className="text-333 cursor-pointer px-5 text-lg hover:text-orange-500 active:text-green-600 ">
             <Link to="/cart" className="flex items-center gap-2">
-              Cart <ShoppingCartIcon className="w-5 h-5" />
+              Cart <ShoppingCartIcon className="h-5 w-5" />
             </Link>
           </li>
+          {loggedIn ? (
+            <li className="h-8 w-8 rounded-full bg-orange-700"></li>
+          ) : (
+            ''
+          )}
         </ul>
       </div>
     </div>
