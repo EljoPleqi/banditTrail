@@ -5,10 +5,10 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import productReducer from './features/product';
-import usersReducer from './features/user';
+import loginReducer from './features/login';
 
 const store = configureStore({
-  reducer: { products: productReducer, users: usersReducer },
+  reducer: { products: productReducer, login: loginReducer },
 });
 
 ReactDOM.render(

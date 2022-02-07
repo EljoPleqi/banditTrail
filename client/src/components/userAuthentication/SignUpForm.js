@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setLogin } from '../../features/user';
+import { setLogin } from '../../features/login';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();

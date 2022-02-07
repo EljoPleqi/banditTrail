@@ -8,6 +8,7 @@ module.exports = {
         productFeatured: '3fr 1fr',
         threeTwo: '3fr 2fr',
         twoOne: '2fr 1fr',
+        oneFour: '1fr 4fr',
       },
       fontFamily: {
         sans: ['Overpass'],

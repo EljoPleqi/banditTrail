@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Header = () => {
-  const loggedIn = useSelector((state) => state.users);
+  const loggedIn = useSelector((state) => state.login);
   return (
     <div className="flex h-16 items-center justify-between bg-white px-5">
       <div className="logo px-5 text-3xl font-bold">
