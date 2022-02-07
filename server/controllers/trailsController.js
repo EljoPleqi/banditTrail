@@ -41,7 +41,7 @@ exports.createNewTrail =
 //  1) Store image on the computers disk
 const storage = multer.diskStorage({
   destination: (req, file, callb) => {
-    callb(null, `/public/img`);
+    callb(null, `/public/img/trails-imgs`);
   },
   filename: (req, file, callb) => {
     const uniqueFilename = ` ${Date.now()}${path.extname(file.orginalname)}`;

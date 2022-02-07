@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 const PreHeader = () => {
   return (
     <div className=" bg-neutral-900">
-      <ul className="flex flex-row-reverse text-white px-5 h-8 items-center gap-4 font-light">
-        <li className="text-sm text-333 hover:text-orange-500 active:text-green-600 cursor-pointer ">
-          <Link to="/Login">Log In</Link>
+      <ul className="flex h-8 flex-row-reverse items-center gap-4 px-5 font-light text-white">
+        <li className="text-333 cursor-pointer text-sm hover:text-orange-500 active:text-green-600 ">
+          <Link to="login">Log In</Link>
         </li>
-        <li className="text-sm text-333 hover:text-orange-500 active:text-green-600 cursor-pointer ">
+        <li className="text-333 cursor-pointer text-sm hover:text-orange-500 active:text-green-600 ">
           <Link to="signup">Sign up</Link>
         </li>
       </ul>

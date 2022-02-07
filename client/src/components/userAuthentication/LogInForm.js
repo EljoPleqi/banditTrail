@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../../features/user';
+import { ArrowSmLeftIcon } from '@heroicons/react/outline';
 
 const LogInForm = () => {
   const dispatch = useDispatch();
@@ -11,17 +12,26 @@ const LogInForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userCred = { username, password };
-
-    axios.post('http://127.0.0.1:3007/api/user', userCred).then(() => {
-      dispatch(setLogin(true));
-    });
+    console.log('before axions');
+    axios
+      .post('http://127.0.0.1:8000/users/login', { username, password })
+      .then((res) => {
+        if (res.data.error) alert(res.data.error);
+        sessionStorage.setItem('accessToken', res.data);
+        console.log(res.data);
+        dispatch(setLogin(true));
+      });
+    console.log('after axios');
   };
   return (
     <>
       <div className="flex h-[32rem] w-[32rem] flex-col items-center  justify-center gap-10 rounded-lg bg-gray-50">
         <div className="logo px-5 text-3xl font-bold">BANDIT TRAIL</div>
-        <form method="POST" encType="multipart/form-data">
+        <form
+          onSubmit={handleSubmit}
+          method="POST"
+          encType="multipart/form-data"
+        >
           <div className="flex flex-col">
             <input
               type="text"
@@ -37,14 +47,13 @@ const LogInForm = () => {
             />
           </div>
           <div className="flex items-center gap-6">
-            <Link to={'/user-dashboard'}>
-              <button
-                onSubmit={handleSubmit}
-                className="rounded-lg bg-slate-700 py-4 px-16 text-white"
-              >
-                Log in
-              </button>
-            </Link>
+            <button
+              type="submit"
+              className="rounded-lg bg-slate-700 py-4 px-16 text-white"
+            >
+              Log in
+            </button>
+
             <a
               href="/"
               // className="py-4 px-16 border-solid border-2 border-slate-700 rounded-lg"

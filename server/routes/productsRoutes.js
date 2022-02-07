@@ -1,4 +1,5 @@
 const express = require('express');
+const { authUser } = require('../middleware/authmiddleware');
 const {
   getAllProducts,
   getSingleProduct,
@@ -14,7 +15,7 @@ router.param('id', checkID);
 router
   .route('/')
   .get(getAllProducts)
-  .post(uploadFeatureImg, listProduct, uploadProductImgs);
+  .post(authUser, uploadFeatureImg, listProduct, uploadProductImgs);
 router.route('/:id').get(getSingleProduct);
 
 module.exports = router;

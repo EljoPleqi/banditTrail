@@ -2,13 +2,10 @@ const multer = require('multer');
 const path = require('path');
 const { Users } = require('../models');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require('dotenv').config({ path: './config.env' });
 
-exports.checkID = (req, res, next, val) => {
-  if (!req.params.username) {
-    return res.status(404).json({ status: 'fail', message: 'Invalid ID' });
-  }
-  next();
-};
+const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 
 // GET ALL PROUCT ENTRIES FROM THE DB
 
@@ -29,7 +26,7 @@ exports.getSingleUser =
     res.json(user);
   });
 
-//  CREATE A NEW PRODUCT ENTRY IN THE DB
+//  CREATE A NEW USER ENTRY IN THE DB
 exports.createUser =
   ('/',
   async (req, res) => {
@@ -78,9 +75,17 @@ exports.login =
       if (!user) res.json({ error: 'Rider does not exist' });
 
       // check if password is correct
-      bcrypt.compare(password, user.password).then((match) => {
+      bcrypt.compare(password, user.password).then(async (match) => {
         if (!match) res.json({ error: 'Wrong password' });
+
+        // Create authentication token
+        const accessToken = jwt.sign(
+          { username: user.username, id: user.id },
+          ACCESS_TOKEN_SECRET
+        );
+        res.json(accessToken);
       });
+      // return acess token
     } catch (error) {
       console.log(error);
       res.status(500);
