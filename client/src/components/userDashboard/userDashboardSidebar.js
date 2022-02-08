@@ -9,11 +9,11 @@ import {
   InboxInIcon,
   ArrowRightIcon,
 } from '@heroicons/react/outline';
-import profilePicture from '../../img/clement-delhaye-ZGNKvarK1og-unsplash.jpg';
 
-const UserDashboardSidebar = () => {
+const UserDashboardSidebar = ({ userData: { avatar, username } }) => {
   const [inActive, setInactive] = useState(true);
   const [usernameText, setUsernameText] = useState(false);
+  console.log(avatar);
   return (
     <>
       <div className=" flex h-screen flex-col gap-40 bg-neutral-100 px-4 pt-12 font-normal ">
@@ -65,7 +65,7 @@ const UserDashboardSidebar = () => {
             }}
           >
             <img
-              src={profilePicture}
+              src={`http://127.0.0.1:8000/${avatar}`}
               alt=""
               className={`box-border h-16 w-16  rounded-full ${
                 inActive ? 'bg-green-500' : 'bg-white'
@@ -77,7 +77,7 @@ const UserDashboardSidebar = () => {
                   Slide to log out <ArrowRightIcon className="h-6 w-6" />
                 </span>
               ) : (
-                "Rider's Profile"
+                username
               )}
             </p>
           </div>

@@ -12,11 +12,13 @@ const ProductListing = () => {
         </tr>
       </thead>
       <tbody className="">
-        <img
-          src="http://127.0.0.1:8000/public/img/product-imgs/1644160895931-.png"
-          alt="listed product"
-          className="w-36 px-4 py-10"
-        />
+        <td>
+          <img
+            src="http://127.0.0.1:8000/public/img/product-imgs/1644160895931-.png"
+            alt="listed product"
+            className="w-36 px-4 py-10"
+          />
+        </td>
 
         <td className="px-4 py-10">Canyon Spectral 29 CF9</td>
 

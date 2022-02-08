@@ -21,8 +21,9 @@ exports.getAllUsers =
 exports.getSingleUser =
   ('/:username',
   async (req, res) => {
-    const id = req.params.id;
-    const user = await Users.findByPk(id);
+    const user = await Users.findOne({
+      where: { username: req.body.username },
+    });
     res.json(user);
   });
 
@@ -94,7 +95,7 @@ exports.login =
           { username: user.username, id: user.id },
           ACCESS_TOKEN_SECRET
         );
-        res.json(accessToken);
+        res.json({ accessToken: accessToken, user: user });
       });
       // return acess token
     } catch (error) {

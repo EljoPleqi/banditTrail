@@ -51,7 +51,6 @@ exports.listProduct =
         material: req.body.material,
         condition: req.body.condition,
         images: req.files,
-        ProductId: productId,
       });
       res.json(req.body);
     } catch (error) {
