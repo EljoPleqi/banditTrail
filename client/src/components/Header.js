@@ -5,6 +5,9 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
   const loggedIn = useSelector((state) => state.login);
+  // const { avatar } = useSelector((state) => state.userData[0]);
+  // console.log(avatar);
+
   return (
     <div className="flex h-16 items-center justify-between bg-white px-5">
       <div className="logo px-5 text-3xl font-bold">
@@ -30,7 +33,14 @@ const Header = () => {
             </Link>
           </li>
           {loggedIn ? (
-            <li className="h-8 w-8 rounded-full bg-orange-700"></li>
+            <Link to="/user-dashboard">
+              <li className="h-8 w-8 rounded-full bg-orange-700">
+                {/* <img
+                src={`http://127.0.0.1:8000/${avatar}`}
+                alt="User Profile avatar"
+              /> */}
+              </li>
+            </Link>
           ) : (
             ''
           )}

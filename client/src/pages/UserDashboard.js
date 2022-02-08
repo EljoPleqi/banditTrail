@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import profileCover from '../img/kay-liedl-zV3cZTAQ0xo-unsplash.jpg';
 import UserDashboardSidebar from '../components/userDashboard/userDashboardSidebar';
 import ProductListing from '../components/cart/ProductListing';
+import { useSelector } from 'react-redux';
 
 const UserDashboard = () => {
+  const [loaded, setLoaded] = useState(false);
+
+  const userData = useSelector((state) => state.userData);
+
+  console.log(userData);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, [userData]);
+
   return (
     <div className="grid-cols-oneFour grid h-screen ">
-      <UserDashboardSidebar />
+      <UserDashboardSidebar userData={loaded ? userData : 'loading...'} />
       <div className="flex flex-col gap-4">
         <div
           className="h-72 bg-slate-500 bg-cover bg-center"

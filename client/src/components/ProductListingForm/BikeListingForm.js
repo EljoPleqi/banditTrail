@@ -74,13 +74,13 @@ const BikeListingForm = () => {
         headers: { accessToken: sessionStorage.getItem('accessToken') },
       })
       .then((res) => {
+        console.log(res);
         if (res.data.error) {
           alert(res.data.error);
         } else {
           setUploading(false);
         }
       });
-    console.log(e.target);
   };
   return (
     <>
