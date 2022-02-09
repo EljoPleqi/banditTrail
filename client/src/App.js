@@ -10,6 +10,7 @@ import CartPage from './pages/CartPage';
 import PreHeader from './components/PreHeader';
 import Footer from './components/Footer';
 import ProductListingPage from './pages/ProductListingPage';
+import UserPublicProfile from './pages/UserPublicProfile';
 import UserDashboard from './pages/UserDashboard';
 import CreateNewTrail from './pages/CreateNewTrail';
 import ProtectedRoutes from './ProtectedRoute';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/products/:id" element={<ProductPage />} />
+          <Route path="/username" element={<UserPublicProfile />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/user-dashboard" element={<UserDashboard />} />
             <Route

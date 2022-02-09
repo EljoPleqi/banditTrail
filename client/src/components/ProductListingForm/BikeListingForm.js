@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+
 import {
   ArrowRightIcon,
   ArrowLeftIcon,
   PlusCircleIcon,
 } from '@heroicons/react/outline';
 
-import { useSelector } from 'react-redux';
-
-import axios from 'axios';
-
-import * as yup from 'yup';
+import { bikeListingFormValidation } from '../../validations/Validations';
 
 const BikeListingForm = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -34,23 +33,6 @@ const BikeListingForm = () => {
   const { id } = useSelector((state) => state.userData);
   console.log(id);
 
-  // const formValidation = yup.object().shape({
-  //   productTitle: yup.string().required(),
-  //   price: yup.number().required(),
-  //   currency: yup.string().required(),
-  //   productDescription: yup.string().required(),
-  //   brand: yup.string().required(),
-  //   type: yup.string().required(),
-  //   primaryColor: yup.string().required(),
-  //   secondaryColor: yup.string(),
-  //   size: yup.string().required(),
-  //   gender: yup.string(),
-  //   ridingStyle: yup.string().required(),
-  //   material: yup.string().required(),
-  //   wheelSize: yup.number().required(),
-  //   condition: yup.boolean().required(),
-  // });
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const bike = new FormData();
@@ -72,19 +54,22 @@ const BikeListingForm = () => {
     bike.append('images', images);
     bike.append('UserId', id);
 
-    axios
-      .post('http://127.0.0.1:8000/api/products', bike, {
-        headers: { accessToken: sessionStorage.getItem('accessToken') },
-      })
-      .then((res) => {
-        console.log(res);
-        if (res.data.error) {
-          alert(res.data.error);
-        } else {
-          setUploading(false);
-        }
-      });
+    if (bikeListingFormValidation.isValid(bike)) {
+      axios
+        .post('http://127.0.0.1:8000/api/products', bike, {
+          headers: { accessToken: sessionStorage.getItem('accessToken') },
+        })
+        .then((res) => {
+          console.log(res);
+          if (res.data.error) {
+            alert(res.data.error);
+          } else {
+            setUploading(false);
+          }
+        });
+    }
   };
+
   return (
     <>
       <form

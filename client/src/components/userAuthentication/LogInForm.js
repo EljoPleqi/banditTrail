@@ -1,5 +1,6 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import axios from 'axios';
+import { loginFormValidation } from '../../validations/Validations';
 
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -16,9 +17,9 @@ const LogInForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios
-      .post('http://127.0.0.1:8000/users/login', { username, password })
-      .then((res) => {
+    const user = { username, password };
+    if (loginFormValidation.isValid(user)) {
+      axios.post('http://127.0.0.1:8000/users/login', user).then((res) => {
         console.log(res.data);
         if (res.data.error) alert(res.data.error);
         sessionStorage.setItem('accessToken', res.data.accessToken);
@@ -26,6 +27,7 @@ const LogInForm = () => {
         dispatch(setUserData(res.data.user));
         if (location.state?.from) navigate(location.state.from);
       });
+    }
   };
 
   return (

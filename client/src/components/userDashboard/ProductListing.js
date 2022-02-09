@@ -11,37 +11,47 @@ const ProductListing = ({ userData: { id } }) => {
       });
   }, [id]);
 
-  const displayListings = userListings.map((listing) => {
+  const displayListings = userListings.map((listing, i) => {
+    const productDescription = listing.productDescription
+      .split('')
+      .splice(0, 100)
+      .join('');
+
     return (
-      <table className="mt-4 table-auto rounded-md border-b-2 border-solid border-neutral-100 p-4 text-sm">
-        <thead>
-          <tr className=" ">
-            <th className="px-4 font-light">Product Image</th>
-            <th className="px-4 font-light">Product Title</th>
-            <th className="px-4 font-light">Product Description</th>
-            <th className="px-4 font-light">Price</th>
-          </tr>
-        </thead>
-        <tbody className="">
-          <td>
+      <div className="border-b-2 border-neutral-50 py-4 font-light ">
+        <a
+          href={`/products/${listing.id}`}
+          key={Number(new Date() * listing.id)}
+        >
+          <div className="mt-12 flex justify-between">
             <img
               src={`http://127.0.0.1:8000/${listing.featuredImage}`}
               alt="listed product"
-              className="w-36 px-4 py-10"
+              className="h-full w-36"
             />
-          </td>
 
-          <td className="px-4 py-10">{listing.productTitle}</td>
+            <p className=" ">{listing.productTitle}</p>
 
-          <td className="px-4 py-10">{listing.productDescription}</td>
+            <p className="w-64 shrink">{productDescription}...</p>
 
-          <td className="px-8 py-10">
-            <p className="flex ">{`${listing.price} ${listing.currency}`}</p>
-          </td>
-        </tbody>
-      </table>
+            <p className="flex">{`${listing.price} ${listing.currency}`}</p>
+          </div>
+        </a>
+      </div>
     );
   });
-  return <div>{displayListings}</div>;
+  return (
+    <>
+      <div className="flex h-[50vh] flex-col">
+        <div className="z-10 flex justify-between border-b-2 border-neutral-100 bg-neutral-50 py-4 px-8 font-light">
+          <h3>Listing Image</h3>
+          <h3> Listing Title</h3>
+          <h3>Listing Description</h3>
+          <h3>Listing Price</h3>
+        </div>
+        <div className=" overflow-auto">{displayListings}</div>
+      </div>
+    </>
+  );
 };
 export default ProductListing;
