@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../../features/login';
+import { signUpFormValidation } from '../../validations/Validations';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -23,9 +24,11 @@ const SignUpForm = () => {
     user.append('phone', phone);
     user.append('avatar', avatar);
 
-    axios.post('http://127.0.0.1:8000/users', user).then((res) => {
-      dispatch(setLogin(true));
-    });
+    if (signUpFormValidation.isValid(user)) {
+      axios.post('http://127.0.0.1:8000/users', user).then((res) => {
+        dispatch(setLogin(true));
+      });
+    }
   };
 
   return (

@@ -21,8 +21,9 @@ exports.getAllUsers =
 exports.getSingleUser =
   ('/:username',
   async (req, res) => {
+    console.log(req);
     const user = await Users.findOne({
-      where: { username: req.body.username },
+      where: { username: req.params.username },
     });
     res.json(user);
   });
