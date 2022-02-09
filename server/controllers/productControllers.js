@@ -29,6 +29,15 @@ exports.getSingleProduct =
     res.json(product);
   });
 
+exports.getProductsByUserID =
+  ('by_UserId/:UserId',
+  async (req, res) => {
+    const userId = req.params.UserId;
+    console.log(userId);
+    const products = await Products.findAll({ where: { UserId: userId } });
+    res.json(products);
+  });
+
 //  CREATE A NEW PRODUCT ENTRY IN THE DB
 exports.listProduct =
   ('/',
@@ -51,6 +60,7 @@ exports.listProduct =
         material: req.body.material,
         condition: req.body.condition,
         images: req.files,
+        UserId: req.body.UserId,
       });
       res.json(req.body);
     } catch (error) {

@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     material: { type: DataTypes.STRING, allowNull: false },
     wheelSize: { type: DataTypes.SMALLINT, allowNull: false },
     condition: { type: DataTypes.BOOLEAN, allowNULL: false },
+    images: { type: DataTypes.STRING, allowNULL: true },
   });
 
   return Products;
