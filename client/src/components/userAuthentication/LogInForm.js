@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -21,7 +21,7 @@ const LogInForm = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.error) alert(res.data.error);
-        sessionStorage.setItem('accessToken', res.data);
+        sessionStorage.setItem('accessToken', res.data.accessToken);
         dispatch(setLogin(true));
         dispatch(setUserData(res.data.user));
         if (location.state?.from) navigate(location.state.from);

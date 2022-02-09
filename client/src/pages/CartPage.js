@@ -1,12 +1,10 @@
 import React from 'react';
 import img from '../img/miguel-mendes-EvrfZ9bAtY4-unsplash.jpg';
 import AddToCartButton from '../components/cart/AddToCartButton';
-import ProductListing from '../components/cart/ProductListing';
 
 const CartPage = () => {
   return (
     <div className="grid-cols-cart grid">
-      <ProductListing />
       <div
         className="flex h-screen flex-col items-center justify-end bg-cover text-white"
         style={{ backgroundImage: `url(${img})` }}

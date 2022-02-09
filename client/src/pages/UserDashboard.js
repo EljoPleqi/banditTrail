@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import profileCover from '../img/kay-liedl-zV3cZTAQ0xo-unsplash.jpg';
 import UserDashboardSidebar from '../components/userDashboard/userDashboardSidebar';
-import ProductListing from '../components/cart/ProductListing';
+import ProductListing from '../components/userDashboard/ProductListing';
 import { useSelector } from 'react-redux';
 
 const UserDashboard = () => {
@@ -28,7 +28,7 @@ const UserDashboard = () => {
             <div className="mb-12  flex justify-end">
               <h2 className="">Active Listings</h2>
             </div>
-            <ProductListing />
+            <ProductListing userData={loaded ? userData : 'loading...'} />
           </div>
           <div className="p-8">Recently sold</div>
         </div>

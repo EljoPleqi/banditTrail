@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import {
   ArrowRightIcon,
   ArrowLeftIcon,
-  UploadIcon,
   PlusCircleIcon,
 } from '@heroicons/react/outline';
+
+import { useSelector } from 'react-redux';
 
 import axios from 'axios';
 
@@ -30,6 +31,9 @@ const BikeListingForm = () => {
   const [uploading, setUploading] = useState(true);
   const [images, setImages] = useState([]);
 
+  const { id } = useSelector((state) => state.userData);
+  console.log(id);
+
   // const formValidation = yup.object().shape({
   //   productTitle: yup.string().required(),
   //   price: yup.number().required(),
@@ -46,8 +50,6 @@ const BikeListingForm = () => {
   //   wheelSize: yup.number().required(),
   //   condition: yup.boolean().required(),
   // });
-
-  console.log({ productTitle, productDescription, price, currency });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,6 +70,7 @@ const BikeListingForm = () => {
     bike.append('wheelSize', wheelSize);
     bike.append('condition', condition);
     bike.append('images', images);
+    bike.append('UserId', id);
 
     axios
       .post('http://127.0.0.1:8000/api/products', bike, {
