@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import useGetProducts from '../../hooks/useGetProducts';
 
 const ProductListing = ({ userData: { id } }) => {
-  const [userListings, setUserListings] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`http://127.0.0.1:8000/api/products/by_userId/${id}`)
-      .then((res) => {
-        setUserListings(res.data);
-      });
-  }, [id]);
+  const userListings = useGetProducts(id);
 
   const displayListings = userListings.map((listing, i) => {
     const productDescription = listing.productDescription

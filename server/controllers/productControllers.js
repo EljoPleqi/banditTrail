@@ -30,10 +30,10 @@ exports.getSingleProduct =
   });
 
 exports.getProductsByUserID =
-  ('by_UserId/:UserId',
+  ('by_userId/:UserId',
   async (req, res) => {
     const userId = req.params.UserId;
-    console.log(userId);
+
     const products = await Products.findAll({ where: { UserId: userId } });
     res.json(products);
   });
@@ -109,7 +109,6 @@ exports.uploadProductImgs = multer({
   storage: storage,
   limits: { fileSize: '150000000' },
   fileFilter: (req, file, cb) => {
-    console.log(1);
     // set acceptable extension
 
     const fileTypes = /jpeg|jpg|png|gif|webp/;

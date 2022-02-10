@@ -20,7 +20,6 @@ const LogInForm = () => {
     const user = { username, password };
     if (loginFormValidation.isValid(user)) {
       axios.post('http://127.0.0.1:8000/users/login', user).then((res) => {
-        console.log(res.data);
         if (res.data.error) alert(res.data.error);
         sessionStorage.setItem('accessToken', res.data.accessToken);
         dispatch(setLogin(true));

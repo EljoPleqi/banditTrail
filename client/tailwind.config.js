@@ -10,6 +10,7 @@ module.exports = {
         twoOne: '2fr 1fr',
         oneFour: '1fr 4fr',
         oneThree: '1fr 3fr',
+        twoThree: '2fr 3fr',
       },
       fontFamily: {
         sans: ['Overpass'],

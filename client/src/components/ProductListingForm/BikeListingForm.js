@@ -31,7 +31,6 @@ const BikeListingForm = () => {
   const [images, setImages] = useState([]);
 
   const { id } = useSelector((state) => state.userData);
-  console.log(id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,7 +59,6 @@ const BikeListingForm = () => {
           headers: { accessToken: sessionStorage.getItem('accessToken') },
         })
         .then((res) => {
-          console.log(res);
           if (res.data.error) {
             alert(res.data.error);
           } else {
@@ -115,7 +113,6 @@ const BikeListingForm = () => {
                 type="file"
                 name="featuredImage"
                 onChange={(e) => {
-                  console.log(e.target);
                   setFeatureImage(e.target.files[0]);
                 }}
               />
@@ -198,7 +195,6 @@ const BikeListingForm = () => {
             <select
               className="rounded-md py-4 placeholder:px-4"
               onChange={(e) => {
-                console.log(e.target.value);
                 setRidingStyle(e.target.value);
               }}
             >
@@ -237,7 +233,6 @@ const BikeListingForm = () => {
               multiple
               name="images"
               onChange={(e) => {
-                console.log(e.target);
                 setImages(e.target.files);
               }}
             />
