@@ -13,14 +13,14 @@ const usersRouter = require('./routes/userRouter');
 
 const server = express();
 
+// allows to use json in express
+server.use(express.json());
+
 if (process.env.NODE_ENV === 'development') {
   server.use(morgan('dev'));
 }
 
 const PORT = process.env.PORT || 8000;
-
-// allows to use json in express
-server.use(express.json());
 
 server.use(cors());
 

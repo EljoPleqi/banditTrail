@@ -124,7 +124,7 @@ const BikeListingForm = () => {
               className="box-border flex items-center justify-center gap-2 rounded-md border-2 border-solid border-neutral-600 py-2 px-4 transition-all duration-500 hover:gap-4 hover:border-none hover:bg-neutral-700 hover:text-white"
             >
               Continue <ArrowRightIcon className="h-6 w-6" />
-            </button>{' '}
+            </button>
           </div>
         ) : (
           <div className="flex flex-col gap-4">
@@ -143,6 +143,7 @@ const BikeListingForm = () => {
                   className="rounded-md py-4 placeholder:px-4"
                   onChange={(e) => setType(e.target.value)}
                 >
+                  <option value=""></option>
                   <option value="trail">Trail</option>
                   <option value="crossCountry">Cross Country</option>
                   <option value="downhill">Downhill</option>
@@ -176,6 +177,7 @@ const BikeListingForm = () => {
               className="rounded-md py-4 placeholder:px-4"
               onChange={(e) => setSize(e.target.value)}
             >
+              <option value=""></option>
               <option value="sm">Small</option>
               <option value="md">Medium</option>
               <option value="lg">Large</option>
@@ -187,6 +189,7 @@ const BikeListingForm = () => {
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
+              <option value=""></option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Unisex">Unisex</option>
@@ -198,6 +201,7 @@ const BikeListingForm = () => {
                 setRidingStyle(e.target.value);
               }}
             >
+              <option value=""></option>
               <option value="Beginner">Beginner</option>
               <option value="Intermediate">Intermediate</option>
               <option value="Daredevil">Daredevil</option>
@@ -216,6 +220,7 @@ const BikeListingForm = () => {
               className="rounded-md py-4 placeholder:px-4"
               onChange={(e) => setWheelSize(Number(e.target.value))}
             >
+              <option value="">Select</option>
               <option value={26}>26</option>
               <option value={27.5}>27.5</option>
               <option value={29}>29</option>
