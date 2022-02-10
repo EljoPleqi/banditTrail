@@ -19,7 +19,7 @@ exports.getAllProducts =
     res.json(allProducts);
   });
 
-// GET A UNIQUE PROUCT ENTRY FROM THE DB
+// GET A UNIQUE PRODUCT ENTRY FROM THE DB
 
 exports.getSingleProduct =
   ('/:id',
@@ -29,6 +29,7 @@ exports.getSingleProduct =
     res.json(product);
   });
 
+//  GET PRODUCTS BY USER ID
 exports.getProductsByUserID =
   ('by_userId/:UserId',
   async (req, res) => {
@@ -36,6 +37,25 @@ exports.getProductsByUserID =
 
     const products = await Products.findAll({ where: { UserId: userId } });
     res.json(products);
+  });
+
+// GET FILTERED PRODUCTS
+
+exports.getFilteredProducts =
+  ('/filtered',
+  async (req, res) => {
+    const { brand, type, ridingStyle, condition } = req.body;
+
+    let filteredRequest = { where: {} };
+
+    if (brand) filteredRequest.where.brand = brand;
+    if (type) filteredRequest.where.type = type;
+    if (ridingStyle) filteredRequest.where.ridingStyle = ridingStyle;
+    if (condition) filteredRequest.where.condition = condition;
+
+    const filteredProducts = await Products.findAll(filteredRequest);
+
+    res.json(filteredProducts);
   });
 
 //  CREATE A NEW PRODUCT ENTRY IN THE DB
