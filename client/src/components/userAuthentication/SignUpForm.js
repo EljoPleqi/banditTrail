@@ -101,7 +101,6 @@ const SignUpForm = () => {
                 type="file"
                 name="avatar"
                 onChange={(e) => {
-                  console.log(e.target);
                   setAvatar(e.target.files[0]);
                 }}
               ></input>

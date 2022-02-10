@@ -9,8 +9,6 @@ const UserDashboard = () => {
 
   const userData = useSelector((state) => state.userData);
 
-  console.log(userData);
-
   useEffect(() => {
     setLoaded(true);
   }, [userData]);

@@ -10,7 +10,6 @@ exports.authUser = (req, res, next) => {
 
   try {
     const validToken = jwt.verify(accessToken, ACCESS_TOKEN_SECRET);
-    console.log(jwt.verify(accessToken, ACCESS_TOKEN_SECRET));
     if (validToken) return next();
   } catch (error) {
     return res.json({ error });

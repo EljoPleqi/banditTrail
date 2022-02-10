@@ -13,7 +13,6 @@ import {
 const UserDashboardSidebar = ({ userData: { avatar, username } }) => {
   const [inActive, setInactive] = useState(true);
   const [usernameText, setUsernameText] = useState(false);
-  console.log(avatar);
   return (
     <>
       <div className=" flex h-screen flex-col gap-40 bg-neutral-100 px-4 pt-12 font-normal ">
