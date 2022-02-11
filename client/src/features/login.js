@@ -5,6 +5,8 @@ export const loginSlice = createSlice({
   initialState: false,
   reducers: {
     setLogin: (state, { payload }) => {
+      state = false;
+
       state = payload;
       return state;
     },

@@ -1,4 +1,5 @@
 const multer = require('multer');
+const express = require('express');
 const path = require('path');
 const { Users } = require('../models');
 const bcrypt = require('bcrypt');
@@ -32,8 +33,6 @@ exports.createUser =
   ('/',
   async (req, res) => {
     try {
-      // Get Profile Picture
-
       // Get User data
       const {
         username,
@@ -55,9 +54,10 @@ exports.createUser =
       if (checkUsername) return res.json({ error: ' Username taken' });
       if (checkEmail) return res.json({ error: 'Email already exists' });
 
+      const userData = [];
       // create user with hashed password
-      bcrypt.hash(password, 10).then((hash) =>
-        Users.create({
+      bcrypt.hash(password, 10).then(async (hash) => {
+        await Users.create({
           avatar: req.file.path,
           username: username,
           password: hash,
@@ -65,10 +65,16 @@ exports.createUser =
           userPhone: userPhone,
           userDescription: userDescription,
           userRidingStyle: userRidingStyle,
-        })
-      );
+        });
 
-      res.json('JOB DONE');
+        const user = await Users.findOne({
+          where: { username: username },
+        });
+        res.json(user);
+      });
+
+      // console.log(userData);
+      // res.json(user);
     } catch (error) {
       console.log(error);
       res.status(500);

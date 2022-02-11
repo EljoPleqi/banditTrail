@@ -144,10 +144,10 @@ const BikeListingForm = () => {
                   onChange={(e) => setType(e.target.value)}
                 >
                   <option value=""></option>
-                  <option value="trail">Trail</option>
-                  <option value="crossCountry">Cross Country</option>
-                  <option value="downhill">Downhill</option>
-                  <option value="dirtJump">Dirt Jump</option>
+                  <option value="Trail">Trail</option>
+                  <option value="Cross Country">Cross Country</option>
+                  <option value="Downhill">Downhill</option>
+                  <option value="Dirt Jump">Dirt Jump</option>
                 </select>
               </div>
             </div>

@@ -1,11 +1,15 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLogin } from '../../features/login';
 import { signUpFormValidation } from '../../validations/Validations';
+import { useNavigate } from 'react-router-dom';
+import { setUserData } from '../../features/userData';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
+  const loggedIn = useSelector((state) => state.login);
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -26,10 +30,16 @@ const SignUpForm = () => {
 
     if (signUpFormValidation.isValid(user)) {
       axios.post('http://127.0.0.1:8000/users', user).then((res) => {
+        console.log(res.data);
+        dispatch(setUserData(res.data));
         dispatch(setLogin(true));
       });
     }
   };
+
+  useEffect(() => {
+    if (loggedIn) navigate('/user-dashboard');
+  }, [loggedIn]);
 
   return (
     <div className="flex flex-col  items-center ">

@@ -4,7 +4,7 @@ const {
   uploadAvatar,
   getAllUsers,
   getSingleUser,
-
+  returnNewUser,
   login,
 } = require('../controllers/userControllers');
 

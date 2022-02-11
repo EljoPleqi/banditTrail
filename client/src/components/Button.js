@@ -1,16 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Button() {
+function Button({ buttonText, destination, hover }) {
   return (
-    <div className="mt-5">
-      <Link
-        to="/product-overview"
-        className="bg-neutral-700 text-white px-8 py-4 rounded-md"
-      >
-        View Product
-      </Link>
-    </div>
+    <Link
+      to={`${destination}`}
+      className={`rounded-lg bg-orange-700 px-10 py-3 text-lg font-medium tracking-wider text-white ${hover}`}
+    >
+      {buttonText}
+    </Link>
   );
 }
 
