@@ -28,6 +28,17 @@ exports.getSingleUser =
     res.json(user);
   });
 
+// DELETE USER
+
+exports.deleteUser =
+  ('/:id',
+  async (req, res) => {
+    const id = req.params.id;
+    const user = await Users.findByPk(id);
+    user.destroy();
+    res.json('ACCOUNT DELETED SUCCESSFULLY ');
+  });
+
 //  CREATE A NEW USER ENTRY IN THE DB
 exports.createUser =
   ('/',

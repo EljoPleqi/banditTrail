@@ -29,6 +29,17 @@ exports.getSingleProduct =
     res.json(product);
   });
 
+// DELETE Listing
+
+exports.deleteListing =
+  ('/:id',
+  async (req, res) => {
+    const id = req.params.id;
+    const product = await Products.findByPk(id);
+    product.destroy();
+    res.json('LISTING DELETE WAS SUCESSFUL ');
+  });
+
 //  GET PRODUCTS BY USER ID
 exports.getProductsByUserID =
   ('by_userId/:UserId',
