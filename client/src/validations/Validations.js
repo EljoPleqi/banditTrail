@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const signUpFormValidation = yup.object().shape({
-  username: yup.string().min(4).required,
+  username: yup.string().min(4).required(),
   password: yup.string().min(8).max(64).required(),
   userEmail: yup.string().email().required(),
   userRidingStyle: yup.string(),
@@ -26,6 +26,6 @@ export const bikeListingFormValidation = yup.object().shape({
 });
 
 export const loginFormValidation = yup.object().shape({
-  username: yup.string().required,
-  password: yup.string().required,
+  username: yup.string().required(),
+  password: yup.string().required(),
 });

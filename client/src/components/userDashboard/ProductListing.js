@@ -11,11 +11,11 @@ const ProductListing = ({ userData: { id } }) => {
       .join('');
 
     return (
-      <div className="border-b-2 border-neutral-50 py-4 font-light ">
-        <a
-          href={`/products/${listing.id}`}
-          key={Number(new Date() * listing.id)}
-        >
+      <div
+        className="border-b-2 border-neutral-50 py-4 font-light "
+        key={Number(new Date() * listing.id)}
+      >
+        <a href={`/products/${listing.id}`}>
           <div className="mt-12 flex justify-between">
             <img
               src={`http://127.0.0.1:8000/${listing.featuredImage}`}

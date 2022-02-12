@@ -1,15 +1,14 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLogin } from '../../features/login';
 import { signUpFormValidation } from '../../validations/Validations';
-import { useNavigate } from 'react-router-dom';
 import { setUserData } from '../../features/userData';
+import useUserRedirect from '../../hooks/useUserRedirect';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  const loggedIn = useSelector((state) => state.login);
-  const navigate = useNavigate();
+  const login = useSelector((state) => state.login);
 
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -37,9 +36,7 @@ const SignUpForm = () => {
     }
   };
 
-  useEffect(() => {
-    if (loggedIn) navigate('/user-dashboard');
-  }, [loggedIn]);
+  useUserRedirect(login);
 
   return (
     <div className="flex flex-col  items-center ">

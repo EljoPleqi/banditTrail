@@ -32,25 +32,27 @@ const Header = ({ setSearchModalOpen }) => {
               About Us
             </li>
           </ul> */}
-          <ul className=" flex ">
-            <li
-              className="text-333 flex cursor-pointer items-center gap-2 px-5   hover:text-orange-500  active:text-green-600"
-              onClick={() => setSearchModalOpen(true)}
-            >
-              Search <SearchIcon className="h-5 w-5" />
-            </li>
-            <li className="text-333 cursor-pointer border-r-2 border-neutral-100 px-5  hover:text-orange-500 active:text-green-600">
-              <Link to="/cart" className="flex items-center gap-2">
-                Cart <ShoppingCartIcon className="h-5 w-5" />
-              </Link>
-            </li>
+          <ul className=" flex justify-center">
+            <div className="flex items-center">
+              <li
+                className=" flex cursor-pointer items-center gap-2 px-5   hover:text-orange-500  active:text-green-600"
+                onClick={() => setSearchModalOpen(true)}
+              >
+                Search <SearchIcon className="h-5 w-5" />
+              </li>
+              <li className=" cursor-pointer border-r-2 border-neutral-100 px-5  hover:text-orange-500 active:text-green-600">
+                <Link to="/cart" className="flex items-center gap-2">
+                  Cart <ShoppingCartIcon className="h-5 w-5" />
+                </Link>
+              </li>
+            </div>
 
             {loggedIn ? (
               <Link to="/user-dashboard">
                 <li className="h-8 w-8 rounded-full bg-green-700"></li>
               </Link>
             ) : (
-              <li className="text-333 cursor-pointer px-5  hover:text-orange-500 active:text-green-600 ">
+              <li className=" cursor-pointer px-5  hover:text-orange-500 active:text-green-600 ">
                 <Link to="/login" className="flex items-center gap-2">
                   Log in
                   <LoginIcon className="h-5 w-5" />

@@ -3,16 +3,16 @@ import axios from 'axios';
 import { loginFormValidation } from '../../validations/Validations';
 
 import { useDispatch } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { setLogin } from '../../features/login';
 import { setUserData } from '../../features/userData';
+import { useSelector } from 'react-redux';
+import useUserRedirect from '../../hooks/useUserRedirect';
 
 const LogInForm = () => {
+  const login = useSelector((state) => state.login);
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,10 +24,10 @@ const LogInForm = () => {
         sessionStorage.setItem('accessToken', res.data.accessToken);
         dispatch(setLogin(true));
         dispatch(setUserData(res.data.user));
-        if (location.state?.from) navigate(location.state.from);
       });
     }
   };
+  useUserRedirect(login);
 
   return (
     <>
