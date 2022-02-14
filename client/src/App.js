@@ -10,23 +10,26 @@ import CartPage from './pages/CartPage';
 import PreHeader from './components/PreHeader';
 import Footer from './components/Footer';
 import ProductListingPage from './pages/ProductListingPage';
-import SearchModal from '../src/components/Search/SearchModal';
+import Modal from './components/Modal/Modal';
 import UserPublicProfile from './pages/UserPublicProfile';
 import UserDashboard from './pages/UserDashboard';
 import CreateNewTrail from './pages/CreateNewTrail';
 import ProtectedRoutes from './ProtectedRoute';
 
 function App() {
-  const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const [listingModal, setListingModal] = useState(false);
+  const [searchModal, setSearchModal] = useState(false);
   return (
     <>
       <Router>
         <PreHeader />
-        <Header setSearchModalOpen={setSearchModalOpen} />
-        {searchModalOpen && (
-          <SearchModal
-            closeModal={setSearchModalOpen}
-            searchModalOpen={searchModalOpen}
+        <Header setSearchModal={setSearchModal} />
+        {searchModal && (
+          <Modal
+            setListingModal={setListingModal}
+            listingModal={listingModal}
+            searchModal={searchModal}
+            setSearchModal={setSearchModal}
           />
         )}
         <Routes>
@@ -35,7 +38,16 @@ function App() {
           <Route path="/products/:id" element={<ProductPage />} />
           <Route path="/users/:username" element={<UserPublicProfile />} />
           <Route element={<ProtectedRoutes />}>
-            <Route path="/user-dashboard" element={<UserDashboard />} />
+            <Route
+              path="/user-dashboard"
+              element={
+                <UserDashboard
+                  setListingModal={setListingModal}
+                  listingModal={listingModal}
+                  setSearchModal={setSearchModal}
+                />
+              }
+            />
             <Route
               path="/my-trails/add-new-trail"
               element={<CreateNewTrail />}

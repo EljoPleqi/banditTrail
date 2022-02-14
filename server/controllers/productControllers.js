@@ -1,4 +1,5 @@
 const express = require('express');
+const { rmSync } = require('fs');
 const multer = require('multer');
 const path = require('path');
 const { Products } = require('../models');
@@ -40,6 +41,21 @@ exports.deleteListing =
     res.json('LISTING DELETE WAS SUCESSFUL ');
   });
 
+//  UPDATE LISTING
+
+exports.updateListing =
+  (':/id',
+  async (req, res) => {
+    const id = req.params.id;
+    let product = await Products.findByPk(id);
+
+    const updatedProduct = req.body;
+
+    Products.update((product = updatedProduct), {
+      where: { id: req.params.id },
+    });
+    res.json(product);
+  });
 //  GET PRODUCTS BY USER ID
 exports.getProductsByUserID =
   ('by_userId/:UserId',

@@ -10,7 +10,11 @@ import {
   ArrowRightIcon,
 } from '@heroicons/react/outline';
 
-const UserDashboardSidebar = ({ userData: { avatar, username } }) => {
+const UserDashboardSidebar = ({
+  userData: { avatar, username },
+  setSettingsToggled,
+  settingsToggled,
+}) => {
   const [inActive, setInactive] = useState(true);
   const [usernameText, setUsernameText] = useState(false);
   return (
@@ -49,12 +53,16 @@ const UserDashboardSidebar = ({ userData: { avatar, username } }) => {
         </div>
         <div className="flex flex-col justify-items-end gap-2 ">
           <div>
-            <Link to={'/my-trails/add-new-trail'}>
-              <div className="flex items-center gap-2 rounded-md py-2 px-2 hover:bg-neutral-300">
-                <CogIcon className="h-6 w-6" />
-                <p>Account Settings</p>
-              </div>
-            </Link>
+            <div
+              className="flex cursor-pointer items-center gap-2 rounded-md py-2 px-2 hover:bg-neutral-300"
+              onClick={() => {
+                console.log('CLICKED');
+                setSettingsToggled(!settingsToggled);
+              }}
+            >
+              <CogIcon className="h-6 w-6" />
+              <p>Account Settings</p>
+            </div>
           </div>
           <div
             className=" flex cursor-pointer items-center gap-4 rounded-full bg-neutral-300 p-1"

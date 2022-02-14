@@ -10,6 +10,7 @@ const {
   uploadProductImgs,
   checkID,
   deleteListing,
+  updateListing,
 } = require('../controllers/productControllers');
 
 const router = express.Router();
@@ -20,7 +21,11 @@ router
   .get(getAllProducts)
   .post(authUser, uploadFeatureImg, listProduct, uploadProductImgs);
 
-router.route('/:id').get(getSingleProduct).delete(deleteListing);
+router
+  .route('/:id')
+  .get(getSingleProduct)
+  .delete(authUser, deleteListing)
+  .patch(updateListing);
 router.route('/filtered').post(getFilteredProducts);
 router.route('/by_userId/:UserId').get(getProductsByUserID);
 

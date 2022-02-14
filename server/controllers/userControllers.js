@@ -31,12 +31,27 @@ exports.getSingleUser =
 // DELETE USER
 
 exports.deleteUser =
-  ('/:id',
+  ('/:username',
   async (req, res) => {
     const id = req.params.id;
     const user = await Users.findByPk(id);
     user.destroy();
     res.json('ACCOUNT DELETED SUCCESSFULLY ');
+  });
+
+exports.updateUser =
+  ('/:username',
+  async (req, res) => {
+    let user = await Users.findOne({
+      where: { username: req.params.username },
+    });
+
+    const updateduser = req.body;
+
+    Users.update((user = updateduser), {
+      where: { username: req.params.username },
+    });
+    res.json(user);
   });
 
 //  CREATE A NEW USER ENTRY IN THE DB

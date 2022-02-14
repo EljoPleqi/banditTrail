@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import useGetProducts from '../hooks/useGetProducts';
 
 import ProductListings from '../components/userDashboard/ProductListing';
 

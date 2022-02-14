@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchModal from '../components/Search/SearchModal';
+
 import {
   ShoppingCartIcon,
   SearchIcon,
@@ -8,7 +8,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const Header = ({ setSearchModalOpen }) => {
+const Header = ({ setModalOpen, setSearchModal }) => {
   const loggedIn = useSelector((state) => state.login);
 
   return (
@@ -18,25 +18,14 @@ const Header = ({ setSearchModalOpen }) => {
           <div className="logo px-5 text-3xl font-bold">
             <Link to="/">BANDIT TRAIL</Link>
           </div>
-          {/* <ul className="flex items-center ">
-            <li className="text-333 cursor-pointer px-5 text-lg hover:text-orange-500 active:text-green-600">
-              Bikes
-            </li>
-            <li className="text-333 cursor-pointer px-5 text-lg hover:text-orange-500 active:text-green-600">
-              Gear
-            </li>
-            <li className="text-333 cursor-pointer px-5 text-lg hover:text-orange-500 active:text-green-600">
-              Trails
-            </li>
-            <li className="text-333 cursor-pointer px-5 text-lg hover:text-orange-500 active:text-green-600">
-              About Us
-            </li>
-          </ul> */}
+
           <ul className=" flex justify-center">
             <div className="flex items-center">
               <li
                 className=" flex cursor-pointer items-center gap-2 px-5   hover:text-orange-500  active:text-green-600"
-                onClick={() => setSearchModalOpen(true)}
+                onClick={() => {
+                  setSearchModal(true);
+                }}
               >
                 Search <SearchIcon className="h-5 w-5" />
               </li>
