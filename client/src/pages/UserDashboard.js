@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import SettingsDashboard from '../components/userDashboard/userSettings/SettingsDashboard';
+import SettingsDashboard from '../components/UserDashboard/userSettings/SettingsDashboard';
 import profileCover from '../img/kay-liedl-zV3cZTAQ0xo-unsplash.jpg';
-import UserDashboardSidebar from '../components/userDashboard/userDashboardSidebar';
-import ProductListing from '../components/userDashboard/ProductListing';
+import UserDashboardSidebar from '../components/UserDashboard/userDashboardSidebar';
+import ProductListing from '../components/UserDashboard/ProductListing';
 import Modal from '../components/Modal/Modal';
 import { useSelector } from 'react-redux';
 import { PencilAltIcon } from '@heroicons/react/outline';
@@ -41,7 +41,7 @@ const UserDashboard = ({ setListingModal, listingModal, setSearchModal }) => {
       ) : (
         <div className="flex flex-col gap-4 ">
           {settingsToggled ? (
-            <SettingsDashboard />
+            <SettingsDashboard userData={userData} />
           ) : (
             <>
               <div

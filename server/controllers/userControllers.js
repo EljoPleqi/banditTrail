@@ -46,9 +46,9 @@ exports.updateUser =
       where: { username: req.params.username },
     });
 
-    const updateduser = req.body;
+    const updatedUser = req.body;
 
-    Users.update((user = updateduser), {
+    Users.update((user = updatedUser), {
       where: { username: req.params.username },
     });
     res.json(user);

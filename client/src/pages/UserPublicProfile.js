@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-import ProductListings from '../components/userDashboard/ProductListing';
+import ProductListings from '../components/UserDashboard/ProductListing';
 
 import profileCover from '../img/kay-liedl-zV3cZTAQ0xo-unsplash.jpg';
 

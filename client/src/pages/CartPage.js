@@ -1,6 +1,6 @@
 import React from 'react';
 import img from '../img/miguel-mendes-EvrfZ9bAtY4-unsplash.jpg';
-import AddToCartButton from '../components/cart/AddToCartButton';
+import AddToCartButton from '../components/Cart/AddToCartButton';
 
 const CartPage = () => {
   return (

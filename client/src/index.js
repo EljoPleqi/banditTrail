@@ -7,14 +7,12 @@ import App from './App';
 import productReducer from './features/product';
 import loginReducer from './features/login';
 import userDataReducer from './features/userData';
-import modalReducer from './features/searchModal';
 
 const store = configureStore({
   reducer: {
     products: productReducer,
     login: loginReducer,
     userData: userDataReducer,
-    openSearch: modalReducer,
   },
 });
 

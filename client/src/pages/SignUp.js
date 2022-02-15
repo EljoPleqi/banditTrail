@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUpForm from '../components/userAuthentication/SignUpForm';
+import SignUpForm from '../components/UserAuthentication/SignUpForm';
 import SignUpImg from '../img/miguel-mendes-EvrfZ9bAtY4-unsplash.jpg';
 
 const SignUp = () => {

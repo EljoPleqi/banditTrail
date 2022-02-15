@@ -1,5 +1,5 @@
 import React from 'react';
-import LogInForm from '../components/userAuthentication/LogInForm';
+import LogInForm from '../components/UserAuthentication/LogInForm';
 import bgImg from '../img/william-hook-pa0rr3rVB-U-unsplash.jpg';
 
 const Login = () => {

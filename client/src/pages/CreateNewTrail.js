@@ -1,12 +1,12 @@
 import React from 'react';
-import CreateNewTrailForm from '../components/trails/CreateNewTrailForm';
+import CreateNewTrailForm from '../components/Trails/CreateNewTrailForm';
 import createTrailFromBG from '../img/tim-foster-8iNmC7ZJFnY-unsplash.jpg';
 
 const CreateNewTrail = () => {
   return (
     <div>
       <div
-        className=" bg-cover bg-bottom bg-neutral-700 bg-blend-overlay flex flex-col items-center justify-center gap-4 h-[36rem]"
+        className=" flex h-[36rem] flex-col items-center justify-center gap-4 bg-neutral-700 bg-cover bg-bottom bg-blend-overlay"
         style={{ backgroundImage: `url(${createTrailFromBG})` }}
       >
         <h1 className="text-4xl text-white">
