@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { useGetProductsByUserId } from '../../hooks/useGetProducts';
+import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline';
+
+import { useSelector } from 'react-redux';
 
 const ProductListing = ({
   userData: { id },
   editListingHandler,
   setListingId,
 }) => {
+  const login = useSelector((state) => state.login);
+
   const userListings = useGetProductsByUserId(id);
-  const [editListing, setEditListing] = useState(false);
 
   const displayListings = userListings.map((listing, i) => {
     const productDescription = listing.productDescription
@@ -17,15 +21,13 @@ const ProductListing = ({
 
     return (
       <div
-        className="cursor-pointer border-b-2 border-neutral-50 py-4 font-light "
+        className="flex  flex-col border-b-2 border-neutral-50 py-4 font-light "
         key={Number(new Date() * listing.id)}
         onClick={(e) => {
           console.log(e.target);
           editListingHandler();
           setListingId(listing.id);
         }}
-        onMouseEnter={() => setEditListing(true)}
-        onMouseOut={() => setEditListing(false)}
       >
         <div className="mt-12 flex justify-between">
           <img
@@ -40,6 +42,16 @@ const ProductListing = ({
 
           <p className="flex">{`${listing.price} ${listing.currency}`}</p>
         </div>
+        {login && (
+          <div className="flex gap-2 place-self-end">
+            <span className="my-4 flex cursor-pointer justify-center gap-2  rounded-md py-2 px-4 text-sm font-normal hover:bg-green-500 hover:text-white active:bg-green-800">
+              <PencilAltIcon className="h-5 w-5" /> Edit Listing
+            </span>
+            <span className="my-4 flex cursor-pointer justify-center gap-2  rounded-md py-2 px-4 text-sm font-normal text-red-600 hover:bg-red-500 hover:text-white active:bg-red-800">
+              <TrashIcon className="h-5 w-5" /> Delete Listing
+            </span>
+          </div>
+        )}
       </div>
     );
   });
@@ -52,7 +64,7 @@ const ProductListing = ({
           <h3>Listing Description</h3>
           <h3>Listing Price</h3>
         </div>
-        <div className=" overflow-auto">{displayListings}</div>
+        <div className="overflow-auto">{displayListings}</div>
       </div>
     </>
   );

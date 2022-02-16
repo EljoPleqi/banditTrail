@@ -5,7 +5,6 @@ import UserDashboardSidebar from '../components/UserDashboard/userDashboardSideb
 import ProductListing from '../components/UserDashboard/ProductListing';
 import Modal from '../components/Modal/Modal';
 import { useSelector } from 'react-redux';
-import { PencilAltIcon } from '@heroicons/react/outline';
 
 const UserDashboard = ({ setListingModal, listingModal, setSearchModal }) => {
   const [loaded, setLoaded] = useState(false);
@@ -16,9 +15,6 @@ const UserDashboard = ({ setListingModal, listingModal, setSearchModal }) => {
 
   const editListingHandlers = () => {
     setListingModal(true);
-    console.log(listingId);
-
-    console.log('OPEN');
   };
   useEffect(() => {
     setLoaded(true);
@@ -50,11 +46,8 @@ const UserDashboard = ({ setListingModal, listingModal, setSearchModal }) => {
               ></div>
               <div className="grid-cols-twoOne grid">
                 <div className=" border-r-2 border-solid  border-neutral-100 p-8 ">
-                  <div className="mb-6 flex justify-end   gap-4">
-                    <p className="">Active Listings</p> <span>|</span>{' '}
-                    <p className="flex cursor-pointer justify-center gap-2">
-                      Edit Listings <PencilAltIcon className="h-6 w-6" />{' '}
-                    </p>
+                  <div className="mb-6 flex justify-end gap-4">
+                    <p className="">Active Listings</p>
                   </div>
                   <ProductListing
                     userData={loaded ? userData : 'loading...'}

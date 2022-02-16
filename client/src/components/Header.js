@@ -4,6 +4,7 @@ import {
   ShoppingCartIcon,
   SearchIcon,
   LoginIcon,
+  UserGroupIcon,
 } from '@heroicons/react/outline';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -21,6 +22,14 @@ const Header = ({ setModalOpen, setSearchModal }) => {
 
           <ul className=" flex justify-center">
             <div className="flex items-center">
+              <li className=" cursor-pointer border-r-2 border-neutral-100 px-5  hover:text-orange-500 active:text-green-600">
+                <Link
+                  to="/about-us"
+                  className="flex items-center justify-center gap-2"
+                >
+                  About Us <UserGroupIcon className="h-5 w-5" />
+                </Link>
+              </li>
               <li
                 className=" flex cursor-pointer items-center gap-2 px-5   hover:text-orange-500  active:text-green-600"
                 onClick={() => {

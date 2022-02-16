@@ -25,7 +25,7 @@ router
   .route('/:id')
   .get(getSingleProduct)
   .delete(authUser, deleteListing)
-  .patch(updateListing);
+  .patch(uploadFeatureImg, updateListing);
 router.route('/filtered').post(getFilteredProducts);
 router.route('/by_userId/:UserId').get(getProductsByUserID);
 

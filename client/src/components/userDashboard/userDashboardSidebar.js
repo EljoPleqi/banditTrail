@@ -8,6 +8,7 @@ import {
   BellIcon,
   InboxInIcon,
   ArrowRightIcon,
+  ArrowLeftIcon,
 } from '@heroicons/react/outline';
 
 const UserDashboardSidebar = ({
@@ -60,8 +61,16 @@ const UserDashboardSidebar = ({
                 setSettingsToggled(!settingsToggled);
               }}
             >
-              <CogIcon className="h-6 w-6" />
-              <p>Account Settings</p>
+              {settingsToggled ? (
+                <span className="flex items-center justify-center gap-2">
+                  <ArrowLeftIcon className="h-6 w-6" />
+                  Back to Dashboard
+                </span>
+              ) : (
+                <span className="flex items-center justify-center gap-2">
+                  <CogIcon className="h-6 w-6" /> <p>Account Settings</p>
+                </span>
+              )}
             </div>
           </div>
           <div

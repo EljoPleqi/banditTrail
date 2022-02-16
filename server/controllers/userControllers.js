@@ -46,11 +46,14 @@ exports.updateUser =
       where: { username: req.params.username },
     });
 
-    const updatedUser = req.body;
+    const updatedUser = { avatar: req.file.path, ...req.body };
+
+    console.log(req.file);
 
     Users.update((user = updatedUser), {
       where: { username: req.params.username },
     });
+
     res.json(user);
   });
 
@@ -80,7 +83,6 @@ exports.createUser =
       if (checkUsername) return res.json({ error: ' Username taken' });
       if (checkEmail) return res.json({ error: 'Email already exists' });
 
-      const userData = [];
       // create user with hashed password
       bcrypt.hash(password, 10).then(async (hash) => {
         await Users.create({

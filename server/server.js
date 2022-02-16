@@ -10,6 +10,7 @@ const path = require('path');
 const productRouter = require('./routes/productsRoutes');
 const trailsRouter = require('./routes/trailsRouter');
 const usersRouter = require('./routes/userRouter');
+const { uploadAvatar } = require('./controllers/userControllers');
 
 const server = express();
 

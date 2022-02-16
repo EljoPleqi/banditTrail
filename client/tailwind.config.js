@@ -1,5 +1,6 @@
 module.exports = {
   content: ['./src/**/*.{html,js}'],
+
   theme: {
     extend: {
       gridTemplateColumns: {
@@ -16,6 +17,13 @@ module.exports = {
         sans: ['Overpass'],
       },
     },
-    plugins: [require('@tailwindcss/line-clamp')],
+    plugins: {},
+  },
+  variants: {
+    extend: {
+      backgroundColor: ['focus', 'active'],
+      borderColor: ['focus-visible', 'first'],
+      textColor: ['visited'],
+    },
   },
 };

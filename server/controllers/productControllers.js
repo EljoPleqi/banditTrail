@@ -46,15 +46,19 @@ exports.deleteListing =
 exports.updateListing =
   (':/id',
   async (req, res) => {
-    const id = req.params.id;
-    let product = await Products.findByPk(id);
+    try {
+      let product = await Products.findOne({ where: { id: req.params.id } });
+      console.log(req.body);
 
-    const updatedProduct = req.body;
+      const updatedProduct = { featuredImage: req.file.path, ...req.body };
 
-    Products.update((product = updatedProduct), {
-      where: { id: req.params.id },
-    });
-    res.json(product);
+      Products.update((product = updatedProduct), {
+        where: { id: req.params.id },
+      });
+      res.json(product);
+    } catch (error) {
+      console.log(error);
+    }
   });
 //  GET PRODUCTS BY USER ID
 exports.getProductsByUserID =
