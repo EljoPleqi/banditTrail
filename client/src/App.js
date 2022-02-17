@@ -15,6 +15,7 @@ import UserPublicProfile from './pages/UserPublicProfile';
 import UserDashboard from './pages/UserDashboard';
 import CreateNewTrail from './pages/CreateNewTrail';
 import ProtectedRoutes from './ProtectedRoute';
+import AboutUs from './pages/AboutUs';
 
 function App() {
   const [listingModal, setListingModal] = useState(false);
@@ -37,6 +38,7 @@ function App() {
           <Route path="/login" element={<LogIn />} />
           <Route path="/products/:id" element={<ProductPage />} />
           <Route path="/users/:username" element={<UserPublicProfile />} />
+          <Route path="/about-us" element={<AboutUs />} />
           <Route element={<ProtectedRoutes />}>
             <Route
               path="/user-dashboard"

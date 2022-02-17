@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import AccountInformation from './AccountInformation';
-import PaymentOptions from './PaymentOptions';
+import PaymentOptions from './PaymentOption';
+import Appearence from './Appearence';
+import BillingsAndSubcriptions from './BillingsAndSubcriptions';
 import {
   UserCircleIcon,
   CreditCardIcon,
-  CurrencyEuroIcon,
+  CurrencyDollarIcon,
   SunIcon,
   MoonIcon,
 } from '@heroicons/react/outline';
-import Appearence from './Appearence';
 
 const SettingsDashboard = ({ userData }) => {
   const [toggle, setToggle] = useState(0);
@@ -48,7 +49,8 @@ const SettingsDashboard = ({ userData }) => {
           onClick={() => setToggle(2)}
         >
           <span className="flex items-center justify-center gap-2">
-            <CurrencyEuroIcon className="h-5 w-5" /> Billings and subscriptions
+            <CurrencyDollarIcon className="h-5 w-5" /> Billings and
+            subscriptions
           </span>
         </h3>
         <h3
@@ -67,7 +69,10 @@ const SettingsDashboard = ({ userData }) => {
       </div>
 
       {toggle === 0 && <AccountInformation userData={userData} />}
-      {toggle === 1 && <PaymentOptions />}
+      {toggle === 1 && (
+        <PaymentOptions username={userData.username} id={userData.id} />
+      )}
+      {toggle === 2 && <BillingsAndSubcriptions />}
       {toggle === 3 && <Appearence />}
     </div>
   );

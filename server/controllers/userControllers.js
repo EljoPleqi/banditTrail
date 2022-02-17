@@ -1,7 +1,7 @@
 const multer = require('multer');
 const express = require('express');
 const path = require('path');
-const { Users } = require('../models');
+const { Users, PaymentOptions } = require('../models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: './config.env' });
@@ -173,3 +173,47 @@ exports.uploadAvatar = multer({
       );
   },
 }).single('avatar');
+
+// add payment method to the user
+
+exports.createPaymentOption =
+  ('/:usename/payment_options',
+  async (req, res) => {
+    try {
+      console.log(req.body);
+      // const ccNumber = creditCardNumber.toString();
+
+      // bcrypt.hash(ccNumber, 10).then(async (hash) => {  });
+      PaymentOptions.create(
+        // creditCardNumber: creditCardNumber,
+        // cardHolder: cardHolder,
+        // ccExpData: ccExpData,
+        // cvcNumber: cvcNumber,
+        req.body
+      );
+
+      res.json(req.body);
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
+exports.getPaymentOptions =
+  ('/:username/payment_options',
+  async (req, res) => {
+    console.log(req.params);
+
+    const user = await Users.findAll({
+      where: { username: req.params.username },
+    });
+
+    const {
+      dataValues: { id },
+    } = user[0];
+
+    const userPaymentOptions = await PaymentOptions.findAll({
+      where: { UserId: id },
+    });
+
+    res.json(userPaymentOptions);
+  });
