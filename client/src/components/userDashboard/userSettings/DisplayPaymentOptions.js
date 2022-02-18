@@ -21,7 +21,7 @@ const DisplayPaymentOptions = ({ username }) => {
     console.log(displayCC);
     return (
       <div
-        className="my-2 flex h-64 w-96 flex-col justify-center gap-4 rounded-md bg-gradient-to-r from-[#ebf4f5] to-[#b5c6e0] shadow-md transition hover:from-[#e9b7ce] hover:to-[#d3f3f1]"
+        className="my-2 flex h-64 w-96 flex-col justify-center gap-4 rounded-md bg-gradient-to-br from-[#ebf4f5] to-[#b5c6e0] shadow-md transition hover:from-[#ebf4f5] hover:to-[#e9b7ce]"
         key={i}
       >
         <div className="mb-8">

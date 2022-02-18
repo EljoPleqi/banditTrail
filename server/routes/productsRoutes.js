@@ -19,7 +19,7 @@ router.param('id', checkID);
 router
   .route('/')
   .get(getAllProducts)
-  .post(authUser, uploadFeatureImg, listProduct, uploadProductImgs);
+  .post(uploadFeatureImg, listProduct, uploadProductImgs);
 
 router
   .route('/:id')

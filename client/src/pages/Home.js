@@ -9,9 +9,9 @@ function Home() {
     <div className="bg-neutral-100">
       <Hero />
       <ProductDisplay />
-      <CtaSection />
       <TrailsSection />
       <InfoSections />
+      <CtaSection />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import {
   ArrowRightIcon,
@@ -31,6 +32,7 @@ const BikeListingForm = () => {
   const [images, setImages] = useState([]);
 
   const { id } = useSelector((state) => state.userData);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,9 +62,11 @@ const BikeListingForm = () => {
         })
         .then((res) => {
           if (res.data.error) {
-            alert(res.data.error);
+            // alert(res.data.error);
+            console.log(res.data);
           } else {
             setUploading(false);
+            navigate('/user-dashboard');
           }
         });
     }

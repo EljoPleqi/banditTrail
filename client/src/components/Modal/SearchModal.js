@@ -1,12 +1,71 @@
-import React from 'react';
-import modalImg from '../../img/lachlan-cruickshank-S9v_EPJfGys-unsplash.jpg';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const SearchModal = () => {
+  const products = useSelector((state) => state.products);
+  const [searchableData, setSetSearchableData] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+
+  const [searchInput, setSearchInput] = useState('');
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:8000/users').then((res) => {
+      setSetSearchableData([...products, ...res.data]);
+      setLoaded(true);
+    });
+  }, [searchInput, products]);
+
+  console.log(searchableData);
+
+  // const data = searchableData.map((ent) => {
+  //   if (ent.username) {
+  //     return ent.username;
+  //   } else {
+  //     return ent.productTitle;
+  //   }
+  // });
+
+  const filteredData = searchableData
+    .filter((data) => {
+      if (
+        data.username &&
+        data.username.toLowerCase().includes(searchInput.toLowerCase())
+      ) {
+        return data;
+      } else if (
+        data.productTitle &&
+        data.productTitle.toLowerCase().includes(searchInput.toLowerCase())
+      ) {
+        return data;
+      } else if (
+        data.brand &&
+        data.brand.toLowerCase().includes(searchInput.toLowerCase())
+      ) {
+        return data;
+      } else {
+        return '';
+      }
+    })
+    .map((data) => {
+      return (
+        <div className="flex gap-2">
+          <img
+            src={`http://127.0.0.1:8000/${
+              data.productTitle ? data.featuredImage : data.avatar
+            }`}
+            alt=""
+            className="h-10 object-cover"
+          />
+          <p>{data.productTitle ? data.productTitle : data.username}</p>
+        </div>
+      );
+    });
+
+  console.log(filteredData);
+
   return (
-    <div className="bg-white">
-      <div className="w-[32rem]">
-        <img src={modalImg} alt="" className=" object-cover" />
-      </div>
+    <div className="bg-white px-36">
       <div className=" flex flex-col items-center  gap-4 rounded-md bg-white  pt-6 pb-12">
         <div className="flex flex-col items-center ">
           <h2 className="text-xl ">Great gear makes for great rides</h2>
@@ -16,7 +75,11 @@ const SearchModal = () => {
           type="text"
           placeholder="search here"
           className="rounded-full bg-neutral-100 py-4 px-24"
+          onChange={(e) => setSearchInput(e.target.value)}
         />
+      </div>
+      <div className="mb-10 flex flex-col gap-4">
+        {searchInput && filteredData}
       </div>
     </div>
   );

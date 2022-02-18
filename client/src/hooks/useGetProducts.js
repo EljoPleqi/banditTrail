@@ -1,5 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+
+function useGetAllProducts() {
+  const [products, setProducts] = useState([]);
+
+  axios
+    .get('http://127.0.0.1:8000/api/products')
+    .then((res) => setProducts(res.data));
+
+  return products;
+}
 
 function useGetProductsByUserId(id) {
   const [userListings, setUserListings] = useState([]);
@@ -24,4 +34,4 @@ function useGetProductsByProdcutId(id) {
   return product;
 }
 
-export { useGetProductsByProdcutId, useGetProductsByUserId };
+export { useGetAllProducts, useGetProductsByProdcutId, useGetProductsByUserId };
