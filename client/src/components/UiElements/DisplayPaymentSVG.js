@@ -5,8 +5,6 @@ const DisplayPaymentSVG = ({ ccFirst }) => {
   const [svg, setSVG] = useState();
 
   useEffect(() => {
-    console.log('inside useEffect');
-    console.log(ccFirst);
     switch (ccFirst) {
       case 3:
         setSVG(PaymentSVG.amex);
@@ -24,8 +22,6 @@ const DisplayPaymentSVG = ({ ccFirst }) => {
         break;
     }
   }, [ccFirst]);
-
-  console.log(svg);
 
   return <>{svg}</>;
 };

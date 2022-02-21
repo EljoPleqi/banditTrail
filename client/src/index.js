@@ -7,12 +7,14 @@ import App from './App';
 import productReducer from './features/product';
 import loginReducer from './features/login';
 import userDataReducer from './features/userData';
+import cartReducer from './features/cart';
 
 const store = configureStore({
   reducer: {
     products: productReducer,
     login: loginReducer,
     userData: userDataReducer,
+    cart: cartReducer,
   },
 });
 

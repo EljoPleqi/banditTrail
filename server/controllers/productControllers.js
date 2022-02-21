@@ -11,12 +11,13 @@ exports.checkID = (req, res, next, val) => {
   next();
 };
 
-// GET ALL PROUCT ENTRIES FROM THE DB
+// GET ALL PRODUCT ENTRIES THAT HAVEN'T BEEN SOLD FROM THE DB
 
 exports.getAllProducts =
   ('/',
   async (req, res) => {
-    const allProducts = await Products.findAll();
+    const allProducts = await Products.findAll({ where: { sold: false } });
+
     res.json(allProducts);
   });
 
@@ -48,7 +49,6 @@ exports.updateListing =
   async (req, res) => {
     try {
       let product = await Products.findOne({ where: { id: req.params.id } });
-      console.log(req.body);
 
       const updatedProduct = { featuredImage: req.file.path, ...req.body };
 
@@ -77,7 +77,7 @@ exports.getFilteredProducts =
   async (req, res) => {
     const { brand, type, ridingStyle, condition } = req.body;
 
-    let filteredRequest = { where: {} };
+    let filteredRequest = { where: { sold: false } };
 
     if (brand) filteredRequest.where.brand = brand;
     if (type) filteredRequest.where.type = type;
@@ -117,6 +117,26 @@ exports.listProduct =
     } catch (error) {
       console.log(error);
       res.status(500);
+    }
+  });
+
+// MARK PRODUCT AS SOLD
+
+exports.sellListings =
+  ('/checkout',
+  async (req, res) => {
+    try {
+      const items = [...req.body];
+
+      items.forEach((item) => {
+        Products.findAll({ where: { id: item.id } });
+        item.sold = true;
+        item.save();
+      });
+
+      res.json('ITEM SOLD');
+    } catch (error) {
+      console.log(error);
     }
   });
 

@@ -48,8 +48,6 @@ exports.updateUser =
 
     const updatedUser = { avatar: req.file.path, ...req.body };
 
-    console.log(req.file);
-
     Users.update((user = updatedUser), {
       where: { username: req.params.username },
     });
@@ -180,7 +178,6 @@ exports.createPaymentOption =
   ('/:usename/payment_options',
   async (req, res) => {
     try {
-      console.log(req.body);
       // const ccNumber = creditCardNumber.toString();
 
       // bcrypt.hash(ccNumber, 10).then(async (hash) => {  });
@@ -201,8 +198,6 @@ exports.createPaymentOption =
 exports.getPaymentOptions =
   ('/:username/payment_options',
   async (req, res) => {
-    console.log(req.params);
-
     const user = await Users.findAll({
       where: { username: req.params.username },
     });

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useGetProductsByUserId } from '../../hooks/useGetProducts';
 import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline';
 
@@ -8,6 +8,7 @@ const ProductListing = ({
   userData: { id },
   editListingHandler,
   setListingId,
+  cart,
 }) => {
   const login = useSelector((state) => state.login);
 
@@ -24,7 +25,6 @@ const ProductListing = ({
         className="flex  flex-col border-b-2 border-neutral-50 py-4 font-light "
         key={Number(new Date() * listing.id)}
         onClick={(e) => {
-          console.log(e.target);
           editListingHandler();
           setListingId(listing.id);
         }}

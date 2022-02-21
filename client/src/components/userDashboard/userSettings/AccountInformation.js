@@ -63,7 +63,6 @@ const AccountInformation = ({
             className="mt-2 rounded-md px-48 py-3"
             name="avatar"
             onChange={(e) => {
-              console.log(e.target.files[0]);
               setNewProfilePicture(e.target.files[0]);
             }}
           />

@@ -14,17 +14,6 @@ const CreatePaymentOptions = ({ username, id }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(username);
-
-    // const card = new FormData();
-
-    // card.append('creditCardNumber', ccNumber);
-    // card.append('cardHolder', cardHolder);
-    // card.append('cvcNumber', cvcNumber);
-    // card.append('ccExpData', ccExpDate);
-    // card.append('UserId', id);
-
-    console.log(ccNumber, cardHolder);
     axios
       .post(
         `http://127.0.0.1:8000/users/${username.toLowerCase()}/payment_options`,

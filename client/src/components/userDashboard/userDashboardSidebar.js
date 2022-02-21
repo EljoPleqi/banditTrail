@@ -57,7 +57,6 @@ const UserDashboardSidebar = ({
             <div
               className="flex cursor-pointer items-center gap-2 rounded-md py-2 px-2 hover:bg-neutral-300"
               onClick={() => {
-                console.log('CLICKED');
                 setSettingsToggled(!settingsToggled);
               }}
             >

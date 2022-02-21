@@ -11,6 +11,7 @@ const {
   checkID,
   deleteListing,
   updateListing,
+  sellListings,
 } = require('../controllers/productControllers');
 
 const router = express.Router();
@@ -28,5 +29,6 @@ router
   .patch(uploadFeatureImg, updateListing);
 router.route('/filtered').post(getFilteredProducts);
 router.route('/by_userId/:UserId').get(getProductsByUserID);
+router.route('/checkout').patch(sellListings);
 
 module.exports = router;
