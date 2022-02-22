@@ -16,8 +16,6 @@ const SearchModal = () => {
     });
   }, [searchInput, products]);
 
-  console.log(searchableData);
-
   // const data = searchableData.map((ent) => {
   //   if (ent.username) {
   //     return ent.username;
@@ -61,8 +59,6 @@ const SearchModal = () => {
         </div>
       );
     });
-
-  console.log(filteredData);
 
   return (
     <div className="bg-white px-36">

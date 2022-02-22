@@ -1,15 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const DisplayPaymentOptions = ({ username }) => {
+  const accessToken = useSelector((state) => state.accessToken);
   const [paymentOptions, setPaymentOptions] = useState([]);
   useEffect(() => {
     axios
       .get(
-        `http://127.0.0.1:8000/users/${username.toLowerCase()}/payment_options`
+        `http://127.0.0.1:8000/users/${username.toLowerCase()}/payment_options`,
+        { headers: { accessToken: accessToken } }
       )
       .then((res) => setPaymentOptions(res.data));
-  }, [username]);
+  }, [username, accessToken]);
 
   const displayPaymentOptions = paymentOptions.map((option, i) => {
     const displayCC = option.creditCardNumber

@@ -1,6 +1,7 @@
 require('dotenv').config({ path: './config.env' });
 
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
+
 const jwt = require('jsonwebtoken');
 
 exports.authUser = (req, res, next) => {

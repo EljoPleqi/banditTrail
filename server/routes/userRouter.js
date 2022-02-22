@@ -1,5 +1,4 @@
 const express = require('express');
-const { authUser } = require('../middleware/authmiddleware');
 
 const {
   createUser,
@@ -11,16 +10,17 @@ const {
   updateUser,
   createPaymentOption,
   getPaymentOptions,
+  checkAuth,
 } = require('../controllers/userControllers');
 
 const router = express.Router();
-
+router.route('/login').post(login).get(checkAuth);
 router.route('/').get(getAllUsers).post(uploadAvatar, createUser);
-router.route('/login').post(login);
+
 router
   .route('/:username')
   .get(getSingleUser)
-  .delete(authUser, deleteUser)
+  .delete(deleteUser)
   .patch(uploadAvatar, updateUser);
 
 router

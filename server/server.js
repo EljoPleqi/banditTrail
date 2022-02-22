@@ -1,5 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
+
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const store = new session.MemoryStore();
+
 require('dotenv').config({ path: './config.env' });
 
 const cors = require('cors');
@@ -10,7 +15,6 @@ const path = require('path');
 const productRouter = require('./routes/productsRoutes');
 const trailsRouter = require('./routes/trailsRouter');
 const usersRouter = require('./routes/userRouter');
-const { uploadAvatar } = require('./controllers/userControllers');
 
 const server = express();
 
@@ -23,7 +27,26 @@ if (process.env.NODE_ENV === 'development') {
 
 const PORT = process.env.PORT || 8000;
 
-server.use(cors());
+server.use(
+  cors({
+    origin: ['http://localhost:3000'],
+    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
+    credentials: true,
+  })
+);
+
+server.use(bodyParser.urlencoded({ extended: true }));
+
+server.use(
+  session({
+    key: 'user',
+    secret: process.env.ACCESS_TOKEN_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 2160000, secure: false },
+    store,
+  })
+);
 
 //serve static files
 

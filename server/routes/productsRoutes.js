@@ -29,6 +29,6 @@ router
   .patch(uploadFeatureImg, updateListing);
 router.route('/filtered').post(getFilteredProducts);
 router.route('/by_userId/:UserId').get(getProductsByUserID);
-router.route('/checkout').patch(sellListings);
+router.route('/checkout').put(sellListings);
 
 module.exports = router;

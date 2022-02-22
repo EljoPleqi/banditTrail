@@ -2,28 +2,32 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { loginFormValidation } from '../../validations/Validations';
 
-import { useDispatch } from 'react-redux';
 import { setLogin } from '../../features/login';
 import { setUserData } from '../../features/userData';
-import { useSelector } from 'react-redux';
+
+import { useSelector, useDispatch } from 'react-redux';
 import useUserRedirect from '../../hooks/useUserRedirect';
 
 const LogInForm = () => {
   const login = useSelector((state) => state.login);
+
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  axios.defaults.withCredentials = true;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const user = { username, password };
+
     if (loginFormValidation.isValid(user)) {
-      axios.post('http://127.0.0.1:8000/users/login', user).then((res) => {
+      axios.post('http://localhost:8000/users/login', user).then((res) => {
+        console.log(res.data);
         if (res.data.error) alert(res.data.error);
-        sessionStorage.setItem('accessToken', res.data.accessToken);
         dispatch(setLogin(true));
-        dispatch(setUserData(res.data.user));
+        dispatch(setUserData(res.data));
       });
     }
   };
@@ -56,7 +60,7 @@ const LogInForm = () => {
             <div className="flex items-center gap-6">
               <button
                 type="submit"
-                className="rounded-lg bg-neutral-700 py-4 px-16 text-white"
+                className="rounded-lg bg-neutral-700 py-4 px-16 text-white active:bg-green-600"
               >
                 Log in
               </button>

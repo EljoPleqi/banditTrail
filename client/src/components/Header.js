@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux';
 
 const Header = ({ setModalOpen, setSearchModal }) => {
   const loggedIn = useSelector((state) => state.login);
-
   return (
     <>
       <div className=" flex h-16 items-center  bg-white px-5">

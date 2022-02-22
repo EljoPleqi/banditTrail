@@ -6,7 +6,6 @@ export const loginSlice = createSlice({
   reducers: {
     setLogin: (state, { payload }) => {
       state = false;
-
       state = payload;
       return state;
     },
@@ -17,6 +16,7 @@ export const loginSlice = createSlice({
     // },
   },
 });
+
 export const { setLogin } = loginSlice.actions;
 
 export default loginSlice.reducer;

@@ -14,7 +14,6 @@ const Modal = ({ setListingModal, listingModal, setSearchModal, id }) => {
 
   const keyClose = useCallback((e) => {
     if (e.key === 'Escape' && listingModal) {
-      console.log('CLOSE');
       setListingModal(false);
       setSearchModal(false);
     }
