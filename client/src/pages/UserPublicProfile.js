@@ -14,7 +14,9 @@ const UserPublicProfile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/users/${username}`, { username: username })
+      .get(`http://127.0.0.1:8000/users/${username}`, {
+        username: username,
+      })
       .then((res) => {
         setUserData(res.data);
 

@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Products = sequelize.define('Products', {
-    featuredImage: { type: DataTypes.STRING, allowNull: false },
+    featuredImage: { type: DataTypes.STRING, allowNULL: false },
     productTitle: { type: DataTypes.STRING, allowNull: false },
     price: { type: DataTypes.FLOAT, allowNull: false },
     currency: { type: DataTypes.STRING, allowNull: false },
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     material: { type: DataTypes.STRING, allowNull: false },
     wheelSize: { type: DataTypes.SMALLINT, allowNull: false },
     condition: { type: DataTypes.BOOLEAN, allowNULL: false },
-    images: { type: DataTypes.STRING, allowNULL: true },
+    images: { type: DataTypes.TEXT, allowNULL: true },
     sold: { type: DataTypes.BOOLEAN, defaultValue: false },
   });
 

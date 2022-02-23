@@ -52,23 +52,22 @@ const BikeListingForm = () => {
     bike.append('material', material);
     bike.append('wheelSize', wheelSize);
     bike.append('condition', condition);
-    bike.append('images', images);
     bike.append('UserId', id);
 
+    for (let image of images) {
+      bike.append('images', image);
+    }
+
     if (bikeListingFormValidation.isValid(bike)) {
-      axios
-        .post('http://127.0.0.1:8000/api/products', bike, {
-          headers: { accessToken: sessionStorage.getItem('accessToken') },
-        })
-        .then((res) => {
-          if (res.data.error) {
-            // alert(res.data.error);
-            console.log(res.data);
-          } else {
-            setUploading(false);
-            navigate('/user-dashboard');
-          }
-        });
+      axios.post('http://127.0.0.1:8000/api/products', bike).then((res) => {
+        if (res.data.error) {
+          // alert(res.data.error);
+          console.log(res.data);
+        } else {
+          setUploading(false);
+          navigate('/user-dashboard');
+        }
+      });
     }
   };
 
@@ -242,6 +241,7 @@ const BikeListingForm = () => {
               multiple
               name="images"
               onChange={(e) => {
+                console.log(e.target.files);
                 setImages(e.target.files);
               }}
             />

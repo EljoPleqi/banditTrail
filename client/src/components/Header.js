@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 
 const Header = ({ setModalOpen, setSearchModal }) => {
   const loggedIn = useSelector((state) => state.login);
+  const { avatar } = useSelector((state) => state.userData);
   return (
     <>
       <div className=" flex h-16 items-center  bg-white px-5">
@@ -46,7 +47,13 @@ const Header = ({ setModalOpen, setSearchModal }) => {
 
             {loggedIn ? (
               <Link to="/user-dashboard">
-                <li className="h-8 w-8 rounded-full bg-green-700"></li>
+                <li>
+                  <img
+                    src={`http://127.0.0.1:8000/${avatar}`}
+                    alt=""
+                    className=" h-12 w-12 rounded-full bg-green-500 object-cover p-0.5"
+                  />
+                </li>
               </Link>
             ) : (
               <li className=" cursor-pointer px-5  hover:text-orange-500 active:text-green-600 ">

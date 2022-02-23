@@ -1,8 +1,4 @@
 const express = require('express');
-const morgan = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const session = require('express-session');
 
 require('dotenv').config({ path: './config.env' });
 
@@ -15,10 +11,6 @@ const server = express();
 // allows to use json in express
 server.use(express.json());
 
-if (process.env.NODE_ENV === 'development') {
-  server.use(morgan('dev'));
-}
-
 const PORT = process.env.PORT || 8000;
 
 server.use(
@@ -26,17 +18,6 @@ server.use(
     origin: ['http://localhost:3000'],
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
     credentials: true,
-  })
-);
-server.use(cookieParser());
-server.use(bodyParser.urlencoded({ extended: true }));
-
-server.use(
-  session({
-    key: 'user',
-    secret: process.env.ACCESS_TOKEN_SECRET,
-    saveUninitialized: false,
-    cookie: { maxAge: 2160000 },
   })
 );
 

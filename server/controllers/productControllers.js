@@ -1,5 +1,4 @@
 const express = require('express');
-const { rmSync } = require('fs');
 const multer = require('multer');
 const path = require('path');
 const { Products } = require('../models');
@@ -90,35 +89,38 @@ exports.getFilteredProducts =
   });
 
 //  CREATE A NEW PRODUCT ENTRY IN THE DB
-exports.listProduct =
-  ('/',
-  async (req, res) => {
-    try {
-      await Products.create({
-        featuredImage: req.file.path,
-        productTitle: req.body.productTitle,
-        price: req.body.price,
-        currency: req.body.currency,
-        productDescription: req.body.productDescription,
-        brand: req.body.brand,
-        type: req.body.type,
-        primaryColor: req.body.primaryColor,
-        secondaryColor: req.body.secondaryColor,
-        size: req.body.size,
-        gender: req.body.gender,
-        ridingStyle: req.body.ridingStyle,
-        wheelSize: req.body.wheelSize,
-        material: req.body.material,
-        condition: req.body.condition,
-        images: req.files,
-        UserId: req.body.UserId,
-      });
-      res.json(req.body);
-    } catch (error) {
-      console.log(error);
-      res.status(500);
-    }
-  });
+exports.listProduct = async (req, res) => {
+  const imagePaths = req.files.images.map((file) => file.path).join('_');
+
+  const [featuredImage] = req.files.featuredImage;
+  console.log(featuredImage);
+
+  try {
+    await Products.create({
+      featuredImage: featuredImage.path,
+      productTitle: req.body.productTitle,
+      price: req.body.price,
+      currency: req.body.currency,
+      productDescription: req.body.productDescription,
+      brand: req.body.brand,
+      type: req.body.type,
+      primaryColor: req.body.primaryColor,
+      secondaryColor: req.body.secondaryColor,
+      size: req.body.size,
+      gender: req.body.gender,
+      ridingStyle: req.body.ridingStyle,
+      wheelSize: req.body.wheelSize,
+      material: req.body.material,
+      condition: req.body.condition,
+      images: imagePaths,
+      UserId: req.body.UserId,
+    });
+    res.json(req.body);
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+  }
+};
 
 // MARK PRODUCT AS SOLD
 
@@ -174,26 +176,7 @@ exports.uploadFeatureImg = multer({
         'File type not supported please upload a jpeg,jpg,png,gif or webp '
       );
   },
-}).single('featuredImage');
-
-exports.uploadProductImgs = multer({
-  storage: storage,
-  limits: { fileSize: '150000000' },
-  fileFilter: (req, file, cb) => {
-    // set acceptable extension
-
-    const fileTypes = /jpeg|jpg|png|gif|webp/;
-    //check if file extention matches extension
-    const extname = fileTypes.test(path.extname(file.originalname));
-    //check if file mimetype matches extension
-    const mimeType = fileTypes.test(file.mimetype);
-
-    // check if everything is ok
-
-    if (mimeType && extname) return cb(null, true);
-    if (!mimeType || !extname)
-      return cb(
-        'File type not supported please upload a jpeg,jpg,png,gif or webp '
-      );
-  },
-}).array('images', 6);
+}).fields([
+  { name: 'featuredImage', maxCount: 1 },
+  { name: 'images', maxCount: 6 },
+]);

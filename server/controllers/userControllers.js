@@ -1,9 +1,7 @@
 const multer = require('multer');
 const path = require('path');
-const session = require('express-session');
 const { Users, PaymentOptions } = require('../models');
 const bcrypt = require('bcrypt');
-const { json } = require('body-parser');
 
 require('dotenv').config({ path: './config.env' });
 
@@ -23,6 +21,15 @@ exports.getSingleUser = async (req, res) => {
   const user = await Users.findOne({
     where: { username: req.params.username },
   });
+  res.json(user);
+};
+
+exports.getUserById = async (req, res) => {
+  const id = req.params.id;
+
+  console.log(req.body, req.params);
+  const user = await Users.findByPk(id);
+
   res.json(user);
 };
 
@@ -112,26 +119,13 @@ exports.login = async (req, res) => {
     bcrypt.compare(password, user.password).then(async (match) => {
       if (!match) res.json({ error: 'Wrong password' });
 
-      req.session.user = user; // CREATE LOGIN SESSION FOR THAT USER
-
-      console.log(`----------------------->line 116 ${req.session}`);
-
-      res.json(req.session.user);
+      res.json(user);
     });
 
-    // return acess token
+    // return access token
   } catch (error) {
     console.log(error);
     res.status(500);
-  }
-};
-
-exports.checkAuth = (req, res) => {
-  console.log(`----------------------->line 129 ${req.session}`);
-  if (req.session) {
-    res.json({ loggedin: true, user: session.user });
-  } else {
-    res.json({ loggedin: false });
   }
 };
 

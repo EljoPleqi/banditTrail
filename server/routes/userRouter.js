@@ -10,12 +10,14 @@ const {
   updateUser,
   createPaymentOption,
   getPaymentOptions,
-  checkAuth,
+  getUserById,
 } = require('../controllers/userControllers');
 
 const router = express.Router();
-router.route('/login').post(login).get(checkAuth);
+router.route('/login').post(login);
 router.route('/').get(getAllUsers).post(uploadAvatar, createUser);
+
+router.route('/:id').get(getUserById);
 
 router
   .route('/:username')

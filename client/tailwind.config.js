@@ -13,6 +13,9 @@ module.exports = {
         oneThree: '1fr 3fr',
         twoThree: '2fr 3fr',
       },
+      dropShadow: {
+        productPage: '0 -35px 35px rgba(0, 0, 0, 0.25)',
+      },
       fontFamily: {
         sans: ['Overpass'],
       },

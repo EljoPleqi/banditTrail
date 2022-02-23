@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -17,19 +17,11 @@ import CreateNewTrail from './pages/CreateNewTrail';
 import ProtectedRoutes from './ProtectedRoute';
 import AboutUs from './pages/AboutUs';
 import AllProducts from './pages/AllProducts';
-import axios from 'axios';
 
 function App() {
   const [listingModal, setListingModal] = useState(false);
   const [searchModal, setSearchModal] = useState(false);
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:8000/users/login', {
-        withCredentials: true,
-      })
-      .then((res) => console.log(res.data));
-  }, []);
   return (
     <>
       <Router>

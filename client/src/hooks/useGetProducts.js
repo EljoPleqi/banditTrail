@@ -26,12 +26,18 @@ function useGetProductsByUserId(id) {
 
 function useGetProductsByProdcutId(id) {
   const [product, setProduct] = useState([]);
+
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/products/${id}`).then((res) => {
       setProduct(res.data);
     });
-  }, []);
-  return product;
+  }, [id]);
+
+  if (product) {
+    return product;
+  } else {
+    return 'loading...';
+  }
 }
 
 export { useGetAllProducts, useGetProductsByProdcutId, useGetProductsByUserId };

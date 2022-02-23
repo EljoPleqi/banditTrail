@@ -25,9 +25,12 @@ const LogInForm = () => {
     if (loginFormValidation.isValid(user)) {
       axios.post('http://localhost:8000/users/login', user).then((res) => {
         console.log(res.data);
-        if (res.data.error) alert(res.data.error);
-        dispatch(setLogin(true));
-        dispatch(setUserData(res.data));
+        if (res.data.error) {
+          alert(res.data.error);
+        } else {
+          dispatch(setLogin(true));
+          dispatch(setUserData(res.data));
+        }
       });
     }
   };
