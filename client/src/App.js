@@ -25,7 +25,9 @@ function App() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/users/login')
+      .get('http://localhost:8000/users/login', {
+        withCredentials: true,
+      })
       .then((res) => console.log(res.data));
   }, []);
   return (

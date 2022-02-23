@@ -3,6 +3,7 @@ const path = require('path');
 const session = require('express-session');
 const { Users, PaymentOptions } = require('../models');
 const bcrypt = require('bcrypt');
+const { json } = require('body-parser');
 
 require('dotenv').config({ path: './config.env' });
 
@@ -111,9 +112,11 @@ exports.login = async (req, res) => {
     bcrypt.compare(password, user.password).then(async (match) => {
       if (!match) res.json({ error: 'Wrong password' });
 
-      req.session.cookie.user = user; // CREATE LOGIN SESSION FOR THAT USER
+      req.session.user = user; // CREATE LOGIN SESSION FOR THAT USER
 
-      res.json(user);
+      console.log(`----------------------->line 116 ${req.session}`);
+
+      res.json(req.session.user);
     });
 
     // return acess token
@@ -124,11 +127,11 @@ exports.login = async (req, res) => {
 };
 
 exports.checkAuth = (req, res) => {
-  console.log(req.session.cookie);
+  console.log(`----------------------->line 129 ${req.session}`);
   if (req.session) {
-    res.send({ loggedin: true, user: req.session.user });
+    res.json({ loggedin: true, user: session.user });
   } else {
-    res.send({ loggedin: false });
+    res.json({ loggedin: false });
   }
 };
 

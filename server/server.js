@@ -1,20 +1,14 @@
 const express = require('express');
 const morgan = require('morgan');
-
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const store = new session.MemoryStore();
 
 require('dotenv').config({ path: './config.env' });
 
 const cors = require('cors');
 const db = require('./models');
 const path = require('path');
-
-// ROUTERS
-const productRouter = require('./routes/productsRoutes');
-const trailsRouter = require('./routes/trailsRouter');
-const usersRouter = require('./routes/userRouter');
 
 const server = express();
 
@@ -34,23 +28,25 @@ server.use(
     credentials: true,
   })
 );
-
+server.use(cookieParser());
 server.use(bodyParser.urlencoded({ extended: true }));
 
 server.use(
   session({
     key: 'user',
     secret: process.env.ACCESS_TOKEN_SECRET,
-    resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 2160000, secure: false },
-    store,
+    cookie: { maxAge: 2160000 },
   })
 );
 
 //serve static files
 
 server.use('/public', express.static(path.join(__dirname, 'public')));
+// ROUTERS
+const productRouter = require('./routes/productsRoutes');
+const trailsRouter = require('./routes/trailsRouter');
+const usersRouter = require('./routes/userRouter');
 
 //ROUTERS
 server.use('/users', usersRouter);
