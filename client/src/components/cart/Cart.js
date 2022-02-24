@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { TrashIcon } from '@heroicons/react/outline';
-import { setRemoveFromCart } from '../../features/cart';
+import { TrashIcon, UserAddIcon } from '@heroicons/react/outline';
+import { setRemoveFromCart, setEmptyCart } from '../../features/cart';
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -23,7 +23,8 @@ const Cart = () => {
 
         <p className="flex">{`${item.price} ${item.currency}`}</p>
         <span
-          className="my-4 flex cursor-pointer items-center justify-center gap-2  rounded-md py-2 px-4 text-sm font-normal text-red-600 hover:bg-red-500 hover:text-white active:bg-red-800"
+          className="my-4 flex cursor-pointer items-center justify-center gap-2  rounded-md py-2 px-4 text-sm font-normal 
+          text-red-600 hover:bg-red-500 hover:text-white active:bg-red-800"
           onClick={() => {
             dispatch(setRemoveFromCart(i));
           }}
@@ -41,6 +42,14 @@ const Cart = () => {
         <h3> Product Title and Price </h3>
       </div>
       <div className="overflow-auto">{displayCart}</div>
+      <span
+        className="my-4 mx-8 flex w-64 cursor-pointer items-center justify-center gap-2 place-self-end rounded-md py-2 px-4 text-sm font-normal text-red-600 hover:bg-red-500
+         hover:text-white active:bg-red-800"
+        onClick={() => dispatch(setEmptyCart())}
+      >
+        <TrashIcon className="h-6 w-6" />
+        Empty Cart
+      </span>
     </div>
   );
 };

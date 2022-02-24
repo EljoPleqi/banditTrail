@@ -23,7 +23,7 @@ const AllProducts = () => {
   }, [dispatch]);
 
   return (
-    <div className="grid-cols-oneThree grid h-screen">
+    <div className="grid-cols-oneThree grid h-screen overflow-auto">
       <Sidebar
         setType={setType}
         setBrand={setBrand}

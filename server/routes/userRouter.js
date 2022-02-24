@@ -16,12 +16,11 @@ const {
 const router = express.Router();
 router.route('/login').post(login);
 router.route('/').get(getAllUsers).post(uploadAvatar, createUser);
-
 router.route('/:id').get(getUserById);
 
 router
   .route('/:username')
-  .get(getSingleUser)
+  .post(getSingleUser)
   .delete(deleteUser)
   .patch(uploadAvatar, updateUser);
 

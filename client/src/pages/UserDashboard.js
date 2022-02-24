@@ -53,6 +53,7 @@ const UserDashboard = ({ setListingModal, listingModal, setSearchModal }) => {
                     userData={loaded ? userData : 'loading...'}
                     editListingHandler={editListingHandlers}
                     setListingId={setListingId}
+                    userprofile={loaded ? userData.username : 'loading...'}
                   />
                 </div>
                 <div className="p-8">Recently sold</div>

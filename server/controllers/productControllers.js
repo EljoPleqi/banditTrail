@@ -35,6 +35,7 @@ exports.getSingleProduct =
 exports.deleteListing =
   ('/:id',
   async (req, res) => {
+    console.log(req.params);
     const id = req.params.id;
     const product = await Products.findByPk(id);
     product.destroy();

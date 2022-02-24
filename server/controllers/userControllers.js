@@ -18,16 +18,17 @@ exports.getAllUsers = async (req, res) => {
 // GET A UNIQUE PROUCT ENTRY FROM THE DB
 
 exports.getSingleUser = async (req, res) => {
+  console.log(req.params);
   const user = await Users.findOne({
     where: { username: req.params.username },
   });
+  console.log(user);
   res.json(user);
 };
 
 exports.getUserById = async (req, res) => {
   const id = req.params.id;
 
-  console.log(req.body, req.params);
   const user = await Users.findByPk(id);
 
   res.json(user);

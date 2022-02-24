@@ -44,7 +44,7 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route element={<ProtectedRoutes />}>
             <Route
-              path="/user-dashboard"
+              path="/user-dashboard/:username"
               element={
                 <UserDashboard
                   setListingModal={setListingModal}

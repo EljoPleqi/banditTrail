@@ -11,15 +11,15 @@ const UserPublicProfile = () => {
   const [loaded, setLoaded] = useState(false);
 
   const { username } = useParams();
+  console.log(username);
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/users/${username}`, {
+      .post(`http://localhost:8000/users/${username}`, {
         username: username,
       })
       .then((res) => {
         setUserData(res.data);
-
         setLoaded(loaded);
       });
   }, [username]);
@@ -52,7 +52,7 @@ const UserPublicProfile = () => {
           <div className="border-l-2 border-solid border-neutral-100 px-10">
             <div className="flex flex-col justify-end ">
               <h2>{`${userData.username}'s Active Listings`}</h2>
-              <ProductListings userData={userData} />
+              <ProductListings userData={userData} userprofile={username} />
             </div>
           </div>
         </div>

@@ -1,15 +1,18 @@
 import React from 'react';
 import { useGetProductsByUserId } from '../../hooks/useGetProducts';
 import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline';
+import { useParams } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 const ProductListing = ({
-  userData: { id },
+  userData: { id, username },
   editListingHandler,
   setListingId,
-  cart,
 }) => {
+  const userprofile = useParams();
+
   const login = useSelector((state) => state.login);
 
   const userListings = useGetProductsByUserId(id);
@@ -20,14 +23,16 @@ const ProductListing = ({
       .splice(0, 100)
       .join('');
 
+    const deleteListing = () => {
+      axios
+        .delete(`http://127.0.0.1:8000/api/products/${listing.id}`)
+        .then((res) => console.log(res.data));
+    };
+
     return (
       <div
         className="flex  flex-col border-b-2 border-neutral-50 py-4 font-light "
         key={Number(new Date() * listing.id)}
-        onClick={(e) => {
-          editListingHandler();
-          setListingId(listing.id);
-        }}
       >
         <div className="mt-12 flex justify-between">
           <img
@@ -42,12 +47,23 @@ const ProductListing = ({
 
           <p className="flex">{`${listing.price} ${listing.currency}`}</p>
         </div>
-        {login && (
+        {login && userprofile.username === username && (
           <div className="flex gap-2 place-self-end">
-            <span className="my-4 flex cursor-pointer justify-center gap-2  rounded-md py-2 px-4 text-sm font-normal hover:bg-green-500 hover:text-white active:bg-green-800">
+            <span
+              className="my-4 flex cursor-pointer justify-center gap-2  rounded-md py-2 px-4 text-sm font-normal
+             hover:bg-green-500 hover:text-white active:bg-green-800"
+              onClick={(e) => {
+                editListingHandler();
+                setListingId(listing.id);
+              }}
+            >
               <PencilAltIcon className="h-5 w-5" /> Edit Listing
             </span>
-            <span className="my-4 flex cursor-pointer justify-center gap-2  rounded-md py-2 px-4 text-sm font-normal text-red-600 hover:bg-red-500 hover:text-white active:bg-red-800">
+            <span
+              className="my-4 flex cursor-pointer justify-center gap-2  rounded-md py-2 px-4 text-sm font-normal
+             text-red-600 hover:bg-red-500 hover:text-white active:bg-red-800"
+              onClick={deleteListing}
+            >
               <TrashIcon className="h-5 w-5" /> Delete Listing
             </span>
           </div>

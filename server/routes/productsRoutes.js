@@ -22,7 +22,7 @@ router.route('/').get(getAllProducts).post(uploadFeatureImg, listProduct);
 router
   .route('/:id')
   .get(getSingleProduct)
-  .delete(authUser, deleteListing)
+  .delete(deleteListing)
   .patch(uploadFeatureImg, updateListing);
 router.route('/filtered').post(getFilteredProducts);
 router.route('/by_userId/:UserId').get(getProductsByUserID);

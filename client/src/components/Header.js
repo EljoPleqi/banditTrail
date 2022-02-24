@@ -5,13 +5,14 @@ import {
   SearchIcon,
   LoginIcon,
   UserGroupIcon,
+  CollectionIcon,
 } from '@heroicons/react/outline';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Header = ({ setModalOpen, setSearchModal }) => {
   const loggedIn = useSelector((state) => state.login);
-  const { avatar } = useSelector((state) => state.userData);
+  const { avatar, username } = useSelector((state) => state.userData);
   return (
     <>
       <div className=" flex h-16 items-center  bg-white px-5">
@@ -30,6 +31,14 @@ const Header = ({ setModalOpen, setSearchModal }) => {
                   About Us <UserGroupIcon className="h-5 w-5" />
                 </Link>
               </li>
+              <li className=" cursor-pointer border-r-2 border-neutral-100 px-5  hover:text-orange-500 active:text-green-600">
+                <Link
+                  to="/products/all-products"
+                  className="flex items-center justify-center gap-2"
+                >
+                  Items For Sale <CollectionIcon className="h-5 w-5" />
+                </Link>
+              </li>
               <li
                 className=" flex cursor-pointer items-center gap-2 px-5   hover:text-orange-500  active:text-green-600"
                 onClick={() => {
@@ -46,7 +55,7 @@ const Header = ({ setModalOpen, setSearchModal }) => {
             </div>
 
             {loggedIn ? (
-              <Link to="/user-dashboard">
+              <Link to={`/user-dashboard/${username}`}>
                 <li>
                   <img
                     src={`http://127.0.0.1:8000/${avatar}`}

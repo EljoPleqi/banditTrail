@@ -8,6 +8,7 @@ const SearchModal = () => {
   const [loaded, setLoaded] = useState(false);
 
   const [searchInput, setSearchInput] = useState('');
+  console.log(products);
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/users').then((res) => {
@@ -47,16 +48,24 @@ const SearchModal = () => {
     })
     .map((data) => {
       return (
-        <div className="flex gap-2">
-          <img
-            src={`http://127.0.0.1:8000/${
-              data.productTitle ? data.featuredImage : data.avatar
-            }`}
-            alt=""
-            className="h-10 object-cover"
-          />
-          <p>{data.productTitle ? data.productTitle : data.username}</p>
-        </div>
+        <a
+          href={
+            data.productTitle
+              ? `http://localhost:3000/products/${data.id}`
+              : `http://localhost:3000/users/${data.username}`
+          }
+        >
+          <div className="flex gap-2">
+            <img
+              src={`http://127.0.0.1:8000/${
+                data.productTitle ? data.featuredImage : data.avatar
+              }`}
+              alt=""
+              className="h-10 object-cover"
+            />
+            <p>{data.productTitle ? data.productTitle : data.username}</p>
+          </div>
+        </a>
       );
     });
 

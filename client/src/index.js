@@ -1,27 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { configureStore } from '@reduxjs/toolkit';
+
 import { Provider } from 'react-redux';
+import store, { persistor } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
 import './index.css';
 import App from './App';
-import productReducer from './features/product';
-import loginReducer from './features/login';
-import userDataReducer from './features/userData';
-import cartReducer from './features/cart';
-
-const store = configureStore({
-  reducer: {
-    products: productReducer,
-    login: loginReducer,
-    userData: userDataReducer,
-    cart: cartReducer,
-  },
-});
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

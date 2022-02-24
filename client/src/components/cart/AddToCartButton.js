@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setAddToCart } from '../../features/cart';
 import { useSelector } from 'react-redux';
 
 const AddToCartButton = ({ product }) => {
   const cart = useSelector((state) => state.cart);
+  const login = useSelector((state) => state.login);
 
   const dispatch = useDispatch();
 
@@ -12,7 +13,11 @@ const AddToCartButton = ({ product }) => {
     if (cart.includes(product)) {
       return console.log('product already in cart');
     } else {
-      dispatch(setAddToCart(product));
+      if (login) {
+        dispatch(setAddToCart(product));
+      } else {
+        alert('Please Login');
+      }
     }
   };
 

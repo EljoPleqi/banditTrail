@@ -34,14 +34,6 @@ const CartPage = () => {
     <div className="grid-cols-threeTwo grid">
       <div>
         <Cart />
-        <span
-          className="my-4 mx-8 flex w-64 cursor-pointer items-center justify-center gap-2 place-self-end rounded-md py-2 px-4 text-sm font-normal text-red-600 hover:bg-red-500
-         hover:text-white active:bg-red-800"
-          onClick={() => setEmptyCart()}
-        >
-          <XCircleIcon className="h-6 w-6" />
-          Empty Cart
-        </span>
       </div>
       <div
         className=" flex h-screen flex-col items-center justify-end bg-neutral-600 bg-cover text-white  bg-blend-overlay"
