@@ -44,50 +44,55 @@ exports.deleteListing =
 
 //  UPDATE LISTING
 
-exports.updateListing =
-  (':/id',
-  async (req, res) => {
-    try {
-      let product = await Products.findOne({ where: { id: req.params.id } });
+exports.updateListing = async (req, res) => {
+  try {
+    let product = await Products.findOne({ where: { id: req.params.id } });
 
-      const updatedProduct = { featuredImage: req.file.path, ...req.body };
+    const updatedProduct = { featuredImage: req.file.path, ...req.body };
 
-      Products.update((product = updatedProduct), {
-        where: { id: req.params.id },
-      });
-      res.json(product);
-    } catch (error) {
-      console.log(error);
-    }
-  });
+    Products.update((product = updatedProduct), {
+      where: { id: req.params.id },
+    });
+    res.json(product);
+  } catch (error) {
+    console.log(error);
+  }
+};
 //  GET PRODUCTS BY USER ID
-exports.getProductsByUserID =
-  ('by_userId/:UserId',
-  async (req, res) => {
-    const userId = req.params.UserId;
+exports.getProductsByUserID = async (req, res) => {
+  const userId = req.params.UserId;
 
-    const products = await Products.findAll({ where: { UserId: userId } });
-    res.json(products);
-  });
+  const products = await Products.findAll({ where: { UserId: userId } });
+  res.json(products);
+};
 
 // GET FILTERED PRODUCTS
 
-exports.getFilteredProducts =
-  ('/filtered',
-  async (req, res) => {
-    const { brand, type, ridingStyle, condition } = req.body;
+exports.getFilteredProducts = async (req, res) => {
+  const { brand, type, ridingStyle, condition } = req.body;
 
-    let filteredRequest = { where: { sold: false } };
+  let filteredRequest = { where: { sold: false } };
 
-    if (brand) filteredRequest.where.brand = brand;
-    if (type) filteredRequest.where.type = type;
-    if (ridingStyle) filteredRequest.where.ridingStyle = ridingStyle;
-    if (condition) filteredRequest.where.condition = condition;
+  if (brand) filteredRequest.where.brand = brand;
+  if (type) filteredRequest.where.type = type;
+  if (ridingStyle) filteredRequest.where.ridingStyle = ridingStyle;
+  if (condition) filteredRequest.where.condition = condition;
 
-    const filteredProducts = await Products.findAll(filteredRequest);
+  const filteredProducts = await Products.findAll(filteredRequest);
 
-    res.json(filteredProducts);
+  res.json(filteredProducts);
+};
+
+// GET SOLD PRODUCTS
+
+exports.getSoldItems = async (req, res) => {
+  const { UserId } = req.body;
+
+  const products = await Products.findAll({
+    where: { UserId: UserId, sold: true },
   });
+  res.json(products);
+};
 
 //  CREATE A NEW PRODUCT ENTRY IN THE DB
 exports.listProduct = async (req, res) => {
@@ -131,13 +136,13 @@ exports.sellListings =
     try {
       const items = [...req.body];
 
-      items.forEach((item) => {
-        Products.findAll({ where: { id: item.id } });
-        item.sold = true;
-        item.save();
-      });
+      console.log(items);
 
-      res.json('ITEM SOLD');
+      for (const item of items) {
+        Products.update({ sold: true }, { where: { id: item.id } });
+      }
+
+      res.json(items);
     } catch (error) {
       console.log(error);
     }

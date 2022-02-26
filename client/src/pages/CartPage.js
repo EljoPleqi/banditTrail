@@ -14,7 +14,7 @@ const CartPage = () => {
     axios
       .put('http://127.0.0.1:8000/api/products/checkout', cart)
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
         dispatch(setEmptyCart(''));
       });
   };
@@ -56,7 +56,7 @@ const CartPage = () => {
             <span
               className="w-full cursor-pointer rounded-md
              bg-white py-4 px-8 text-center text-green-600 hover:bg-green-600 hover:text-white active:bg-green-700"
-              onClick={() => checkout()}
+              onClick={checkout}
             >
               Checkout
             </span>

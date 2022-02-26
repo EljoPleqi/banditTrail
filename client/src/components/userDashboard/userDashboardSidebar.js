@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../../features/login';
 import {
   SwitchHorizontalIcon,
   TagIcon,
@@ -7,8 +10,8 @@ import {
   CogIcon,
   BellIcon,
   InboxInIcon,
-  ArrowRightIcon,
   ArrowLeftIcon,
+  LogoutIcon,
 } from '@heroicons/react/outline';
 
 const UserDashboardSidebar = ({
@@ -16,8 +19,18 @@ const UserDashboardSidebar = ({
   setSettingsToggled,
   settingsToggled,
 }) => {
+  const dispatch = useDispatch();
   const [inActive, setInactive] = useState(true);
   const [usernameText, setUsernameText] = useState(false);
+  const [logout, setLogout] = useState(false);
+  const navigate = useNavigate();
+
+  if (logout) {
+    localStorage.clear();
+    dispatch(setLogin(false));
+    navigate('/');
+  }
+
   return (
     <>
       <div className=" flex h-screen flex-col gap-40 bg-neutral-100 px-4 pt-12 font-normal ">
@@ -71,9 +84,15 @@ const UserDashboardSidebar = ({
                 </span>
               )}
             </div>
+            <span
+              className="flex cursor-pointer items-center gap-2 rounded-md py-2 px-2 hover:bg-red-500 hover:text-white active:bg-red-800"
+              onClick={() => setLogout(true)}
+            >
+              <LogoutIcon className="h-6 w-6" /> log out
+            </span>
           </div>
           <div
-            className=" flex cursor-pointer items-center gap-4 rounded-full bg-neutral-300 p-1"
+            className={` flex cursor-pointer items-center gap-4 rounded-full bg-neutral-300 p-1`}
             onClick={() => {
               setInactive(!inActive);
               setUsernameText(!usernameText);
@@ -83,18 +102,10 @@ const UserDashboardSidebar = ({
               src={`http://127.0.0.1:8000/${avatar}`}
               alt=""
               className={`box-border h-16 w-16  rounded-full ${
-                inActive ? 'bg-green-500' : 'bg-white'
+                inActive ? 'bg-green-500' : 'place-self-end bg-white'
               } object-cover p-1 shadow-sm`}
             />
-            <p>
-              {usernameText ? (
-                <span className="flex gap-2">
-                  Slide to log out <ArrowRightIcon className="h-6 w-6" />
-                </span>
-              ) : (
-                username
-              )}
-            </p>
+            <p>{username}</p>
           </div>
         </div>
       </div>

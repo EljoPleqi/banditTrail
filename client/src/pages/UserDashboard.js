@@ -3,6 +3,7 @@ import SettingsDashboard from '../components/UserDashboard/userSettings/Settings
 import profileCover from '../img/kay-liedl-zV3cZTAQ0xo-unsplash.jpg';
 import UserDashboardSidebar from '../components/UserDashboard/userDashboardSidebar';
 import ProductListing from '../components/UserDashboard/ProductListing';
+import SoldItems from '../components/UserDashboard/SoldItems';
 import Modal from '../components/Modal/Modal';
 import { useSelector } from 'react-redux';
 
@@ -56,7 +57,12 @@ const UserDashboard = ({ setListingModal, listingModal, setSearchModal }) => {
                     userprofile={loaded ? userData.username : 'loading...'}
                   />
                 </div>
-                <div className="p-8">Recently sold</div>
+                <div className="p-8">
+                  <div className="mb-6 flex justify-end gap-4">
+                    Recently sold
+                  </div>
+                  <SoldItems UserId={userData.id} />
+                </div>
               </div>
             </>
           )}
