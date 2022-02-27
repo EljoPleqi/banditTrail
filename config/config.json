@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "BK3iOy09DVNP",
+    "database": "bandit_trail_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "bb3f60098fc919",
+    "password": "e207853c",
+    "database": "heroku_a11cf42686cd9b6",
+    "host": "eu-cdbr-west-02.cleardb.net",
+    "dialect": "mysql"
+  }
+}
