@@ -74,13 +74,13 @@ const BikeListingForm = () => {
   return (
     <>
       <form
-        className="flex flex-col rounded-md bg-neutral-100 p-20"
+        className="flex flex-col overflow-hidden bg-neutral-100 py-8 lg:rounded-md lg:p-20"
         onSubmit={handleSubmit}
         method="POST"
         encType="multipart/form-data"
       >
         {!submitted ? (
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 px-4">
             <div className="grid-cols-threeTwo grid gap-4">
               <div className="flex flex-col gap-1">
                 <label>Product Title</label>
@@ -124,13 +124,14 @@ const BikeListingForm = () => {
               onClick={() => {
                 setSubmitted(!submitted);
               }}
-              className="box-border flex items-center justify-center gap-2 rounded-md border-2 border-solid border-neutral-600 py-2 px-4 transition-all duration-500 hover:gap-4 hover:border-none hover:bg-neutral-700 hover:text-white"
+              className="box-border flex items-center justify-center gap-2 rounded-md border-2 border-solid 
+              border-neutral-600 py-2 px-4 transition-all duration-500 hover:gap-4 hover:border-none hover:bg-neutral-700 hover:text-white"
             >
               Continue <ArrowRightIcon className="h-6 w-6" />
             </button>
           </div>
         ) : (
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 p-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-1">
                 <label>Enter the Brand of the Bike </label>

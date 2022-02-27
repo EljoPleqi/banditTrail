@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "devStart": "nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "name": "server",
   "version": "1.0.0",

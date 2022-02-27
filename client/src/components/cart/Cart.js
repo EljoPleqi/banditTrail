@@ -16,10 +16,10 @@ const Cart = () => {
         <img
           src={`http://127.0.0.1:8000/${item.featuredImage}`}
           alt="listed product"
-          className="h-full w-36"
+          className="h-full w-12 md:w-36"
         />
 
-        <p className=" ">{item.productTitle}</p>
+        <p className="hidden md:block ">{item.productTitle}</p>
 
         <p className="flex">{`${item.price} ${item.currency}`}</p>
         <span
@@ -37,7 +37,7 @@ const Cart = () => {
 
   return (
     <div className="mt-16 flex flex-col px-8">
-      <div className=" flex gap-44 border-b-2 border-neutral-100 bg-neutral-50 py-4 px-8 font-light">
+      <div className=" flex gap-12 border-b-2 border-neutral-100 bg-neutral-50 py-4 px-8 font-light lg:gap-44">
         <h3>Product Image</h3>
         <h3> Product Title and Price </h3>
       </div>

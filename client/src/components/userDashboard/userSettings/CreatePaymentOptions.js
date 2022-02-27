@@ -28,20 +28,19 @@ const CreatePaymentOptions = ({ username, id }) => {
 
       .then((res) => {
         console.log(res.data);
-        setOpen(false);
       });
   };
 
   return (
     <form onSubmit={handleSubmit} className="mt-16 flex flex-col gap-4">
       {open && (
-        <div className="flex w-96 flex-col gap-4">
-          <div className="flex w-full gap-4 ">
+        <div className="flex flex-col gap-4 md:w-96">
+          <div className="flex w-full flex-col gap-4 md:flex-row ">
             <div className="flex flex-col gap-2">
               <label>Credit Card Number</label>
               <input
                 type="number"
-                className="py-4 px-24"
+                className="bg-neutral-50 py-4 md:px-24"
                 onChange={(e) => setCcNumber(e.target.value)}
               />
               <DisplayPaymentSVG firstDigit={firstDigit} />
@@ -50,17 +49,17 @@ const CreatePaymentOptions = ({ username, id }) => {
               <label>CVC code</label>
               <input
                 type="number"
-                className="py-4"
+                className="bg-neutral-50 py-4"
                 onChange={(e) => setCvcNumber(e.target.value)}
               />
             </div>
           </div>
-          <div className="flex w-full gap-4">
+          <div className="flex w-full flex-col gap-4 md:flex-row">
             <div className="flex flex-col gap-2">
               <label>Card Holder's Name</label>
               <input
                 type="text"
-                className="py-4 px-12"
+                className="bg-neutral-50 py-4 md:px-12"
                 onChange={(e) => setCardHolder(e.target.value)}
               />
             </div>
@@ -68,7 +67,7 @@ const CreatePaymentOptions = ({ username, id }) => {
               <label>Exp..Date</label>
               <input
                 type="date"
-                className="py-4"
+                className="bg-neutral-50 py-4"
                 onChange={(e) => setCcExpDate(e.target.value)}
               />
             </div>
@@ -85,7 +84,7 @@ const CreatePaymentOptions = ({ username, id }) => {
         </button>
       ) : (
         <button
-          className="mx-4 max-w-xs rounded-md bg-green-500 py-4 px-8 text-white hover:bg-green-400 active:bg-green-800"
+          className="mx-4 flex max-w-xs items-center justify-center gap-2 rounded-md bg-green-500 py-4 px-8 text-white hover:bg-green-400 active:bg-green-800"
           onClick={() => setOpen(true)}
         >
           <PlusCircleIcon className="h-5 w-6" />

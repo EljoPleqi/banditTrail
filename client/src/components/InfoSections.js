@@ -7,7 +7,7 @@ const InfoSections = () => {
       <h2 className="pb-12 text-center text-4xl font-bold">
         Why should you ride our trail?
       </h2>
-      <div className="grid grid-cols-3 place-items-start gap-32 bg-neutral-100 p-10">
+      <div className="grid place-items-start gap-12 bg-neutral-100 p-10 md:grid-cols-3 lg:gap-32">
         <div className="flex flex-col gap-8 ">
           <svg
             version="1.1"

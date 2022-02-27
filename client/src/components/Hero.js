@@ -8,14 +8,14 @@ const Hero = () => {
 
   return (
     <div
-      className="flex h-screen flex-col items-center justify-center gap-10 bg-neutral-500 bg-cover bg-top bg-no-repeat bg-blend-overlay"
+      className="flex flex-col items-center justify-center gap-10 bg-neutral-500 bg-cover bg-top bg-no-repeat p-16 bg-blend-overlay lg:h-screen"
       style={{ backgroundImage: `url(${Background})` }}
     >
-      <h1 className="place-self-center text-5xl text-white ">
+      <h1 className=" text-center text-2xl text-white lg:text-5xl">
         Riding That <span className="font-bold italic">Doesn't</span> Break The
         Bank
       </h1>
-      <ArrowDownIcon className="h-6 w-6 text-white" />
+      <ArrowDownIcon className="hidden h-6 w-6 text-white md:inline-block" />
       <div
         onMouseEnter={() => setEmoji(true)}
         onMouseOut={() => setEmoji(false)}
@@ -23,7 +23,7 @@ const Hero = () => {
         <Button
           buttonText={`Sign Up ${emoji ? '🤙' : ''}`}
           destination={'/signup'}
-          hover={'hover:bg-neutral-900'}
+          hover={'hover:bg-green-600 hover:border-none'}
         />
       </div>
     </div>

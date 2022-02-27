@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import SettingsDashboard from '../components/UserDashboard/userSettings/SettingsDashboard';
 import profileCover from '../img/kay-liedl-zV3cZTAQ0xo-unsplash.jpg';
 import UserDashboardSidebar from '../components/UserDashboard/userDashboardSidebar';
@@ -6,9 +6,9 @@ import ProductListing from '../components/UserDashboard/ProductListing';
 import SoldItems from '../components/UserDashboard/SoldItems';
 import Modal from '../components/Modal/Modal';
 import { useSelector } from 'react-redux';
+import { CogIcon } from '@heroicons/react/outline';
 
 const UserDashboard = ({ setListingModal, listingModal, setSearchModal }) => {
-  const [loaded, setLoaded] = useState(false);
   const [listingId, setListingId] = useState('');
   const [settingsToggled, setSettingsToggled] = useState(false);
 
@@ -17,14 +17,11 @@ const UserDashboard = ({ setListingModal, listingModal, setSearchModal }) => {
   const editListingHandlers = () => {
     setListingModal(true);
   };
-  useEffect(() => {
-    setLoaded(true);
-  }, [userData]);
 
   return (
-    <div className="grid-cols-oneFour grid">
+    <div className="grid-cols-oneFour lg:grid">
       <UserDashboardSidebar
-        userData={loaded ? userData : 'loading...'}
+        userData={userData}
         setSettingsToggled={setSettingsToggled}
         settingsToggled={settingsToggled}
       />
@@ -36,25 +33,33 @@ const UserDashboard = ({ setListingModal, listingModal, setSearchModal }) => {
           id={listingId}
         />
       ) : (
-        <div className="flex flex-col gap-4 ">
+        <div className="flex flex-col gap-4">
+          <div className="flex  justify-end  p-4 lg:hidden">
+            <div
+              className="flex justify-center gap-2"
+              onClick={() => setSettingsToggled(!settingsToggled)}
+            >
+              <span>Settings</span> <CogIcon className="h-6 w-6" />
+            </div>
+          </div>
           {settingsToggled ? (
             <SettingsDashboard userData={userData} />
           ) : (
             <>
               <div
-                className="h-64   bg-slate-500 bg-cover bg-center"
+                className="hidden h-64 bg-slate-500  bg-cover bg-center md:block"
                 style={{ backgroundImage: `url(${profileCover})` }}
               ></div>
-              <div className="grid-cols-twoOne grid">
-                <div className=" border-r-2 border-solid  border-neutral-100 p-8 ">
-                  <div className="mb-6 flex justify-end gap-4">
+              <div className="lg:grid-cols-twoOne grid">
+                <div className=" border-r-2 border-solid  border-neutral-100 p-4 ">
+                  <div className="mb-6 flex justify-end gap-4 ">
                     <p className="">Active Listings</p>
                   </div>
+
                   <ProductListing
-                    userData={loaded ? userData : 'loading...'}
                     editListingHandler={editListingHandlers}
                     setListingId={setListingId}
-                    userprofile={loaded ? userData.username : 'loading...'}
+                    userprofile={userData.username}
                   />
                 </div>
                 <div className="p-8">

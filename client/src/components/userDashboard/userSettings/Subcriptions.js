@@ -27,7 +27,7 @@ const Subcriptions = () => {
   ];
 
   const subscriptionsCard = subscriptions.map((sub) => (
-    <div className="flex h-96 w-64 flex-col items-center justify-center rounded-md bg-white hover:shadow-md ">
+    <div className="flex flex-col items-center justify-center rounded-md  bg-neutral-50 p-8 hover:shadow-md   ">
       <p className=" text-xl">{sub.title}</p>
       <p className="mb-4 text-xs ">{sub.description}</p>
       <p className="mb-2 text-lg ">
@@ -40,7 +40,7 @@ const Subcriptions = () => {
     </div>
   ));
   return (
-    <div className="flex items-center justify-center gap-8 ">
+    <div className="flex flex-col items-center justify-center gap-8 lg:flex-row ">
       {subscriptionsCard}
     </div>
   );

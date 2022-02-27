@@ -4,11 +4,8 @@ import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-const ProductListing = ({
-  userData: { id, username },
-  editListingHandler,
-  setListingId,
-}) => {
+const ProductListing = ({ editListingHandler, setListingId }) => {
+  const { username, id } = useSelector((state) => state.userData);
   const login = useSelector((state) => state.login);
   const loggedUser = useSelector((state) => state.userData);
 
@@ -42,7 +39,9 @@ const ProductListing = ({
 
             <p className=" ">{listing.productTitle}</p>
 
-            <p className="w-64 shrink">{productDescription}...</p>
+            <p className="hidden w-64 shrink md:block">
+              {productDescription}...
+            </p>
 
             <p className="flex">{`${listing.price} ${listing.currency}`}</p>
           </div>

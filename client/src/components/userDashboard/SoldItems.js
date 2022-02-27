@@ -1,24 +1,20 @@
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
 
 const SoldItems = ({ UserId }) => {
   const [soldItems, setSoldItems] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     axios
-      .post(`http://127.0.0.1:8000/api/products/sold`, { UserId })
+      .post(`http://127.0.0.1:8000/api/products/sold`, {
+        UserId,
+      })
       .then((res) => {
-        console.log(res.data);
         setSoldItems(res.data);
+        setLoaded(true);
       });
   }, []);
-
-  const totalEarnings = soldItems
-    .map((item) => item.price)
-    .reduce((prev, curr) => prev + curr);
-  console.log(totalEarnings);
-
-  console.log(soldItems);
 
   const displaySoldItems = soldItems.map((item, i) => {
     return (
@@ -41,6 +37,13 @@ const SoldItems = ({ UserId }) => {
       </div>
     );
   });
+  let totalEarnings;
+
+  if (loaded) {
+    totalEarnings = soldItems
+      .map((item) => item.price)
+      .reduce((prev, curr) => prev + curr);
+  }
 
   return (
     <div className="flex h-full flex-col">
@@ -53,13 +56,13 @@ const SoldItems = ({ UserId }) => {
         className="flex flex-col justify-between
       "
       >
-        {displaySoldItems}
+        {displaySoldItems ? displaySoldItems : 'LOADING'}
         <div className="  mt-4 rounded-md bg-neutral-200 p-4 ">
           <div className="flex justify-between ">
             <h3>Total Earnings</h3>
             <span className="flex gap-2">
-              <span>{totalEarnings}</span>
-              <span>{soldItems[0].currency}</span>
+              <span>{totalEarnings ? totalEarnings : 'LOADING..'}</span>
+              US$
             </span>
           </div>
         </div>

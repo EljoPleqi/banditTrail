@@ -33,7 +33,7 @@ const UserDashboardSidebar = ({
 
   return (
     <>
-      <div className=" flex h-screen flex-col gap-40 bg-neutral-100 px-4 pt-12 font-normal ">
+      <div className="hidden h-screen flex-col gap-40 bg-neutral-100 px-4 pt-12 font-normal lg:flex ">
         <div className=" flex w-full flex-col justify-center border-b-2 border-solid border-neutral-200">
           <Link to={'/list-product/forSale'}>
             <div className="flex items-center gap-2 rounded-md py-2 px-2 hover:bg-neutral-300">

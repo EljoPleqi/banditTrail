@@ -14,8 +14,8 @@ import {
 const SettingsDashboard = ({ userData }) => {
   const [toggle, setToggle] = useState(0);
   return (
-    <div className="flex h-screen  flex-col gap-4 bg-neutral-100  p-4">
-      <div className="flex w-full items-center text-sm">
+    <div className="flex flex-col  gap-4 p-4  lg:h-screen">
+      <div className="mb-8 flex flex-col  items-center bg-neutral-100 p-4 text-sm lg:w-full  lg:flex-row">
         <h3
           className={
             toggle === 0

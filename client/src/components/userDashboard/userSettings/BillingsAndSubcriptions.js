@@ -12,7 +12,7 @@ const BillingsAndSubcriptions = () => {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
-        <div className="flex items-center justify-center gap-2 rounded-md bg-blue-500 px-2 py-4 text-sm text-white hover:bg-blue-400 active:bg-blue-800">
+        <div className="flex flex-col items-center justify-center gap-2 rounded-md bg-blue-500 px-2 py-4 text-sm text-white hover:bg-blue-400 active:bg-blue-800 lg:flex-row">
           <DownloadIcon className="h-5 w-5" />
           <p>Download receipts</p>
         </div>

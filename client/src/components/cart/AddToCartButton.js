@@ -24,7 +24,8 @@ const AddToCartButton = ({ product }) => {
   return (
     <div>
       <button
-        className="text-l mt-6 rounded-lg bg-neutral-700 px-16 py-4 text-white"
+        className="w-full cursor-pointer rounded-md
+        border-2 border-green-600 bg-white py-4 px-8 text-center text-green-600 hover:bg-green-600 hover:text-white active:bg-green-900"
         onClick={addToCart}
       >
         Add to cart

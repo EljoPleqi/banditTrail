@@ -31,17 +31,16 @@ const CartPage = () => {
   //   total = itemPrices.reduce();
   // }
   return (
-    <div className="grid-cols-threeTwo grid">
+    <div className="grid-cols-threeTwo lg:grid">
       <div>
         <Cart />
       </div>
       <div
-        className=" flex h-screen flex-col items-center justify-end bg-neutral-600 bg-cover text-white  bg-blend-overlay"
-        style={{ backgroundImage: `url(${img})` }}
+        className={` flex flex-col items-center justify-end lg:h-screen lg:bg-neutral-600 lg:bg-cover lg:text-white lg:bg-blend-overlay`}
       >
-        <div className="mb-20 flex  flex-col items-center gap-4 p-12">
-          <div className="flex w-96 items-end justify-between gap-4">
-            <div className="flex flex-col">
+        <div className="mb-20 flex  flex-col items-center gap-4 lg:p-12">
+          <div className="flex w-96 items-end justify-between gap-4  px-4">
+            <div className="flex flex-col ">
               <span className="flex items-center gap-2">
                 {' '}
                 <ShieldCheckIcon className="h-4 w-4" />

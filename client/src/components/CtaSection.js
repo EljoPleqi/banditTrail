@@ -4,20 +4,22 @@ import ctaImg from '../img/andhika-soreng-US06QF_sxu8-unsplash.jpg';
 const CtaSection = () => {
   return (
     <div
-      className="bg-neutral-600 flex flex-col items-center justify-center bg-cover bg-blend-overlay py-40 "
+      className="flex flex-col items-center justify-center bg-neutral-600 bg-cover bg-center py-40 bg-blend-overlay "
       style={{ backgroundImage: `url(${ctaImg})` }}
     >
-      <h1 className="text-6xl text-white font-bold">Never Miss a Deal</h1>
-      <div className="flex items-center justify-center pt-16">
+      <h1 className=" text-4xl font-bold text-white md:text-6xl">
+        Never Miss a Deal
+      </h1>
+      <div className="flex items-center justify-center pt-4 md:pt-16">
         <span>
           <input
             type="text"
             placeholder="Dont miss a deal"
-            className="px-52 py-8 rounded-l-lg text-xl"
+            className="rounded-l-lg p-4 md:text-xl lg:py-8 lg:px-52"
           />
         </span>
         <span>
-          <button className="bg-orange-500 text-white px-16 py-8 rounded-r-lg text-xl">
+          <button className="rounded-r-lg bg-orange-500 p-4 text-white md:text-xl lg:px-16 lg:py-8">
             Subscribe
           </button>
         </span>

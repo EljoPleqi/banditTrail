@@ -13,10 +13,10 @@ import ProductListingPage from './pages/ProductListingPage';
 import Modal from './components/Modal/Modal';
 import UserPublicProfile from './pages/UserPublicProfile';
 import UserDashboard from './pages/UserDashboard';
-import CreateNewTrail from './pages/CreateNewTrail';
 import ProtectedRoutes from './ProtectedRoute';
 import AboutUs from './pages/AboutUs';
 import AllProducts from './pages/AllProducts';
+import TrailPage from './pages/TrailPage';
 
 function App() {
   const [listingModal, setListingModal] = useState(false);
@@ -53,10 +53,7 @@ function App() {
                 />
               }
             />
-            <Route
-              path="/my-trails/add-new-trail"
-              element={<CreateNewTrail />}
-            />
+            <Route path="/featured-trail" element={<TrailPage />} />
             <Route
               path="/list-product/forSale"
               element={<ProductListingPage />}

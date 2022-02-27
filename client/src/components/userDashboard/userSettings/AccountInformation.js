@@ -34,7 +34,7 @@ const AccountInformation = ({
     <>
       <form method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
         <div
-          className=" flex w-full cursor-pointer flex-col border-b-2 border-neutral-200 py-8 px-24 hover:bg-neutral-200"
+          className=" flex w-full cursor-pointer flex-col border-b-2 border-neutral-200 py-8 hover:bg-neutral-200 lg:px-24"
           onClick={() => {
             setChangeUsername(!changeUsername);
           }}
@@ -44,7 +44,7 @@ const AccountInformation = ({
         {changeUsername && (
           <input
             type="text"
-            className="mt-2 rounded-md px-48 py-3"
+            className="mt-2 rounded-md bg-neutral-50 py-3 lg:px-48"
             onChange={(e) => {
               setNewUsername(e.target.value);
             }}
@@ -52,7 +52,7 @@ const AccountInformation = ({
           />
         )}
         <div
-          className="w-full cursor-pointer border-b-2 border-neutral-200 py-8 px-24 hover:bg-neutral-200"
+          className="w-full cursor-pointer border-b-2 border-neutral-200 py-8 hover:bg-neutral-200 lg:px-24"
           onClick={() => setChangeProfilePicture(!changeProfilePicture)}
         >
           <h2>Update your profile picture</h2>
@@ -60,7 +60,7 @@ const AccountInformation = ({
         {changeProfilePicture && (
           <input
             type="file"
-            className="mt-2 rounded-md px-48 py-3"
+            className="mt-2 rounded-md bg-neutral-50 py-3 lg:px-48"
             name="avatar"
             onChange={(e) => {
               setNewProfilePicture(e.target.files[0]);
@@ -68,7 +68,7 @@ const AccountInformation = ({
           />
         )}
         <div
-          className="w-full cursor-pointer border-b-2 border-neutral-200 py-8 px-24 hover:bg-neutral-200"
+          className="w-full cursor-pointer border-b-2 border-neutral-200 py-8 hover:bg-neutral-200 lg:px-24"
           onClick={() => setChangePassword(!changePassword)}
         >
           <h2>Update your password</h2>
@@ -76,19 +76,19 @@ const AccountInformation = ({
         {changePassword && (
           <input
             type="text"
-            className="mt-2 rounded-md px-48 py-3"
+            className="mt-2 rounded-md bg-neutral-50 py-3 lg:px-48"
             onChange={(e) => setNewPassword(e.target.value)}
           />
         )}
         <div
-          className="w-full cursor-pointer border-b-2 border-neutral-200 py-8 px-24 hover:bg-neutral-200"
+          className="w-full cursor-pointer border-b-2 border-neutral-200 py-8 hover:bg-neutral-200 lg:px-24"
           onClick={() => setChangeRidingStyle(!changeRidingStyle)}
         >
           <h2>Update your riding style</h2>
         </div>
         {changeRidingStyle && (
           <select
-            className="mt-2 rounded-md px-48 py-3"
+            className="mt-2 rounded-md bg-neutral-50 py-3 lg:px-48"
             onChange={(e) => setNewRidingStyle(e.target.value)}
           ></select>
         )}
