@@ -37,15 +37,15 @@ const SoldItems = ({ UserId }) => {
       </div>
     );
   });
-  let totalEarnings;
+  // let totalEarnings;
 
-  if (loaded) {
-    totalEarnings = soldItems
-      .map((item) => item.price)
-      .reduce((prev, curr) => prev + curr);
-  } else {
-    totalEarnings = 0;
-  }
+  // if (loaded) {
+  //   totalEarnings = soldItems
+  //     .map((item) => item.price)
+  //     .reduce((prev, curr) => prev + curr);
+  // } else {
+  //   totalEarnings = 0;
+  // }
 
   return (
     <div className="flex h-full flex-col">
@@ -63,7 +63,7 @@ const SoldItems = ({ UserId }) => {
           <div className="flex justify-between ">
             <h3>Total Earnings</h3>
             <span className="flex gap-2">
-              <span>{totalEarnings ? totalEarnings : 'LOADING..'}</span>
+              {/* <span>{totalEarnings ? totalEarnings : 'LOADING..'}</span> */}
               US$
             </span>
           </div>
