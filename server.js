@@ -25,7 +25,7 @@ server.use(
 
 if (process.env.NODE_ENV === 'production') {
   server.use('/', express.static(path.join(__dirname, './client/build')));
-  server.use('/public', express.static(path.join(__dirname, 'public')));
+  server.use('/public', express.static(path.join(__dirname, './public')));
 }
 
 server.use('/public', express.static(path.join(__dirname, 'public')));
