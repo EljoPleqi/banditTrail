@@ -24,7 +24,7 @@ server.use(
 //serve static files
 
 if (process.env.NODE_ENV === 'production') {
-  server.use('/', express.static(__dirname, './client/build'));
+  server.use('/', express.static(path.join(__dirname, './client/build')));
 }
 
 server.use('/public', express.static(path.join(__dirname, 'public')));
