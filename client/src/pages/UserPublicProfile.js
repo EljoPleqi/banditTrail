@@ -14,7 +14,7 @@ const UserPublicProfile = () => {
 
   useEffect(() => {
     axios
-      .post(`http://localhost:8000/users/${username}`, {
+      .post(` https://bandit-trail.herokuapp.comusers/${username}`, {
         username: username,
       })
       .then((res) => {
