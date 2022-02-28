@@ -43,6 +43,8 @@ const SoldItems = ({ UserId }) => {
     totalEarnings = soldItems
       .map((item) => item.price)
       .reduce((prev, curr) => prev + curr);
+  } else {
+    totalEarnings = 0;
   }
 
   return (
