@@ -33,7 +33,9 @@ const ProductFeatured = () => {
           <div className="">
             {user ? (
               <div className="flex flex-col gap-4">
-                <a href={`http://localhost:3000/users/${user.username}`}>
+                <a
+                  href={` https://bandit-trail.herokuapp.com/users/${user.username}`}
+                >
                   <img
                     src={` https://bandit-trail.herokuapp.com/${user.avatar}`}
                     alt=""

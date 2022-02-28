@@ -44,7 +44,7 @@ const ProductCard = ({
       .slice(0, visible)
       .map((data, i) => (
         <a
-          href={`http://localhost:3000/products/${data.id}`}
+          href={` https://bandit-trail.herokuapp.com/products/${data.id}`}
           className="hover:scale-105 hover:shadow-md hover:transition-all"
           key={i}
         >

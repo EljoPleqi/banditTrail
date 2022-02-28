@@ -51,8 +51,8 @@ const SearchModal = () => {
         <a
           href={
             data.productTitle
-              ? `http://localhost:3000/products/${data.id}`
-              : `http://localhost:3000/users/${data.username}`
+              ? ` https://bandit-trail.herokuapp.com/products/${data.id}`
+              : ` https://bandit-trail.herokuapp.com/users/${data.username}`
           }
         >
           <div className="flex gap-2">
