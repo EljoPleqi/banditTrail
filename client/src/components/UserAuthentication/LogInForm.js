@@ -4,6 +4,7 @@ import { loginFormValidation } from '../../validations/Validations';
 
 import { setLogin } from '../../features/login';
 import { setUserData } from '../../features/userData';
+import { setNotification } from '../../features/notifications';
 
 import { useSelector, useDispatch } from 'react-redux';
 import useUserRedirect from '../../hooks/useUserRedirect';
@@ -23,17 +24,19 @@ const LogInForm = () => {
     const user = { username, password };
 
     if (loginFormValidation.isValid(user)) {
-      axios
-        .post(' https://bandit-trail.herokuapp.com/users/login', user)
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.error) {
-            alert(res.data.error);
-          } else {
-            dispatch(setLogin(true));
-            dispatch(setUserData(res.data));
-          }
-        });
+      axios.post(' http://localhost:8000/users/login', user).then((res) => {
+        console.log(res.data);
+        if (res.data.error) {
+          alert(res.data.error);
+        } else {
+          dispatch(setLogin(true));
+          dispatch(setUserData(res.data));
+          dispatch(setNotification(true));
+          setTimeout(() => {
+            dispatch(setNotification(false));
+          }, 3000);
+        }
+      });
     }
   };
   useUserRedirect(login);
@@ -56,7 +59,8 @@ const LogInForm = () => {
               className="m-2  rounded-xl border-2 py-4 placeholder:p-4 lg:py-6 lg:px-24"
             />
             <input
-              type="text"
+              type="password"
+              password
               placeholder="Enter your password"
               onChange={(e) => setPassword(e.target.value)}
               className="m-2  rounded-xl border-2 py-4 placeholder:p-4 lg:py-6 lg:px-24"

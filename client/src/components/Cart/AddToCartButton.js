@@ -1,9 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setAddToCart } from '../../features/cart';
+import { setNotification } from '../../features/notifications';
 import { useSelector } from 'react-redux';
 
-const AddToCartButton = ({ product }) => {
+const AddToCartButton = ({ product, setShowNotification }) => {
   const cart = useSelector((state) => state.cart);
   const login = useSelector((state) => state.login);
 
@@ -15,6 +16,10 @@ const AddToCartButton = ({ product }) => {
     } else {
       if (login) {
         dispatch(setAddToCart(product));
+        dispatch(setNotification(true));
+        setTimeout(() => {
+          dispatch(setNotification(false));
+        }, 3000);
       } else {
         alert('Please Login');
       }

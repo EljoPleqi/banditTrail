@@ -1,20 +1,23 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { TrashIcon, UserAddIcon } from '@heroicons/react/outline';
+import { TrashIcon } from '@heroicons/react/outline';
 import { setRemoveFromCart, setEmptyCart } from '../../features/cart';
+import { setNotification } from '../../features/notifications';
+import Popup from '../notifications/Popup';
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const notification = useSelector((state) => state.notification);
   const dispatch = useDispatch();
 
   const displayCart = cart.map((item, i) => {
     return (
       <div
-        className="mt-12 flex items-center justify-between border-b-2 border-neutral-100 pb-8"
+        className="mt-12  flex items-center justify-between border-b-2 border-neutral-100 pb-8 "
         key={i}
       >
         <img
-          src={` https://bandit-trail.herokuapp.com/${item.featuredImage}`}
+          src={` http://localhost:8000/${item.featuredImage}`}
           alt="listed product"
           className="h-full w-12 md:w-36"
         />
@@ -27,6 +30,10 @@ const Cart = () => {
           text-red-600 hover:bg-red-500 hover:text-white active:bg-red-800"
           onClick={() => {
             dispatch(setRemoveFromCart(i));
+            dispatch(setNotification(true));
+            setTimeout(() => {
+              dispatch(setNotification(false));
+            }, 3000);
           }}
         >
           <TrashIcon className="h-5 w-5" /> Remove Item
@@ -43,13 +50,27 @@ const Cart = () => {
       </div>
       <div className="overflow-auto">{displayCart}</div>
       <span
-        className="my-4 mx-8 flex w-64 cursor-pointer items-center justify-center gap-2 place-self-end rounded-md py-2 px-4 text-sm font-normal text-red-600 hover:bg-red-500
-         hover:text-white active:bg-red-800"
-        onClick={() => dispatch(setEmptyCart())}
+        className="my-4 mx-8 mb-12 flex w-64 cursor-pointer items-center justify-center gap-2 place-self-end rounded-md py-2 px-4 text-sm font-normal text-red-600
+         hover:bg-red-500 hover:text-white active:bg-red-800 lg:mb-0"
+        onClick={() => {
+          dispatch(setEmptyCart());
+          dispatch(setNotification(true));
+          setTimeout(() => {
+            dispatch(setNotification(false));
+          }, 3000);
+        }}
       >
         <TrashIcon className="h-6 w-6" />
         Empty Cart
       </span>
+      {notification && (
+        <Popup
+          type={
+            'bg-red-500 p-8 text-center text-white transition-all mb-12 lg:mb-0'
+          }
+          message={'Item(s) removed from cart'}
+        />
+      )}
     </div>
   );
 };

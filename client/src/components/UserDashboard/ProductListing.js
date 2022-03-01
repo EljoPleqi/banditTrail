@@ -1,16 +1,40 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useGetProductsByUserId } from '../../hooks/useGetProducts';
+import Popup from '../notifications/Popup';
 import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { setNotification } from '../../features/notifications';
 
-const ProductListing = ({ editListingHandler, setListingId }) => {
-  const { username, id } = useSelector((state) => state.userData);
+const ProductListing = ({
+  editListingHandler,
+  setListingId,
+  userData: { username, id },
+}) => {
+  const dispatch = useDispatch();
+
   const login = useSelector((state) => state.login);
   const loggedUser = useSelector((state) => state.userData);
+  const notification = useSelector((state) => state.notification);
 
-  console.log(loggedUser.username, username);
   const userListings = useGetProductsByUserId(id);
+  const currentListings = useRef();
+
+  console.log(userListings.length);
+
+  useEffect(() => {
+    currentListings.current = userListings;
+  }, [userListings]);
+
+  if (
+    userListings > 0 &&
+    userListings.length > currentListings.current.length
+  ) {
+    dispatch(setNotification(true));
+    setTimeout(() => {
+      dispatch(setNotification(false));
+    }, 3000);
+  }
 
   const displayListings = userListings.map((listing, i) => {
     if (!listing.sold) {
@@ -21,10 +45,13 @@ const ProductListing = ({ editListingHandler, setListingId }) => {
 
       const deleteListing = () => {
         axios
-          .delete(
-            ` https://bandit-trail.herokuapp.com/api/products/${listing.id}`
-          )
-          .then((res) => console.log(res.data));
+          .delete(` http://localhost:8000/api/products/${listing.id}`)
+          .then((res) => {
+            dispatch(setNotification(true));
+            setTimeout(() => {
+              dispatch(setNotification(false));
+            }, 3000);
+          });
       };
 
       return (
@@ -34,7 +61,7 @@ const ProductListing = ({ editListingHandler, setListingId }) => {
         >
           <div className="mt-12 flex justify-between">
             <img
-              src={` https://bandit-trail.herokuapp.com/${listing.featuredImage}`}
+              src={` http://localhost:8000/${listing.featuredImage}`}
               alt="listed product"
               className="h-full w-36"
             />
@@ -48,6 +75,7 @@ const ProductListing = ({ editListingHandler, setListingId }) => {
             <p className="flex">{`${listing.price} ${listing.currency}`}</p>
           </div>
           {login &&
+            username &&
             loggedUser.username.toLowerCase() === username.toLowerCase() && (
               <div className="flex gap-2 place-self-end">
                 <span
@@ -76,6 +104,12 @@ const ProductListing = ({ editListingHandler, setListingId }) => {
 
   return (
     <>
+      {notification && (
+        <Popup
+          type={'bg-red-500 p-8 text-center text-white transition-all'}
+          message={'Listing Removed 🆇'}
+        />
+      )}
       <div className="flex h-[50vh] flex-col">
         <div className=" flex justify-between border-b-2 border-neutral-100 bg-neutral-50 py-4 px-8 font-light">
           <h3>Listing Image</h3>

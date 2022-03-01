@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../../features/login';
+import { setNotification } from '../../features/notifications';
 import {
   SwitchHorizontalIcon,
   TagIcon,
@@ -86,7 +87,13 @@ const UserDashboardSidebar = ({
             </div>
             <span
               className="flex cursor-pointer items-center gap-2 rounded-md py-2 px-2 hover:bg-red-500 hover:text-white active:bg-red-800"
-              onClick={() => setLogout(true)}
+              onClick={() => {
+                setLogout(true);
+                dispatch(setNotification(true));
+                setTimeout(() => {
+                  dispatch(setNotification(false));
+                }, 3000);
+              }}
             >
               <LogoutIcon className="h-6 w-6" /> log out
             </span>
@@ -99,7 +106,7 @@ const UserDashboardSidebar = ({
             }}
           >
             <img
-              src={` https://bandit-trail.herokuapp.com/${avatar}`}
+              src={` http://localhost:8000/${avatar}`}
               alt=""
               className={`box-border h-16 w-16  rounded-full ${
                 inActive ? 'bg-green-500' : 'place-self-end bg-white'

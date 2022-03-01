@@ -11,7 +11,7 @@ const SearchModal = () => {
   console.log(products);
 
   useEffect(() => {
-    axios.get(' https://bandit-trail.herokuapp.com/users').then((res) => {
+    axios.get(' http://localhost:8000/users').then((res) => {
       setSetSearchableData([...products, ...res.data]);
       setLoaded(true);
     });
@@ -51,13 +51,13 @@ const SearchModal = () => {
         <a
           href={
             data.productTitle
-              ? ` https://bandit-trail.herokuapp.com/products/${data.id}`
-              : ` https://bandit-trail.herokuapp.com/users/${data.username}`
+              ? ` http://localhost:8000/products/${data.id}`
+              : ` http://localhost:8000/users/${data.username}`
           }
         >
           <div className="flex gap-2">
             <img
-              src={` https://bandit-trail.herokuapp.com/${
+              src={` http://localhost:8000/${
                 data.productTitle ? data.featuredImage : data.avatar
               }`}
               alt=""

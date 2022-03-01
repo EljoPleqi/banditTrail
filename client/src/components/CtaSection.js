@@ -1,10 +1,10 @@
 import React from 'react';
-import ctaImg from '../img/andhika-soreng-US06QF_sxu8-unsplash.jpg';
+import ctaImg from '../img/andhika-soreng-US06QF_sxu8-unsplash.webp';
 
 const CtaSection = () => {
   return (
     <div
-      className="flex flex-col items-center justify-center bg-neutral-600 bg-cover bg-center py-40 bg-blend-overlay "
+      className="flex flex-col items-center justify-center bg-neutral-600 bg-cover bg-center py-40 bg-blend-overlay lg:bg-top "
       style={{ backgroundImage: `url(${ctaImg})` }}
     >
       <h1 className=" text-4xl font-bold text-white md:text-6xl">

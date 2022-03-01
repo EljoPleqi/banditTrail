@@ -1,11 +1,11 @@
 import React from 'react';
 import ListingForm from '../components/ProductListingForm/ListingForm';
-import listingImg from '../img/lorenzo-cerato-1Mdth1sVDbg-unsplash.jpg';
+import listingImg from '../img/lorenzo-cerato-1Mdth1sVDbg-unsplash.webp';
 
 const ProductListingPage = () => {
   return (
     <div
-      className="bg-neutral-500 flex flex-col items-center justify-center bg-cover bg-blend-overlay py-40 "
+      className="flex flex-col items-center justify-center bg-neutral-500 bg-cover py-40 bg-blend-overlay "
       style={{ backgroundImage: `url(${listingImg})` }}
     >
       <ListingForm />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Background from '../img/project_template.jpeg';
+import Background from '../img/lachlan-cruickshank-S9v_EPJfGys-unsplash.webp';
 import Button from './Button';
 import { ArrowDownIcon } from '@heroicons/react/outline';
 
@@ -8,7 +8,7 @@ const Hero = () => {
 
   return (
     <div
-      className="flex flex-col items-center justify-center gap-10 bg-neutral-500 bg-cover bg-top bg-no-repeat p-16 bg-blend-overlay lg:h-screen"
+      className="flex flex-col items-center justify-center gap-10 bg-neutral-600  bg-cover  bg-bottom bg-no-repeat p-16 bg-blend-overlay lg:h-screen"
       style={{ backgroundImage: `url(${Background})` }}
     >
       <h1 className=" text-center text-2xl text-white lg:text-5xl">

@@ -18,7 +18,7 @@ const AllProducts = () => {
 
   useEffect(() => {
     axios
-      .get(' https://bandit-trail.herokuapp.com/api/products')
+      .get(' http://localhost:8000/api/products')
       .then((res) => dispatch(setProduct(res.data)));
   }, [dispatch]);
 

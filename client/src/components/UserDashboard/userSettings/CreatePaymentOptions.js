@@ -16,7 +16,7 @@ const CreatePaymentOptions = ({ username, id }) => {
 
     axios
       .post(
-        ` https://bandit-trail.herokuapp.com/users/${username.toLowerCase()}/payment_options`,
+        ` http://localhost:8000/users/${username.toLowerCase()}/payment_options`,
         {
           creditCardNumber: ccNumber,
           cardHolder: cardHolder,

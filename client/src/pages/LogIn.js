@@ -1,6 +1,6 @@
 import React from 'react';
 import LogInForm from '../components/UserAuthentication/LogInForm';
-import bgImg from '../img/william-hook-pa0rr3rVB-U-unsplash.jpg';
+import bgImg from '../img/adrien-vajas-o3_3a_EyNnY-unsplash.webp';
 
 const Login = () => {
   return (

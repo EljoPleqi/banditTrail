@@ -65,7 +65,7 @@ const Header = ({ setModalOpen, setSearchModal }) => {
               <Link to={`/user-dashboard/${username}`}>
                 <li>
                   <img
-                    src={` https://bandit-trail.herokuapp.com/${avatar}`}
+                    src={` http://localhost:8000/${avatar}`}
                     alt=""
                     className=" h-12 w-12 rounded-full bg-green-500 object-cover p-0.5"
                   />

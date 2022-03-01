@@ -6,7 +6,7 @@ import AddToCartButton from '../Cart/AddToCartButton';
 import { useGetProductsByProdcutId } from '../../hooks/useGetProducts';
 import axios from 'axios';
 
-const ProductFeatured = () => {
+const ProductFeatured = ({ setShowNotification }) => {
   const [user, setUser] = useState();
   let { id } = useParams();
 
@@ -16,7 +16,7 @@ const ProductFeatured = () => {
 
   useEffect(() => {
     axios
-      .get(` https://bandit-trail.herokuapp.com/users/${UserId}`)
+      .get(` http://localhost:8000/users/${UserId}`)
       .then((res) => setUser(res.data));
   }, [product]);
 
@@ -33,11 +33,9 @@ const ProductFeatured = () => {
           <div className="">
             {user ? (
               <div className="flex flex-col gap-4">
-                <a
-                  href={` https://bandit-trail.herokuapp.com/users/${user.username}`}
-                >
+                <a href={` http://localhost:3000/users/${user.username}`}>
                   <img
-                    src={` https://bandit-trail.herokuapp.com/${user.avatar}`}
+                    src={` http://localhost:8000/${user.avatar}`}
                     alt=""
                     className="h-32 w-32 rounded-full object-cover"
                   />
@@ -67,7 +65,10 @@ const ProductFeatured = () => {
               <p className="mt-4 text-xl">Size: {product.size}</p>
             </div>{' '}
             <p className="lg:w-96">{product.productDescription}</p>
-            <AddToCartButton product={product} />
+            <AddToCartButton
+              product={product}
+              setShowNotification={setShowNotification}
+            />
           </div>
         </div>
       </div>

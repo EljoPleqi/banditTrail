@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 import ProductListings from '../components/UserDashboard/ProductListing';
-import profileCover from '../img/kay-liedl-zV3cZTAQ0xo-unsplash.jpg';
+import profileCover from '../img/jonny-neuenhagen-WA2jzef4foQ-unsplash.webp';
 
 const UserPublicProfile = () => {
   const [profileUser, setprofileUser] = useState({});
@@ -14,7 +14,7 @@ const UserPublicProfile = () => {
 
   useEffect(() => {
     axios
-      .post(` https://bandit-trail.herokuapp.comusers/${username}`, {
+      .post(`http://localhost:8000/users/${username}`, {
         username: username,
       })
       .then((res) => {
@@ -34,7 +34,7 @@ const UserPublicProfile = () => {
           <div>
             <div className="z-10 flex gap-8  ">
               <img
-                src={` https://bandit-trail.herokuapp.com/${profileUser.avatar}`}
+                src={` http://localhost:8000/${profileUser.avatar}`}
                 alt="user avatar"
                 className="-mt-20 ml-16 h-40 w-40 rounded-full bg-white object-cover p-2 "
               />

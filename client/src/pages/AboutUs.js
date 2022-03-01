@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../components/Button';
-import img from '.././img/axel-brunst-GcVVLnjYlN0-unsplash.jpg';
+import img from '.././img/victoria-poveda-0DAwKglHOAY-unsplash.webp';
 const AboutUs = () => {
   return (
     <>

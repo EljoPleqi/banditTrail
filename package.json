@@ -27,6 +27,5 @@
   "main": "server.js",
   "author": "Eljo",
   "license": "ISC",
-  "devDependencies": {},
   "description": ""
 }

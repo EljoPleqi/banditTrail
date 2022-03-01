@@ -1,5 +1,5 @@
 import React from 'react';
-import highLightImg from '../../img/jaime-dantas-B2_T58LhG24-unsplash.jpg';
+import highLightImg from '../../img/jaime-dantas-B2_T58LhG24-unsplash.webp';
 import { Link } from 'react-router-dom';
 
 const TrailHiglight = () => {

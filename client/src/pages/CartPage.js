@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import img from '../img/miguel-mendes-EvrfZ9bAtY4-unsplash.jpg';
-import { XCircleIcon, ShieldCheckIcon } from '@heroicons/react/outline';
+import img from '../img/miguel-mendes-EvrfZ9bAtY4-unsplash.webp';
+import { ShieldCheckIcon } from '@heroicons/react/outline';
 import Cart from '../components/Cart/Cart';
 import { useSelector, useDispatch } from 'react-redux';
 import { setEmptyCart } from '../features/cart';
@@ -12,7 +12,7 @@ const CartPage = () => {
 
   const checkout = () => {
     axios
-      .put(' https://bandit-trail.herokuapp.com/api/products/checkout', cart)
+      .put(' http://localhost:8000/api/products/checkout', cart)
       .then((res) => {
         console.log(res);
         dispatch(setEmptyCart(''));

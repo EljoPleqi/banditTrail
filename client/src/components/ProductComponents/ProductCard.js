@@ -29,10 +29,7 @@ const ProductCard = ({
       condition: condition,
     };
     axios
-      .post(
-        ' https://bandit-trail.herokuapp.com/api/products/filtered',
-        filteredRequest
-      )
+      .post(' http://localhost:8000/api/products/filtered', filteredRequest)
       .then((res) => setFilteredData(res.data));
     setLoaded(true);
     return () => setLoaded(false);
@@ -44,14 +41,14 @@ const ProductCard = ({
       .slice(0, visible)
       .map((data, i) => (
         <a
-          href={` https://bandit-trail.herokuapp.com/products/${data.id}`}
+          href={` http://localhost:3000/products/${data.id}`}
           className="hover:scale-105 hover:shadow-md hover:transition-all"
           key={i}
         >
           <div className="flex min-h-full flex-col bg-white p-5">
             <div>
               <img
-                src={` https://bandit-trail.herokuapp.com/${data.featuredImage}`}
+                src={` http://localhost:8000/${data.featuredImage}`}
                 alt=""
                 className="object-cover"
               />

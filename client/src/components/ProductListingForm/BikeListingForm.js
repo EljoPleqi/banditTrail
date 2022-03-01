@@ -31,7 +31,7 @@ const BikeListingForm = () => {
   const [uploading, setUploading] = useState(true);
   const [images, setImages] = useState([]);
 
-  const { id } = useSelector((state) => state.userData);
+  const { id, username } = useSelector((state) => state.userData);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -59,17 +59,15 @@ const BikeListingForm = () => {
     }
 
     if (bikeListingFormValidation.isValid(bike)) {
-      axios
-        .post(' https://bandit-trail.herokuapp.com/api/products', bike)
-        .then((res) => {
-          if (res.data.error) {
-            // alert(res.data.error);
-            console.log(res.data);
-          } else {
-            setUploading(false);
-            navigate('/user-dashboard');
-          }
-        });
+      axios.post(' http://localhost:8000/api/products', bike).then((res) => {
+        if (res.data.error) {
+          // alert(res.data.error);
+          console.log(res.data);
+        } else {
+          setUploading(false);
+          navigate(`/user-dashboard/${username}`);
+        }
+      });
     }
   };
 
@@ -127,7 +125,7 @@ const BikeListingForm = () => {
                 setSubmitted(!submitted);
               }}
               className="box-border flex items-center justify-center gap-2 rounded-md border-2 border-solid 
-              border-neutral-600 py-2 px-4 transition-all duration-500 hover:gap-4 hover:border-none hover:bg-neutral-700 hover:text-white"
+              border-neutral-600 py-2 px-4 transition-all duration-500 hover:gap-4 hover:border-none hover:bg-neutral-700 hover:text-white active:translate-y-1"
             >
               Continue <ArrowRightIcon className="h-6 w-6" />
             </button>
@@ -184,6 +182,7 @@ const BikeListingForm = () => {
               onChange={(e) => setSize(e.target.value)}
             >
               <option value=""></option>
+              <option value="one-size">One Size</option>
               <option value="sm">Small</option>
               <option value="md">Medium</option>
               <option value="lg">Large</option>
@@ -227,6 +226,7 @@ const BikeListingForm = () => {
               onChange={(e) => setWheelSize(Number(e.target.value))}
             >
               <option value="">Select</option>
+              <option value={24}>24</option>
               <option value={26}>26</option>
               <option value={27.5}>27.5</option>
               <option value={29}>29</option>
@@ -253,14 +253,14 @@ const BikeListingForm = () => {
                 onClick={() => {
                   setSubmitted(!submitted);
                 }}
-                className="flex  items-center gap-4 rounded-md border-2 border-solid border-neutral-600 py-2 px-4"
+                className="flex  items-center gap-4 rounded-md border-2 border-solid border-neutral-600 py-2 px-4 hover:bg-white active:translate-y-1 active:bg-neutral-200"
               >
                 <ArrowLeftIcon className="h-6 w-6" /> Go back
               </button>{' '}
               {uploading ? (
                 <button
                   type="submit"
-                  className=" flex items-center gap-2 rounded-md bg-white py-2 px-4"
+                  className=" flex items-center gap-2 rounded-md border-2 bg-green-600 py-2 px-8 text-white hover:bg-green-500 active:translate-y-1 active:bg-green-900 "
                 >
                   List Item <PlusCircleIcon className="h-6 w-6" />
                 </button>

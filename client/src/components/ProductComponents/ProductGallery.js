@@ -5,7 +5,7 @@ const ProductGallery = ({ product, gallery }) => {
   const [slide, setSlide] = useState(1);
 
   useEffect(() => {
-    setFeaturedImg(` https://bandit-trail.herokuapp.com/${product}`);
+    setFeaturedImg(` http://localhost:8000/${product}`);
   }, [product]);
 
   let displayImages = [];
@@ -16,7 +16,7 @@ const ProductGallery = ({ product, gallery }) => {
     displayImages = images.map((image, i) => {
       return (
         <img
-          src={` https://bandit-trail.herokuapp.com/${image}`}
+          src={` http://localhost:8000/${image}`}
           alt=""
           className="h-32 w-32  object-cover"
           key={i}

@@ -1,6 +1,6 @@
 import React from 'react';
-import img1 from '../img/clement-delhaye-ZGNKvarK1og-unsplash.jpg';
-import img2 from '../img/jaime-dantas-B2_T58LhG24-unsplash.jpg';
+import img1 from '../img/lorenzo-cerato-1Mdth1sVDbg-unsplash.webp';
+import img2 from '../img/jaime-dantas-B2_T58LhG24-unsplash.webp';
 const TrailPage = () => {
   return (
     <div>

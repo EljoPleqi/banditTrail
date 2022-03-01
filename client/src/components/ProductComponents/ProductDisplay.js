@@ -14,11 +14,11 @@ const ProductDisplay = () => {
   const [condition, setCondition] = useState();
   const [filteredData, setFilteredData] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const [visible, setVisible] = useState(4);
+  const [visible, setVisible] = useState(8);
 
   useEffect(() => {
     axios
-      .get(' https://bandit-trail.herokuapp.com/api/products')
+      .get(' http://localhost:8000/api/products')
       .then((res) => dispatch(setProduct(res.data)));
   }, []);
 
