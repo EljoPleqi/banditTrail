@@ -72,7 +72,7 @@ const SettingsDashboard = ({ userData }) => {
       {toggle === 1 && (
         <PaymentOptions username={userData.username} id={userData.id} />
       )}
-      {toggle === 2 && <BillingsAndSubcriptions />}
+      {toggle === 2 && <BillingsAndSubcriptions id={userData.id} />}
       {toggle === 3 && <Appearence />}
     </div>
   );

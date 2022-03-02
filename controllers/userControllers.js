@@ -1,7 +1,8 @@
 const multer = require('multer');
 const path = require('path');
-const { Users, PaymentOptions } = require('../models');
+const { Users, PaymentOptions, Subscription } = require('../models');
 const bcrypt = require('bcrypt');
+const subscription = require('../models/subscription');
 
 require('dotenv').config({ path: './config.env' });
 
@@ -203,4 +204,37 @@ exports.getPaymentOptions = async (req, res) => {
   });
 
   res.json(userPaymentOptions);
+};
+
+// UPDATE SUBSCRIPTION
+
+exports.changeSub = async (req, res) => {
+  const { name, price, freeListings, pricePerListing } = req.body;
+  const user = await Users.findAll({
+    where: { username: req.params.username },
+  });
+  const {
+    dataValues: { id },
+  } = user[0];
+
+  Subscription.update(
+    { name: name, price: price, freeListings: freeListings, pricePerListing },
+    { where: { UserId: id } }
+  );
+};
+// PULL SUBSCRIPTION
+exports.getSub = async (req, res) => {
+  const user = await Users.findAll({
+    where: { username: req.params.username },
+  });
+
+  const {
+    dataValues: { id },
+  } = user[0];
+
+  const userSub = await Subscription.findAll({
+    where: { UserId: id },
+  });
+
+  res.json(userSub);
 };

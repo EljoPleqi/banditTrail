@@ -11,6 +11,7 @@ const {
   createPaymentOption,
   getPaymentOptions,
   getUserById,
+  changeSub,
 } = require('../controllers/userControllers');
 
 const router = express.Router();
@@ -28,5 +29,7 @@ router
   .route('/:username/payment_options')
   .get(getPaymentOptions)
   .post(createPaymentOption);
+
+router.route('/sub/:id').get(getSub).patch(changeSub);
 
 module.exports = router;

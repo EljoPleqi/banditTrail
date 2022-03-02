@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Subcriptions from './Subcriptions';
+import axios from 'axios';
 import { DownloadIcon } from '@heroicons/react/outline';
 
-const BillingsAndSubcriptions = () => {
+const BillingsAndSubcriptions = ({ id }) => {
+  const [sub, setSub] = useState('');
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/users/sub/${id}`)
+      .then((res) => setSub(res.data));
+  }, [sub]);
   return (
     <>
       <div className="my-8 flex items-center justify-center gap-4 rounded-md bg-neutral-50 p-4 shadow-sm">
@@ -18,7 +26,7 @@ const BillingsAndSubcriptions = () => {
         </div>
       </div>
       <div>
-        <Subcriptions />
+        <Subcriptions sub={sub} id={id} />
       </div>
     </>
   );

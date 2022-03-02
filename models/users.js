@@ -30,7 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     Users.hasMany(models.Products, {
       onDelete: 'cascade',
     });
-    Users.hasOne(models.PaymentOptions, { onDelete: 'cascade' });
+    Users.hasMany(models.PaymentOptions, { onDelete: 'cascade' });
+    Users.hasOne(models.Subscription, { onDelete: 'cascade' });
   };
   return Users;
 };

@@ -12,35 +12,29 @@ exports.checkID = (req, res, next, val) => {
 
 // GET ALL PRODUCT ENTRIES THAT HAVEN'T BEEN SOLD FROM THE DB
 
-exports.getAllProducts =
-  ('/',
-  async (req, res) => {
-    const allProducts = await Products.findAll({ where: { sold: false } });
+exports.getAllProducts = async (req, res) => {
+  const allProducts = await Products.findAll({ where: { sold: false } });
 
-    res.json(allProducts);
-  });
+  res.json(allProducts);
+};
 
 // GET A UNIQUE PRODUCT ENTRY FROM THE DB
 
-exports.getSingleProduct =
-  ('/:id',
-  async (req, res) => {
-    const id = req.params.id;
-    const product = await Products.findByPk(id);
-    res.json(product);
-  });
+exports.getSingleProduct = async (req, res) => {
+  const id = req.params.id;
+  const product = await Products.findByPk(id);
+  res.json(product);
+};
 
 // DELETE Listing
 
-exports.deleteListing =
-  ('/:id',
-  async (req, res) => {
-    console.log(req.params);
-    const id = req.params.id;
-    const product = await Products.findByPk(id);
-    product.destroy();
-    res.json('LISTING DELETE WAS SUCESSFUL ');
-  });
+exports.deleteListing = async (req, res) => {
+  console.log(req.params);
+  const id = req.params.id;
+  const product = await Products.findByPk(id);
+  product.destroy();
+  res.json('LISTING DELETE WAS SUCESSFUL ');
+};
 
 //  UPDATE LISTING
 
@@ -82,7 +76,23 @@ exports.getFilteredProducts = async (req, res) => {
 
   res.json(filteredProducts);
 };
+// MARK PRODUCT AS SOLD
 
+exports.sellListings = async (req, res) => {
+  try {
+    const items = [...req.body];
+
+    console.log(items);
+
+    for (const item of items) {
+      Products.update({ sold: true }, { where: { id: item.id } });
+    }
+
+    res.json(items);
+  } catch (error) {
+    console.log(error);
+  }
+};
 // GET SOLD PRODUCTS
 
 exports.getSoldItems = async (req, res) => {
@@ -127,26 +137,6 @@ exports.listProduct = async (req, res) => {
     res.status(500);
   }
 };
-
-// MARK PRODUCT AS SOLD
-
-exports.sellListings =
-  ('/checkout',
-  async (req, res) => {
-    try {
-      const items = [...req.body];
-
-      console.log(items);
-
-      for (const item of items) {
-        Products.update({ sold: true }, { where: { id: item.id } });
-      }
-
-      res.json(items);
-    } catch (error) {
-      console.log(error);
-    }
-  });
 
 // UPLOAD PRODUCT IMG
 
