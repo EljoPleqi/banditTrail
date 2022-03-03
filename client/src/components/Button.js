@@ -5,7 +5,7 @@ function Button({ buttonText, destination, hover }) {
   return (
     <Link
       to={`${destination}`}
-      className={`rounded-lg border-2 border-white px-10 py-3 text-lg font-medium tracking-wider text-white ${hover}`}
+      className={`rounded-lg border-2 border-white px-10 py-4 text-lg font-medium tracking-wider text-white ${hover}`}
     >
       {buttonText}
     </Link>

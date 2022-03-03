@@ -1,11 +1,10 @@
 import axios from 'axios';
 import Popup from '../../notifications/Popup';
-import Modal from '../../Modal/Modal';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setNotification } from '../../../features/notifications';
 
-const Subcriptions = ({ sub, id }) => {
+const Subcriptions = ({ sub, id, setSubModal }) => {
   const subscriptions = [
     {
       title: 'Green',
@@ -55,7 +54,10 @@ const Subcriptions = ({ sub, id }) => {
           : `flex flex-col items-center justify-center rounded-md  bg-neutral-50 p-8 hover:shadow-md`
       }
       key={i}
-      onClick={() => setActiveSub(i)}
+      onClick={() => {
+        setActiveSub(i);
+        setSubModal(true);
+      }}
     >
       <p className=" text-xl">{sub.title}</p>
       <p className="mb-4 text-xs ">{sub.description}</p>

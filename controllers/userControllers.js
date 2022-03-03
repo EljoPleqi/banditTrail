@@ -97,6 +97,7 @@ exports.createUser = async (req, res) => {
       const user = await Users.findOne({
         where: { username: username },
       });
+      Subscription.create({ UserId: user.id });
       res.json(user);
     });
 
@@ -224,8 +225,9 @@ exports.changeSub = async (req, res) => {
 };
 // PULL SUBSCRIPTION
 exports.getSub = async (req, res) => {
+  console.log(req.params.id);
   const user = await Users.findAll({
-    where: { username: req.params.username },
+    where: { id: req.params.id },
   });
 
   const {

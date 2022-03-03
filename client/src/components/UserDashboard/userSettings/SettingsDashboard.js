@@ -11,7 +11,7 @@ import {
   MoonIcon,
 } from '@heroicons/react/outline';
 
-const SettingsDashboard = ({ userData }) => {
+const SettingsDashboard = ({ userData, setSubModal }) => {
   const [toggle, setToggle] = useState(0);
   return (
     <div className="flex flex-col  gap-4 p-4  lg:h-screen">
@@ -72,7 +72,9 @@ const SettingsDashboard = ({ userData }) => {
       {toggle === 1 && (
         <PaymentOptions username={userData.username} id={userData.id} />
       )}
-      {toggle === 2 && <BillingsAndSubcriptions id={userData.id} />}
+      {toggle === 2 && (
+        <BillingsAndSubcriptions id={userData.id} setSubModal={setSubModal} />
+      )}
       {toggle === 3 && <Appearence />}
     </div>
   );

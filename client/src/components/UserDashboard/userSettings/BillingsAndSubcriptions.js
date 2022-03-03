@@ -3,14 +3,14 @@ import Subcriptions from './Subcriptions';
 import axios from 'axios';
 import { DownloadIcon } from '@heroicons/react/outline';
 
-const BillingsAndSubcriptions = ({ id }) => {
+const BillingsAndSubcriptions = ({ id, setSubModal }) => {
   const [sub, setSub] = useState('');
 
   useEffect(() => {
     axios
       .get(`http://localhost:8000/users/sub/${id}`)
       .then((res) => setSub(res.data));
-  }, [sub]);
+  }, []);
   return (
     <>
       <div className="my-8 flex items-center justify-center gap-4 rounded-md bg-neutral-50 p-4 shadow-sm">
@@ -26,7 +26,7 @@ const BillingsAndSubcriptions = ({ id }) => {
         </div>
       </div>
       <div>
-        <Subcriptions sub={sub} id={id} />
+        <Subcriptions sub={sub} id={id} setSubModal={setSubModal} />
       </div>
     </>
   );

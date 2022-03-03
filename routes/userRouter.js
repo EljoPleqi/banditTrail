@@ -11,6 +11,7 @@ const {
   createPaymentOption,
   getPaymentOptions,
   getUserById,
+  getSub,
   changeSub,
 } = require('../controllers/userControllers');
 
