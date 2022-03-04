@@ -44,7 +44,7 @@ const ProductCard = ({
       .slice(0, visible)
       .map((data, i) => (
         <Link
-          to={` https://bandit-trail.herokuapp.com/products/${data.id}`}
+          to={` products/${data.id}`}
           className="hover:scale-105 hover:shadow-md hover:transition-all"
           key={i}
         >
