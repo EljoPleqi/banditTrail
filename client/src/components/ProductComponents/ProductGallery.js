@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 const ProductGallery = ({ gallery }) => {
   let displayImages = [];
-  const [featuredImg, setFeaturedImg] = useState(gallery.split('_').length - 1);
+  const [featuredImg, setFeaturedImg] = useState(
+    displayImages[displayImages.length - 1]
+  );
 
   useEffect(() => {
     setFeaturedImg(
