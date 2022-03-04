@@ -2,18 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 const ProductGallery = ({ gallery }) => {
   let displayImages = [];
-  const [featuredImg, setFeaturedImg] = useState(
-    displayImages[displayImages.length - 1]
-  );
-
-  useEffect(() => {
-    setFeaturedImg(
-      ` https://bandit-trail.herokuapp.com/${
-        displayImages[displayImages.length - 1]
-      }`
-    );
-  }, [displayImages[displayImages.length - 1]]);
-  console.log(displayImages[displayImages.length - 1]);
 
   if (gallery) {
     const images = gallery.split('_');
@@ -32,6 +20,19 @@ const ProductGallery = ({ gallery }) => {
   }
 
   console.log(featuredImg);
+
+  const [featuredImg, setFeaturedImg] = useState(
+    displayImages[displayImages.length - 1]
+  );
+
+  useEffect(() => {
+    setFeaturedImg(
+      ` https://bandit-trail.herokuapp.com/${
+        displayImages[displayImages.length - 1]
+      }`
+    );
+  }, [displayImages[displayImages.length - 1]]);
+  console.log(displayImages[displayImages.length - 1]);
 
   function getImg(e) {
     console.log(e.target.src);
