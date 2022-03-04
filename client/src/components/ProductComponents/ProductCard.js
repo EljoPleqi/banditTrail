@@ -45,7 +45,7 @@ const ProductCard = ({
       .map((data, i) => (
         <Link
           to={`products/${data.id}`}
-          className="hover:scale-105 hover:shadow-md hover:transition-all"
+          className="max-h-56 max-w-xs hover:scale-105 hover:shadow-md hover:transition-all"
           key={i}
         >
           <div className="flex min-h-full flex-col bg-white p-5">
