@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const ProductGallery = ({ gallery }) => {
+  const [featuredImg, setFeaturedImg] = useState('');
   let displayImages = [];
 
   if (gallery) {
@@ -17,23 +18,11 @@ const ProductGallery = ({ gallery }) => {
         />
       );
     });
+
+    console.log(featuredImg);
   }
 
-  console.log(featuredImg);
-
-  const [featuredImg, setFeaturedImg] = useState(
-    displayImages[displayImages.length - 1]
-  );
-
-  useEffect(() => {
-    setFeaturedImg(
-      ` https://bandit-trail.herokuapp.com/${
-        displayImages[displayImages.length - 1]
-      }`
-    );
-  }, [displayImages[displayImages.length - 1]]);
-  console.log(displayImages[displayImages.length - 1]);
-
+  setFeaturedImg(displayImages[displayImages.length - 1]);
   function getImg(e) {
     console.log(e.target.src);
     setFeaturedImg(e.target.src);
