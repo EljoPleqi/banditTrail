@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const ProductCard = ({
@@ -43,7 +43,7 @@ const ProductCard = ({
     (filteredData.length > 0 ? filteredData : productData)
       .slice(0, visible)
       .map((data, i) => (
-        <a
+        <Link
           href={` https://bandit-trail.herokuapp.com/products/${data.id}`}
           className="hover:scale-105 hover:shadow-md hover:transition-all"
           key={i}
@@ -64,7 +64,7 @@ const ProductCard = ({
               </div>
             </div>
           </div>
-        </a>
+        </Link>
       ));
 
   return (
