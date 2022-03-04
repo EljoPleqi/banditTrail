@@ -21,9 +21,11 @@ const ProductGallery = ({ gallery }) => {
   }
 
   useEffect(() => {
-    const images = gallery.split('_');
-    console.log(images);
-    setFeaturedImg(images[images.length - 1]);
+    if (gallery) {
+      const images = gallery.split('_');
+      console.log(images);
+      setFeaturedImg(images[images.length - 1]);
+    }
   }, [gallery]);
 
   function getImg(e) {
