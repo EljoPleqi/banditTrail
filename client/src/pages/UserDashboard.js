@@ -29,6 +29,7 @@ const UserDashboard = ({ setListingModal, listingModal, setSearchModal }) => {
           message={'Welcome Back 🤘'}
         />
       )}
+
       <div className="grid-cols-oneFour lg:grid">
         <UserDashboardSidebar
           userData={userData}

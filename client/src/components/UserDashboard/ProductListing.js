@@ -20,8 +20,6 @@ const ProductListing = ({
   const userListings = useGetProductsByUserId(id);
   const currentListings = useRef();
 
-  console.log(userListings.length);
-
   useEffect(() => {
     currentListings.current = userListings;
   }, [userListings]);
@@ -99,6 +97,8 @@ const ProductListing = ({
             )}
         </div>
       );
+    } else {
+      return null;
     }
   });
 

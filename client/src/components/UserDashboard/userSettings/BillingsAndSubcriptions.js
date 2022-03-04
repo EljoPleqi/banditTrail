@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Subcriptions from './Subcriptions';
 import axios from 'axios';
 import { DownloadIcon } from '@heroicons/react/outline';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { switchSub } from '../../../features/subscription';
 const BillingsAndSubcriptions = ({ id, setSubModal }) => {
-  const [sub, setSub] = useState('');
+  const dispatch = useDispatch();
+  const sub = useSelector((state) => state.subscription);
 
   useEffect(() => {
     axios
       .get(`http://localhost:8000/users/sub/${id}`)
-      .then((res) => setSub(res.data));
+      .then((res) => dispatch(switchSub(res.data)));
   }, []);
   return (
     <>

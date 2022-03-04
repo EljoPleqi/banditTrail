@@ -7,6 +7,7 @@ import loginReducer from './features/login';
 import userDataReducer from './features/userData';
 import cartReducer from './features/cart';
 import notificationReducer from './features/notifications';
+import subscriptionReducer from './features/subscription';
 
 const config = {
   key: 'main-root',
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   userData: userDataReducer,
   cart: cartReducer,
   notification: notificationReducer,
+  subscription: subscriptionReducer,
 });
 
 const persistedReducer = persistReducer(config, reducer);

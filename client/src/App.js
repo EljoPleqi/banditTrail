@@ -20,8 +20,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Modal from './components/Modal/Modal';
 
-import { SubContext } from './components/UserDashboard/SubContext';
-
 function App() {
   const [listingModal, setListingModal] = useState(false);
   const [searchModal, setSearchModal] = useState(false);
@@ -38,8 +36,7 @@ function App() {
             searchModal={searchModal}
             setSearchModal={setSearchModal}
           />
-        )}
-
+        )}{' '}
         <Routes>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
@@ -47,35 +44,28 @@ function App() {
           <Route path="products/all-products" element={<AllProducts />} />
           <Route path="/users/:username" element={<UserPublicProfile />} />
           <Route path="/about-us" element={<AboutUs />} />
-        </Routes>
 
-        <SubContext.Provider value={'sub context'}>
-          <Routes>
-            <Route element={<ProtectedRoutes />}>
-              <Route
-                path="/user-dashboard/:username"
-                element={
-                  <UserDashboard
-                    setListingModal={setListingModal}
-                    listingModal={listingModal}
-                    setSearchModal={setSearchModal}
-                  />
-                }
-              />
-              <Route
-                path="/list-product/forSale"
-                element={<ProductListingPage />}
-              />
-            </Route>
-          </Routes>
-        </SubContext.Provider>
+          <Route element={<ProtectedRoutes />}>
+            <Route
+              path="/user-dashboard/:username"
+              element={
+                <UserDashboard
+                  setListingModal={setListingModal}
+                  listingModal={listingModal}
+                  setSearchModal={setSearchModal}
+                />
+              }
+            />
+            <Route
+              path="/list-product/forSale"
+              element={<ProductListingPage />}
+            />
+          </Route>
 
-        <Routes>
           <Route path="/featured-trail" element={<TrailPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/" element={<Home />} />
         </Routes>
-
         <Footer />
       </Router>
     </>

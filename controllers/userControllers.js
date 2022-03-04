@@ -210,9 +210,10 @@ exports.getPaymentOptions = async (req, res) => {
 // UPDATE SUBSCRIPTION
 
 exports.changeSub = async (req, res) => {
-  const { name, price, freeListings, pricePerListing } = req.body;
+  console.log(req.body.sub);
+  const { name, price, freeListings, pricePerListing } = req.body.sub;
   const user = await Users.findAll({
-    where: { username: req.params.username },
+    where: { id: req.params.id },
   });
   const {
     dataValues: { id },

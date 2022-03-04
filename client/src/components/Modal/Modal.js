@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback, useContext } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import SearchModal from './SearchModal';
 import ListingModal from './ListingModal';
 import SwitchSubModal from './SwitchSubModal';
@@ -6,13 +6,12 @@ import SwitchSubModal from './SwitchSubModal';
 const Modal = (
   { listingModal, searchModal, setSubModal, switchSub, id },
   setListingModal,
-  setSearchModal
+  setSearchModal,
+  setUpdateSub
 ) => {
   const modalRef = useRef();
-  const sub = useContext();
 
   const closeModal = (e) => {
-    console.log(modalRef.current, e.target);
     if (modalRef.current === e.target) {
       listingModal && setListingModal(false);
       searchModal && setSearchModal(false);
@@ -41,7 +40,7 @@ const Modal = (
     >
       {listingModal && <ListingModal id={id} />}
       {searchModal && <SearchModal />}
-      {switchSub && <SwitchSubModal />}
+      {switchSub && <SwitchSubModal setSubModal={setSubModal} />}
     </div>
   );
 };

@@ -1,13 +1,12 @@
-import axios from 'axios';
-import Popup from '../../notifications/Popup';
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { setNotification } from '../../../features/notifications';
+import { useDispatch } from 'react-redux';
 
-const Subcriptions = ({ sub, id, setSubModal }) => {
+import { switchSub } from '../../../features/subscription';
+
+const Subcriptions = ({ sub, setSubModal }) => {
   const subscriptions = [
     {
-      title: 'Green',
+      name: 'Green',
       price: 0,
       description: 'Lorem ipsum dolor sit amet',
       freeListings: 10,
@@ -15,43 +14,35 @@ const Subcriptions = ({ sub, id, setSubModal }) => {
     },
 
     {
-      title: 'Blue',
+      name: 'Blue',
       price: 9.99,
       description: 'Lorem ipsum dolor sit amet',
       freeListings: 100,
       pricePerListing: 0.99,
     },
     {
-      title: ' Black Diamond',
+      name: ' Black Diamond',
       price: 19.99,
       description: 'Lorem ipsum dolor sit amet',
-      freeListings: 'Unlimited',
+      freeListings: 99999999,
       pricePerListing: 0,
     },
   ];
 
   const [activeSub, setActiveSub] = useState(0);
 
-  const notification = useSelector((state) => state.notification);
   const dispatch = useDispatch();
 
-  const switchSub = () => {
-    axios
-      .post(`http://localhost:8000/users/sub/${id}`, subscriptions[activeSub])
-      .then((res) => {
-        dispatch(setNotification(true));
-        setTimeout(() => {
-          dispatch(setNotification(false));
-        }, 3000);
-      });
-  };
+  useEffect(() => {
+    dispatch(switchSub(subscriptions[activeSub]));
+  }, [activeSub]);
 
   const subscriptionsCard = subscriptions.map((sub, i) => (
     <div
       className={
         activeSub === i
-          ? `${'border-2 border-blue-500'} flex flex-col items-center justify-center rounded-md  bg-neutral-50 p-8 hover:shadow-md`
-          : `flex flex-col items-center justify-center rounded-md  bg-neutral-50 p-8 hover:shadow-md`
+          ? `${'border-2 border-blue-500'} flex cursor-pointer flex-col items-center justify-center  rounded-md bg-neutral-50 p-8 hover:shadow-md`
+          : `flex cursor-pointer flex-col items-center justify-center  rounded-md bg-neutral-50 p-8 hover:shadow-md`
       }
       key={i}
       onClick={() => {
@@ -59,7 +50,7 @@ const Subcriptions = ({ sub, id, setSubModal }) => {
         setSubModal(true);
       }}
     >
-      <p className=" text-xl">{sub.title}</p>
+      <p className=" text-xl">{sub.name}</p>
       <p className="mb-4 text-xs ">{sub.description}</p>
       <p className="mb-2 text-lg ">
         {sub.price}$<span className="text-sm font-light"> /Per Year</span>
@@ -73,7 +64,6 @@ const Subcriptions = ({ sub, id, setSubModal }) => {
   return (
     <div className="flex flex-col items-center justify-center gap-8 lg:flex-row ">
       {subscriptionsCard}
-      {notification && <Popup />}
     </div>
   );
 };
