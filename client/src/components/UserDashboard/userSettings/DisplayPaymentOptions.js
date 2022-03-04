@@ -8,7 +8,7 @@ const DisplayPaymentOptions = ({ username }) => {
   useEffect(() => {
     axios
       .get(
-        ` http://localhost:8000/users/${username.toLowerCase()}/payment_options`,
+        ` https://bandit-trail.herokuapp.com/users/${username.toLowerCase()}/payment_options`,
         { headers: { accessToken: accessToken } }
       )
       .then((res) => setPaymentOptions(res.data));

@@ -10,7 +10,9 @@ const SwitchSubModal = ({ setSubModal, setUpdateSub }) => {
 
   const switchSubHandler = () => {
     axios
-      .patch(`http://localhost:8000/users/sub/${userData.id}`, { sub })
+      .patch(`https://bandit-trail.herokuapp.com/users/sub/${userData.id}`, {
+        sub,
+      })
       .then((res) => {});
     setSubModal(false);
   };

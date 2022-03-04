@@ -14,7 +14,7 @@ const UserPublicProfile = () => {
 
   useEffect(() => {
     axios
-      .post(`http://localhost:8000/users/${username}`, {
+      .post(`https://bandit-trail.herokuapp.com/users/${username}`, {
         username: username,
       })
       .then((res) => {
@@ -34,7 +34,7 @@ const UserPublicProfile = () => {
           <div>
             <div className="z-10 flex gap-8  ">
               <img
-                src={` http://localhost:8000/${profileUser.avatar}`}
+                src={` https://bandit-trail.herokuapp.com/${profileUser.avatar}`}
                 alt="user avatar"
                 className="-mt-20 ml-16 h-40 w-40 rounded-full bg-white object-cover p-2 "
               />

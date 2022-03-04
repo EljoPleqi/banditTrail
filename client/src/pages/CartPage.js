@@ -12,7 +12,7 @@ const CartPage = () => {
 
   const checkout = () => {
     axios
-      .put(' http://localhost:8000/api/products/checkout', cart)
+      .put(' https://bandit-trail.herokuapp.com/api/products/checkout', cart)
       .then((res) => {
         console.log(res);
         dispatch(setEmptyCart(''));

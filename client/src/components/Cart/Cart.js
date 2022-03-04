@@ -17,7 +17,7 @@ const Cart = () => {
         key={i}
       >
         <img
-          src={` http://localhost:8000/${item.featuredImage}`}
+          src={` https://bandit-trail.herokuapp.com/${item.featuredImage}`}
           alt="listed product"
           className="h-full w-12 md:w-36"
         />

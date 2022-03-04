@@ -29,7 +29,10 @@ const ListingModal = ({ id }) => {
     updatedProduct.append('ridingStyle', changeRidingStyle);
 
     axios
-      .patch(` http://localhost:8000/api/products/${id}`, updatedProduct)
+      .patch(
+        ` https://bandit-trail.herokuapp.com/api/products/${id}`,
+        updatedProduct
+      )
       .then((res) => console.log(res.data));
   };
 
@@ -38,7 +41,7 @@ const ListingModal = ({ id }) => {
       <div className="flex  max-w-[52rem] gap-8 rounded-md bg-white p-8 shadow-md">
         <div className="flex flex-col gap-8">
           <img
-            src={` http://localhost:8000/${featuredImage}`}
+            src={` https://bandit-trail.herokuapp.com/${featuredImage}`}
             alt="product"
             className="h-48 "
           />

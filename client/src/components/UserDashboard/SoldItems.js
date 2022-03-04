@@ -7,7 +7,7 @@ const SoldItems = ({ UserId }) => {
 
   useEffect(() => {
     axios
-      .post(` http://localhost:8000/api/products/sold`, {
+      .post(` https://bandit-trail.herokuapp.com/api/products/sold`, {
         UserId,
       })
       .then((res) => {
@@ -22,7 +22,7 @@ const SoldItems = ({ UserId }) => {
         {' '}
         <div className="flex flex-col gap-2">
           <img
-            src={` http://localhost:8000/${item.featuredImage}`}
+            src={` https://bandit-trail.herokuapp.com/${item.featuredImage}`}
             alt=""
             className="h-16 w-auto"
           />

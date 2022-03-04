@@ -59,15 +59,17 @@ const BikeListingForm = () => {
     }
 
     if (bikeListingFormValidation.isValid(bike)) {
-      axios.post(' http://localhost:8000/api/products', bike).then((res) => {
-        if (res.data.error) {
-          // alert(res.data.error);
-          console.log(res.data);
-        } else {
-          setUploading(false);
-          navigate(`/user-dashboard/${username}`);
-        }
-      });
+      axios
+        .post(' https://bandit-trail.herokuapp.com/api/products', bike)
+        .then((res) => {
+          if (res.data.error) {
+            // alert(res.data.error);
+            console.log(res.data);
+          } else {
+            setUploading(false);
+            navigate(`/user-dashboard/${username}`);
+          }
+        });
     }
   };
 

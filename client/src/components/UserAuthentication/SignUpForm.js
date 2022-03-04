@@ -28,11 +28,13 @@ const SignUpForm = () => {
     user.append('avatar', avatar);
 
     if (signUpFormValidation.isValid(user)) {
-      axios.post('http://localhost:8000/users', user).then((res) => {
-        console.log(res.data);
-        dispatch(setUserData(res.data));
-        dispatch(setLogin(true));
-      });
+      axios
+        .post('https://bandit-trail.herokuapp.com/users', user)
+        .then((res) => {
+          console.log(res.data);
+          dispatch(setUserData(res.data));
+          dispatch(setLogin(true));
+        });
     }
   };
 

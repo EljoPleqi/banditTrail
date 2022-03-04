@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 8000;
 
 server.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: ['https://bandit-trail.herokuapp.com'],
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
     credentials: true,
   })

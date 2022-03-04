@@ -24,19 +24,21 @@ const LogInForm = () => {
     const user = { username, password };
 
     if (loginFormValidation.isValid(user)) {
-      axios.post(' http://localhost:8000/users/login', user).then((res) => {
-        console.log(res.data);
-        if (res.data.error) {
-          alert(res.data.error);
-        } else {
-          dispatch(setLogin(true));
-          dispatch(setUserData(res.data));
-          dispatch(setNotification(true));
-          setTimeout(() => {
-            dispatch(setNotification(false));
-          }, 3000);
-        }
-      });
+      axios
+        .post(' https://bandit-trail.herokuapp.com/users/login', user)
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.error) {
+            alert(res.data.error);
+          } else {
+            dispatch(setLogin(true));
+            dispatch(setUserData(res.data));
+            dispatch(setNotification(true));
+            setTimeout(() => {
+              dispatch(setNotification(false));
+            }, 3000);
+          }
+        });
     }
   };
   useUserRedirect(login);
