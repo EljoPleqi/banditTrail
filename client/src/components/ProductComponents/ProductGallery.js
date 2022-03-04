@@ -37,7 +37,7 @@ const ProductGallery = ({ gallery }) => {
     <div className="mx-4 flex flex-col items-center gap-4">
       <div>
         <img
-          src={`${featuredImg}`}
+          src={`https://bandit-trail.herokuapp.com/${featuredImg}`}
           alt=""
           className=" object-cover
               lg:h-[28rem]"
