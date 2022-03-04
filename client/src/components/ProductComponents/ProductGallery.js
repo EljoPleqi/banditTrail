@@ -23,7 +23,7 @@ const ProductGallery = ({ gallery }) => {
   }
 
   useEffect(() => {
-    setFeaturedImg(displayImages[displayImages.length - 1]);
+    setFeaturedImg(displayImages[displayImages.length - 1].props.src);
   }, [gallery]);
 
   function getImg(e) {
