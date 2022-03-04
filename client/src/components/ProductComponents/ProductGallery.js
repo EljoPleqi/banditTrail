@@ -23,7 +23,9 @@ const ProductGallery = ({ gallery }) => {
   }
 
   useEffect(() => {
-    setFeaturedImg(displayImages[displayImages.length - 1]);
+    const image = displayImages[displayImages.length - 1];
+    console.log(image);
+    setFeaturedImg(image);
   }, [gallery]);
 
   function getImg(e) {
