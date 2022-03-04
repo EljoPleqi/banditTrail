@@ -22,7 +22,10 @@ const ProductGallery = ({ gallery }) => {
     console.log(featuredImg);
   }
 
-  setFeaturedImg(displayImages[displayImages.length - 1]);
+  useEffect(() => {
+    setFeaturedImg(displayImages[displayImages.length - 1]);
+  }, []);
+
   function getImg(e) {
     console.log(e.target.src);
     setFeaturedImg(e.target.src);
