@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 const ProductGallery = ({ product, gallery }) => {
-  const [featuredImg, setFeaturedImg] = useState(product);
-  const [slide, setSlide] = useState(1);
+  let displayImages = [];
+  const [featuredImg, setFeaturedImg] = useState(
+    displayImages[displayImages.length - 1]
+  );
 
   useEffect(() => {
     setFeaturedImg(` https://bandit-trail.herokuapp.com/${product}`);
   }, [product]);
-
-  let displayImages = [];
 
   if (gallery) {
     const images = gallery.split('_');
