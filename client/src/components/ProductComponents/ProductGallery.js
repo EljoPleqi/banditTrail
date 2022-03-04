@@ -6,6 +6,8 @@ const ProductGallery = ({ product, gallery }) => {
     displayImages[displayImages.length - 1]
   );
 
+  console.log(displayImages[displayImages.length - 1]);
+
   useEffect(() => {
     setFeaturedImg(` https://bandit-trail.herokuapp.com/${product}`);
   }, [product]);
