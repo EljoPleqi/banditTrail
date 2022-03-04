@@ -21,9 +21,9 @@ const ProductGallery = ({ gallery }) => {
   }
 
   useEffect(() => {
-    const image = displayImages[displayImages.length - 1];
-    console.log(image.props);
-    setFeaturedImg(image);
+    const images = gallery.split('_');
+    console.log(images);
+    setFeaturedImg(images[images.length - 1]);
   }, [gallery]);
 
   function getImg(e) {
