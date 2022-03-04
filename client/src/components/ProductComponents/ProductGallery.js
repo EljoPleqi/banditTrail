@@ -18,13 +18,11 @@ const ProductGallery = ({ gallery }) => {
         />
       );
     });
-
-    console.log(featuredImg);
   }
 
   useEffect(() => {
     const image = displayImages[displayImages.length - 1];
-    console.log(image);
+    console.log(image.props);
     setFeaturedImg(image);
   }, [gallery]);
 
