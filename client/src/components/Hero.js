@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Background from '../img/lachlan-cruickshank-S9v_EPJfGys-unsplash.webp';
 import Button from './Button';
-import { ArrowDownIcon } from '@heroicons/react/outline';
 
 const Hero = () => {
   const [emoji, setEmoji] = useState(false);
@@ -15,7 +14,6 @@ const Hero = () => {
         Riding That <span className="font-bold italic">Doesn't</span> Break The
         Bank
       </h1>
-      <ArrowDownIcon className="hidden h-6 w-6 text-white md:inline-block" />
       <div
         onMouseEnter={() => setEmoji(true)}
         onMouseOut={() => setEmoji(false)}
