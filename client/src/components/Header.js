@@ -20,7 +20,7 @@ const Header = ({ setModalOpen, setSearchModal }) => {
     <>
       <div className=" flex h-16 items-center  bg-white px-5">
         <nav className="flex w-full items-center justify-between ">
-          <div className="logo px-5 font-bold md:text-3xl">
+          <div className="px-5 font-bold md:text-3xl">
             <Link to="/">BANDIT TRAIL</Link>
           </div>
           <MenuAlt3Icon
@@ -65,7 +65,7 @@ const Header = ({ setModalOpen, setSearchModal }) => {
               <Link to={`/user-dashboard/${username}`}>
                 <li>
                   <img
-                    src={` https://bandit-trail.herokuapp.com/${avatar}`}
+                    src={` http://localhost:8000/${avatar}`}
                     alt=""
                     className=" h-12 w-12 rounded-full bg-green-500 object-cover p-0.5"
                   />

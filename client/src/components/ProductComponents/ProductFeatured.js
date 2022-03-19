@@ -16,7 +16,7 @@ const ProductFeatured = ({ setShowNotification }) => {
 
   useEffect(() => {
     axios
-      .get(` https://bandit-trail.herokuapp.com/users/${UserId}`)
+      .get(` http://localhost:8000/users/${UserId}`)
       .then((res) => setUser(res.data));
   }, [product]);
 
@@ -33,11 +33,9 @@ const ProductFeatured = ({ setShowNotification }) => {
           <div className="">
             {user ? (
               <div className="flex flex-col gap-4">
-                <a
-                  href={` https://bandit-trail.herokuapp.com/users/${user.username}`}
-                >
+                <a href={` http://localhost:8000/users/${user.username}`}>
                   <img
-                    src={` https://bandit-trail.herokuapp.com/${user.avatar}`}
+                    src={` http://localhost:8000/${user.avatar}`}
                     alt=""
                     className="h-32 w-32 rounded-full object-cover"
                   />

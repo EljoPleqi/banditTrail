@@ -12,6 +12,7 @@ module.exports = {
         oneFour: '1fr 4fr',
         oneThree: '1fr 3fr',
         twoThree: '2fr 3fr',
+        fourOne: '4fr 1fr',
       },
       dropShadow: {
         productPage: '0 -35px 35px rgba(0, 0, 0, 0.25)',

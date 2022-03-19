@@ -11,7 +11,7 @@ function Home() {
   const notification = useSelector((state) => state.notification);
   return (
     <>
-      <div className="bg-neutral-100">
+      <div className="">
         <div>
           {notification && (
             <Popup

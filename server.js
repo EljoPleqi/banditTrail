@@ -13,13 +13,7 @@ server.use(express.json());
 
 const PORT = process.env.PORT || 8000;
 
-server.use(
-  cors({
-    origin: ['https://bandit-trail.herokuapp.com'],
-    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
-    credentials: true,
-  })
-);
+server.use(cors());
 
 //serve static files
 

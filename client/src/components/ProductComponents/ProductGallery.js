@@ -10,7 +10,7 @@ const ProductGallery = ({ gallery }) => {
     displayImages = images.map((image, i) => {
       return (
         <img
-          src={` https://bandit-trail.herokuapp.com/${image}`}
+          src={` http://localhost:8000/${image}`}
           alt=""
           className="h-32 w-32  object-cover"
           key={i}
@@ -37,7 +37,7 @@ const ProductGallery = ({ gallery }) => {
     <div className="mx-4 flex flex-col items-center gap-4">
       <div>
         <img
-          src={`https://bandit-trail.herokuapp.com/${featuredImg}`}
+          src={`http://localhost:8000/${featuredImg}`}
           alt=""
           className=" object-cover
               lg:h-[28rem]"

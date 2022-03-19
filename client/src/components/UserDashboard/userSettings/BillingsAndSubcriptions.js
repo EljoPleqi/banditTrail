@@ -10,7 +10,7 @@ const BillingsAndSubcriptions = ({ id, setSubModal }) => {
 
   useEffect(() => {
     axios
-      .get(`https://bandit-trail.herokuapp.com/users/sub/${id}`)
+      .get(`http://localhost:8000/users/sub/${id}`)
       .then((res) => dispatch(switchSub(res.data)));
   }, []);
   return (

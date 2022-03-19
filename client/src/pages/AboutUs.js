@@ -11,16 +11,21 @@ const AboutUs = () => {
         <h1 className="text-4xl text-white shadow-sm">About Us</h1>
       </div>
       <div className="lf:mx-24 mx-8 grid-cols-2 gap-8 lg:my-28 lg:grid">
-        <div className="flex flex-col gap-2 py-16">
-          <h2>Why riding shouldn't break the bank</h2>
+        <div className="flex flex-col gap-6 py-16">
+          <h2 className="text-2xl font-bold">
+            Why riding shouldn't break the bank
+          </h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            Hey there! Welcome to Bandit Trail! We're a local team that has a
+            passion to connect mountain bikers with the right gear, at the right
+            price. Whether you're new to the trail or an avid veteran, we strive
+            to create a community where it's easy to find what you need, even if
+            you didn't know you wanted it!
+          </p>
+          <p>
+            Bandit Trail is a little different than some other online bike shops
+            out there. It's all about the community, and we pride ourselves on
+            promoting the sport while helping you get trail ready.
           </p>
         </div>
         <div>
@@ -33,7 +38,7 @@ const AboutUs = () => {
           style={{ backgroundImage: `url(${img})` }}
         >
           <h2 className="text-xl text-white shadow-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            Check out our selection and start saving today!
           </h2>
           <Button buttonText={'Learn More'} />
         </div>

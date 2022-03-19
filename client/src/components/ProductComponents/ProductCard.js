@@ -29,10 +29,7 @@ const ProductCard = ({
       condition: condition,
     };
     axios
-      .post(
-        ' https://bandit-trail.herokuapp.com/api/products/filtered',
-        filteredRequest
-      )
+      .post(' http://localhost:8000/api/products/filtered', filteredRequest)
       .then((res) => setFilteredData(res.data));
     setLoaded(true);
     return () => setLoaded(false);
@@ -45,22 +42,33 @@ const ProductCard = ({
       .map((data, i) => (
         <Link
           to={`products/${data.id}`}
-          className="m-2  hover:scale-105 hover:shadow-md hover:transition-all"
+          className="m-2 hover:scale-105 hover:shadow-md hover:transition-all"
           key={i}
         >
-          <div className="flex min-h-full flex-col bg-white p-5">
-            <div>
+          <div className="flex min-h-full flex-col gap-6 rounded-t-lg  bg-white">
+            <div className="p-5 ">
               <img
-                src={` https://bandit-trail.herokuapp.com/${data.featuredImage}`}
+                src={` http://localhost:8000/${data.featuredImage}`}
                 alt=""
-                className="object-cover"
+                className="object-cover "
               />
             </div>
-            <div className="py-5">
-              <p>{data.productTitle}</p>
-              <div className="flex items-center justify-between pt-5">
-                <p>{`${data.price} ${data.currency}`}</p>
-                {/* <p>Condition: {`${data.details.new ? 'New' : 'Used'}`}</p> */}
+            <div>
+              <div
+                className={`flex items-start justify-between  bg-neutral-100 p-5`}
+              >
+                <div className="flex flex-col justify-between gap-1">
+                  <p>Brand: {data.brand}</p>
+                  <p>Title: {data.productTitle}</p>
+                  <div className="flex items-center justify-between">
+                    <p>Price: {`${data.price} ${data.currency}`}</p>
+                  </div>
+                </div>
+                <p
+                  className={` rounded-lg px-2 py-1 text-xs ${
+                    data.condition ? 'bg-[#60b158] text-white' : 'bg-[#febc2b]'
+                  }`}
+                >{`${data.condition ? 'New' : 'Used'}`}</p>
               </div>
             </div>
           </div>

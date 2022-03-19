@@ -106,7 +106,7 @@ const UserDashboardSidebar = ({
             }}
           >
             <img
-              src={` https://bandit-trail.herokuapp.com/${avatar}`}
+              src={` http://localhost:8000/${avatar}`}
               alt=""
               className={`box-border h-16 w-16  rounded-full ${
                 inActive ? 'bg-green-500' : 'place-self-end bg-white'

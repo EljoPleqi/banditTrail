@@ -26,10 +26,7 @@ const AccountInformation = ({
     updatedUser.append('avatar', newProfilePicture);
 
     axios
-      .patch(
-        ` https://bandit-trail.herokuapp.com/users/${username}`,
-        updatedUser
-      )
+      .patch(` http://localhost:8000/users/${username}`, updatedUser)
       .then((res) => console.log(res.data));
   };
 

@@ -5,7 +5,7 @@ function useGetAllProducts() {
   const [products, setProducts] = useState([]);
 
   axios
-    .get(' https://bandit-trail.herokuapp.com/api/products')
+    .get(' http://localhost:8000/api/products')
     .then((res) => setProducts(res.data));
 
   return products;
@@ -16,7 +16,7 @@ function useGetProductsByUserId(id) {
 
   useEffect(() => {
     axios
-      .get(` https://bandit-trail.herokuapp.com/api/products/by_userId/${id}`)
+      .get(` http://localhost:8000/api/products/by_userId/${id}`)
       .then((res) => {
         setUserListings(res.data);
       });
@@ -28,11 +28,9 @@ function useGetProductsByProdcutId(id) {
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(` https://bandit-trail.herokuapp.com/api/products/${id}`)
-      .then((res) => {
-        setProduct(res.data);
-      });
+    axios.get(` http://localhost:8000/api/products/${id}`).then((res) => {
+      setProduct(res.data);
+    });
   }, [id]);
 
   if (product) {

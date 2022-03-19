@@ -43,9 +43,7 @@ const ProductListing = ({
 
       const deleteListing = () => {
         axios
-          .delete(
-            ` https://bandit-trail.herokuapp.com/api/products/${listing.id}`
-          )
+          .delete(` http://localhost:8000/api/products/${listing.id}`)
           .then((res) => {
             dispatch(setNotification(true));
             setTimeout(() => {
@@ -61,7 +59,7 @@ const ProductListing = ({
         >
           <div className="mt-12 flex justify-between">
             <img
-              src={` https://bandit-trail.herokuapp.com/${listing.featuredImage}`}
+              src={` http://localhost:8000/${listing.featuredImage}`}
               alt="listed product"
               className="h-full w-36"
             />
