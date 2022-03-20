@@ -61,12 +61,16 @@ const ProductCard = ({
                   <p>Brand: {data.brand}</p>
                   <p>Title: {data.productTitle}</p>
                   <div className="flex items-center justify-between">
-                    <p>Price: {`${data.price} ${data.currency}`}</p>
+                    <p className="font-semibold">
+                      Price: {`${data.price} ${data.currency}`}
+                    </p>
                   </div>
                 </div>
                 <p
                   className={` rounded-lg px-2 py-1 text-xs ${
-                    data.condition ? 'bg-[#60b158] text-white' : 'bg-[#febc2b]'
+                    data.condition
+                      ? 'bg-banditGreen-500 text-white'
+                      : 'bg-banditYellow-500'
                   }`}
                 >{`${data.condition ? 'New' : 'Used'}`}</p>
               </div>

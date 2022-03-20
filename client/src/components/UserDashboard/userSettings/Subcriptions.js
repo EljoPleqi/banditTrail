@@ -6,7 +6,7 @@ import { switchSub } from '../../../features/subscription';
 const Subcriptions = ({ sub, setSubModal }) => {
   const subscriptions = [
     {
-      name: 'Green',
+      name: 'banditGreen',
       price: 0,
       description: 'Lorem ipsum dolor sit amet',
       freeListings: 10,

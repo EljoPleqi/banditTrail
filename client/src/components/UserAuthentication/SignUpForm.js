@@ -109,13 +109,13 @@ const SignUpForm = () => {
           <div className="mt-4 flex flex-col gap-4 lg:flex-row">
             <a
               href="login"
-              className="rounded-md border-2 border-solid border-green-600 py-4 text-center text-green-600 hover:bg-green-500 active:bg-green-800 lg:px-8"
+              className="border-banditGreen-600 text-banditGreen-600 hover:bg-banditGreen-500 active:bg-banditGreen-800 rounded-md border-2 border-solid py-4 text-center lg:px-8"
             >
               Login
             </a>
             <button
               type="submit"
-              className="rounded-md bg-green-600 py-4 text-white hover:bg-green-500 active:bg-green-800 lg:px-24"
+              className="bg-banditGreen-600 hover:bg-banditGreen-500 active:bg-banditGreen-800 rounded-md py-4 text-white lg:px-24"
             >
               Sign Up
             </button>

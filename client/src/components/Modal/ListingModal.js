@@ -89,7 +89,7 @@ const ListingModal = ({ id }) => {
               ></select>
             </span>
           </div>
-          <button type="submit" className="bg-green-500 py-2 px-8">
+          <button type="submit" className="bg-banditGreen-500 py-2 px-8">
             Save Changes
           </button>
         </div>

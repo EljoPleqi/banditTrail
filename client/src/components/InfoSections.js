@@ -26,7 +26,7 @@ const InfoSections = () => {
             <h3 className="text-2xl font-semibold">From Rider to Rider</h3>
             <p>
               Get your gear from people who love mountain biking, and build long
-              lasting trail-riding friendships 🚵‍♀️🚵🚵‍♂️
+              lasting trail-riding friendships
             </p>
           </div>
         </div>
@@ -44,19 +44,24 @@ const InfoSections = () => {
             <h3 className="text-2xl font-semibold">Support Trail Building</h3>
             <p>
               25% of all income generated goes towards restore and maintaining
-              new trails aswell as building new ones 🤟
+              new trails aswell as building new ones
             </p>
           </div>
         </div>
         <div className="flex flex-col gap-8 ">
-          <ReceiptTaxIcon className="h-16 w-16" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-16 w-16"
+            viewBox="0 0 24 24"
+          >
+            <path d="M11,20.9450712 L11,19.7071068 L9.14644661,17.8535534 C9.05267842,17.7597852 9,17.6326082 9,17.5 L9,14.7071068 L8.14644661,13.8535534 C8.05267842,13.7597852 8,13.6326082 8,13.5 L8,12.5 C8,12.2238576 8.22385763,12 8.5,12 L13.5,12 C14.3284271,12 15,12.6715729 15,13.5 L15,14.5 C15,14.7761424 15.2238576,15 15.5,15 C16.3284271,15 17,15.6715729 17,16.5 C17,16.7761424 17.2238576,17 17.5,17 L19.484451,17 C20.4417283,15.569902 21,13.8501466 21,12 C21,8.08134352 18.4955771,4.74762635 15,3.51211712 L15,4.5 C15,5.88071187 13.8807119,7 12.5,7 L11.5,7 C11.2238576,7 11,7.22385763 11,7.5 L11,8.5 C11,9.32842712 10.3284271,10 9.5,10 L8,10 L8,10.5 C8,10.6326082 7.94732158,10.7597852 7.85355339,10.8535534 L6.85355339,11.8535534 C6.65829124,12.0488155 6.34170876,12.0488155 6.14644661,11.8535534 L3.4561745,9.16328128 C3.16022042,10.0551082 3,11.0088434 3,12 C3,16.6325537 6.50004954,20.4476269 11,20.9450712 Z M12,21 C14.6654994,21 17.0603579,19.8412481 18.7083195,18 L17.5,18 C16.6715729,18 16,17.3284271 16,16.5 C16,16.2238576 15.7761424,16 15.5,16 C14.6715729,16 14,15.3284271 14,14.5 L14,13.5 C14,13.2238576 13.7761424,13 13.5,13 L9,13 L9,13.2928932 L9.85355339,14.1464466 C9.94732158,14.2402148 10,14.3673918 10,14.5 L10,17.2928932 L11.8535534,19.1464466 C11.9473216,19.2402148 12,19.3673918 12,19.5 L12,21 Z M11.5907801,21.9917793 C11.5613408,21.9971789 11.5309998,22 11.5,22 C11.4509482,22 11.4035462,21.9929366 11.3587556,21.9797714 C6.13471991,21.6491659 2,17.3074408 2,12 C2,6.4771525 6.4771525,2 12,2 C17.5228475,2 22,6.4771525 22,12 C22,17.5228475 17.5228475,22 12,22 C11.8629318,22 11.7265076,21.9972423 11.5907801,21.9917793 L11.5907801,21.9917793 Z M3.86090753,8.15380075 L6.5,10.7928932 L7,10.2928932 L7,9.5 C7,9.22385763 7.22385763,9 7.5,9 L9.5,9 C9.77614237,9 10,8.77614237 10,8.5 L10,7.5 C10,6.67157288 10.6715729,6 11.5,6 L12.5,6 C13.3284271,6 14,5.32842712 14,4.5 L14,3.22301642 C13.3567773,3.07706144 12.687388,3 12,3 C8.40547102,3 5.303118,5.10725578 3.86090753,8.15380075 L3.86090753,8.15380075 Z" />
+          </svg>
           <div className="flex flex-col gap-4">
-            <h3 className="text-2xl font-semibold">From Rider to Rider</h3>
+            <h3 className="text-2xl font-semibold">The Right Thing To Do</h3>
             <p>
-              Mountain biking is an expensive hobby, that is why we try our best
-              to keep our fees as low as possible to make it accessible to
-              anyone, we want to be the first place where a new rider gets
-              proper gear
+              There are many benefits to buying used gear. First, you're helping
+              the environment by keeping old bikes and parts out of landfills.
+              Second, you're saving money, which is always awesome!
             </p>
           </div>
         </div>

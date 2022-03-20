@@ -12,7 +12,7 @@ const ProductPage = () => {
       <ProductFeatured />
       {notification && (
         <Popup
-          type={'bg-green-500 p-8 text-center text-white transition-all'}
+          type={'bg-banditGreen-500 p-8 text-center text-white transition-all'}
           message={`"${cart[0].productTitle}" has been added to your cart`}
         />
       )}

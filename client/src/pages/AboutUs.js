@@ -1,16 +1,18 @@
 import React from 'react';
 import Button from '../components/Button';
 import img from '.././img/victoria-poveda-0DAwKglHOAY-unsplash.webp';
+import img2 from '.././img/abi-schreider-IM9MTmfrOl4-unsplash.jpg';
+import img3 from '.././img/andhika-soreng-US06QF_sxu8-unsplash.webp';
 const AboutUs = () => {
   return (
     <>
       <div
-        className="flex flex-col items-center justify-center bg-neutral-600 bg-cover py-40  bg-blend-overlay"
-        style={{ backgroundImage: `url(${img})` }}
+        className="flex flex-col items-center justify-center bg-neutral-600 bg-cover bg-center py-40  bg-blend-overlay"
+        style={{ backgroundImage: `url(${img2})` }}
       >
         <h1 className="text-4xl text-white shadow-sm">About Us</h1>
       </div>
-      <div className="lf:mx-24 mx-8 grid-cols-2 gap-8 lg:my-28 lg:grid">
+      <div className="mx-8 ">
         <div className="flex flex-col gap-6 py-16">
           <h2 className="text-2xl font-bold">
             Why riding shouldn't break the bank
@@ -28,14 +30,11 @@ const AboutUs = () => {
             promoting the sport while helping you get trail ready.
           </p>
         </div>
-        <div>
-          <img src={img} alt="" />
-        </div>
       </div>
       <div className="my-8 flex items-center justify-center lg:my-28 lg:mx-24">
         <div
           className="flex h-full w-[64rem] flex-col items-center justify-center gap-4 bg-neutral-700 bg-cover py-40 px-12 bg-blend-overlay"
-          style={{ backgroundImage: `url(${img})` }}
+          style={{ backgroundImage: `url(${img3})` }}
         >
           <h2 className="text-xl text-white shadow-sm">
             Check out our selection and start saving today!

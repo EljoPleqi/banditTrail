@@ -78,13 +78,13 @@ const CreatePaymentOptions = ({ username, id }) => {
       {open ? (
         <button
           type="submit"
-          className="mx-4 max-w-xs rounded-md bg-green-500 py-4 px-8 text-white hover:bg-green-400 active:bg-green-800"
+          className="bg-banditGreen-500 hover:bg-banditGreen-400 active:bg-banditGreen-800 mx-4 max-w-xs rounded-md py-4 px-8 text-white"
         >
           Save Payment Method
         </button>
       ) : (
         <button
-          className="mx-4 flex max-w-xs items-center justify-center gap-2 rounded-md bg-green-500 py-4 px-8 text-white hover:bg-green-400 active:bg-green-800"
+          className="bg-banditGreen-500 hover:bg-banditGreen-400 active:bg-banditGreen-800 mx-4 flex max-w-xs items-center justify-center gap-2 rounded-md py-4 px-8 text-white"
           onClick={() => setOpen(true)}
         >
           <PlusCircleIcon className="h-5 w-6" />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { loginFormValidation } from '../../validations/Validations';
+import { LoginIcon } from '@heroicons/react/outline';
 
 import { setLogin } from '../../features/login';
 import { setUserData } from '../../features/userData';
@@ -16,7 +17,7 @@ const LogInForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +26,6 @@ const LogInForm = () => {
 
     if (loginFormValidation.isValid(user)) {
       axios.post(' http://localhost:8000/users/login', user).then((res) => {
-        console.log(res.data);
         if (res.data.error) {
           alert(res.data.error);
         } else {
@@ -43,8 +43,8 @@ const LogInForm = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center rounded-lg bg-neutral-100 p-8 lg:h-[32rem] lg:w-[32rem]  lg:gap-10">
-        <div className="logo px-5 text-3xl font-bold">BANDIT TRAIL</div>
+      <div className=" flex h-screen flex-col items-center justify-center gap-4 bg-white/30 p-8 backdrop-blur-md  lg:w-[50%]">
+        <div className="px-5 text-3xl font-bold text-white">BANDIT TRAIL</div>
         <form
           onSubmit={handleSubmit}
           method="POST"
@@ -54,32 +54,31 @@ const LogInForm = () => {
             <input
               type="text"
               value={username}
-              placeholder="Enter your username"
+              placeholder="username"
               onChange={(e) => setUsername(e.target.value)}
-              className="m-2  rounded-xl border-2 py-4 placeholder:p-4 lg:py-6 lg:px-24"
+              className="m-2 border-b-2 border-white bg-white/0 py-4 placeholder:px-4 placeholder:text-white lg:w-96 lg:py-4"
             />
             <input
               type="password"
-              password
-              placeholder="Enter your password"
+              password={password.toString()}
+              placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
-              className="m-2  rounded-xl border-2 py-4 placeholder:p-4 lg:py-6 lg:px-24"
+              className="m-2 border-b-2 border-white bg-white/0 py-4 placeholder:px-4  placeholder:text-white lg:w-96 lg:py-4"
             />
+            <span className="place-self-start pt-4 text-sm text-white">
+              Forgot your password?{' '}
+              <a href="/" className="underline ">
+                Recover it
+              </a>
+            </span>
 
-            <div className="flex items-center gap-6">
+            <div className="w-full pt-6 lg:place-self-start lg:pt-20">
               <button
                 type="submit"
-                className="rounded-lg bg-neutral-700 py-4 px-16 text-white active:bg-green-600"
+                className="active:bg-banditGreen-800 hover:bg-banditYellow-600 flex w-full items-center justify-center gap-2  bg-white py-4 px-16 text-black hover:text-black"
               >
-                Log in
+                <LoginIcon className="h-6 w-6" /> Log in
               </button>
-
-              <a
-                href="/"
-                // className="py-4 px-16 border-solid border-2 border-slate-700 rounded-lg"
-              >
-                Forgot Password
-              </a>
             </div>
           </div>
         </form>

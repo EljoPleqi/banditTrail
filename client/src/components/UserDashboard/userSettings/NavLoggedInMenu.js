@@ -18,7 +18,7 @@ const NavLoggedInMenu = () => {
   flex flex-col items-center gap-2 bg-neutral-50 p-8 shadow-sm"
     >
       <ul>
-        <li className=" cursor-pointer border-r-2 border-neutral-100 px-2 hover:text-orange-500 active:text-green-600">
+        <li className=" hover:text-banditbanditGreen-500 active:text-banditGreen-600 cursor-pointer border-r-2 border-neutral-100 px-2">
           <Link to="/cart" className="flex items-center gap-2">
             <ShoppingCartIcon className="h-6 w-6" />
             Cart
@@ -56,7 +56,7 @@ const NavLoggedInMenu = () => {
             <img
               src={` http://localhost:8000/${avatar}`}
               alt=""
-              className=" h-12 w-12 rounded-full bg-green-500 object-cover p-0.5"
+              className=" bg-banditGreen-500 h-12 w-12 rounded-full object-cover p-0.5"
             />
             <p>{username}</p>
           </li>

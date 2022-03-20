@@ -86,7 +86,7 @@ const UserDashboardSidebar = ({
               )}
             </div>
             <span
-              className="flex cursor-pointer items-center gap-2 rounded-md py-2 px-2 hover:bg-red-500 hover:text-white active:bg-red-800"
+              className="hover:bg-banditOrange-500 active:bg-banditOrange-800 flex cursor-pointer items-center gap-2 rounded-md py-2 px-2 hover:text-white"
               onClick={() => {
                 setLogout(true);
                 dispatch(setNotification(true));
@@ -109,7 +109,7 @@ const UserDashboardSidebar = ({
               src={` http://localhost:8000/${avatar}`}
               alt=""
               className={`box-border h-16 w-16  rounded-full ${
-                inActive ? 'bg-green-500' : 'place-self-end bg-white'
+                inActive ? 'bg-banditGreen-500' : 'place-self-end bg-white'
               } object-cover p-1 shadow-sm`}
             />
             <p>{username}</p>

@@ -23,7 +23,7 @@ const AllProducts = () => {
   }, [dispatch]);
 
   return (
-    <div className="grid-cols-oneThree grid h-screen overflow-auto">
+    <div className="md:grid-cols-oneThree flex h-screen flex-col overflow-auto md:grid">
       <Sidebar
         setType={setType}
         setBrand={setBrand}
@@ -32,7 +32,7 @@ const AllProducts = () => {
         setFilteredData={setFilteredData}
         setLoaded={setLoaded}
       />
-      <div>
+      <div className="flex flex-col items-center">
         <ProductCard
           brand={brand}
           type={type}
@@ -48,7 +48,7 @@ const AllProducts = () => {
           onClick={() => {
             setVisible(visible + 4);
           }}
-          className="rounded-md bg-blue-500 px-8 py-3 text-white hover:bg-blue-400 active:bg-blue-800"
+          className=" hover:bg-banditGreen-600 active:bg-banditGreen-900 hover:border-banditGreen-600 place-self-center border-2 border-black px-8 py-3 hover:text-white active:translate-y-1"
         >
           Load More
         </button>

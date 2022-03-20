@@ -26,8 +26,8 @@ const Cart = () => {
 
         <p className="flex">{`${item.price} ${item.currency}`}</p>
         <span
-          className="my-4 flex cursor-pointer items-center justify-center gap-2  rounded-md py-2 px-4 text-sm font-normal 
-          text-red-600 hover:bg-red-500 hover:text-white active:bg-red-800"
+          className="text-banditOrange-600 hover:bg-banditOrange-500 active:bg-banditOrange-800 my-4 flex cursor-pointer  items-center justify-center gap-2 rounded-md py-2 
+          px-4 text-sm font-normal hover:text-white"
           onClick={() => {
             dispatch(setRemoveFromCart(i));
             dispatch(setNotification(true));
@@ -50,8 +50,8 @@ const Cart = () => {
       </div>
       <div className="overflow-auto">{displayCart}</div>
       <span
-        className="my-4 mx-8 mb-12 flex w-64 cursor-pointer items-center justify-center gap-2 place-self-end rounded-md py-2 px-4 text-sm font-normal text-red-600
-         hover:bg-red-500 hover:text-white active:bg-red-800 lg:mb-0"
+        className="text-banditOrange-600 hover:bg-banditOrange-500 active:bg-banditOrange-800 my-4 mx-8 mb-12 flex w-64 cursor-pointer items-center justify-center gap-2 place-self-end rounded-md py-2 px-4
+         text-sm font-normal hover:text-white lg:mb-0"
         onClick={() => {
           dispatch(setEmptyCart());
           dispatch(setNotification(true));
@@ -66,7 +66,7 @@ const Cart = () => {
       {notification && (
         <Popup
           type={
-            'bg-red-500 p-8 text-center text-white transition-all mb-12 lg:mb-0'
+            'bg-banditOrange-500 p-8 text-center text-white transition-all mb-12 lg:mb-0'
           }
           message={'Item(s) removed from cart'}
         />

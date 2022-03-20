@@ -15,7 +15,9 @@ function Home() {
         <div>
           {notification && (
             <Popup
-              type={'bg-red-500 p-8 text-center text-white transition-all'}
+              type={
+                'bg-banditOrange-500 p-8 text-center text-white transition-all'
+              }
               message={'You have been logged out successfully'}
             />
           )}

@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setProduct } from '../../features/product';
+import { Link } from 'react-router-dom';
 
 const ProductDisplay = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,16 @@ const ProductDisplay = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [visible, setVisible] = useState(8);
+
+  const screenSize = window.matchMedia('(max-width: 600px)');
+
+  let mobile = screenSize.matches;
+
+  console.log(mobile);
+
+  useEffect(() => {
+    if (mobile) setVisible(3);
+  }, [mobile]);
 
   useEffect(() => {
     axios
@@ -33,19 +44,34 @@ const ProductDisplay = () => {
         setLoaded={setLoaded}
       />
       <div className="flex flex-col items-center justify-center lg:py-8">
-        <div>
-          <ProductCard
-            brand={brand}
-            type={type}
-            ridingStyle={ridingStyle}
-            condition={condition}
-            filteredData={filteredData}
-            setFilteredData={setFilteredData}
-            loaded={loaded}
-            setLoaded={setLoaded}
-            visible={visible}
-          />
-        </div>
+        <ProductCard
+          brand={brand}
+          type={type}
+          ridingStyle={ridingStyle}
+          condition={condition}
+          filteredData={filteredData}
+          setFilteredData={setFilteredData}
+          loaded={loaded}
+          setLoaded={setLoaded}
+          visible={visible}
+        />
+        {visible < 8 ? (
+          <button
+            className=" hover:bg-banditGreen-600 active:bg-banditGreen-900 hover:border-banditGreen-600 place-self-center border-2
+         border-black px-8 py-3 hover:text-white active:translate-y-1"
+            onClick={() => setVisible((visible) => visible + 2)}
+          >
+            Load More
+          </button>
+        ) : (
+          <Link
+            to="/products/all-products"
+            className=" hover:bg-banditGreen-600 active:bg-banditGreen-900 hover:border-banditGreen-600 place-self-center border-2
+                  border-black px-8 py-3 hover:text-white active:translate-y-1"
+          >
+            View All items
+          </Link>
+        )}
       </div>
     </div>
   );

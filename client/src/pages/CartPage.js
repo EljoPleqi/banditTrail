@@ -53,8 +53,8 @@ const CartPage = () => {
 
           <div className="flex w-96 flex-col items-center justify-center gap-4">
             <span
-              className="w-full cursor-pointer rounded-md
-             bg-white py-4 px-8 text-center text-green-600 hover:bg-green-600 hover:text-white active:bg-green-700"
+              className="text-banditGreen-600 hover:bg-banditGreen-600 active:bg-banditGreen-700
+             w-full cursor-pointer rounded-md bg-white py-4 px-8 text-center hover:text-white"
               onClick={checkout}
             >
               Checkout

@@ -20,15 +20,13 @@ const TrailPage = () => {
         </h1>
 
         <p className="text-lg lg:w-[75%]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra
-          ipsum nunc aliquet bibendum enim. In fermentum et sollicitudin ac orci
-          phasellus egestas. Senectus et netus et malesuada fames ac turpis.
-          Luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor.
-          In ante metus dictum at tempor commodo ullamcorper. Quam id leo in
-          vitae turpis massa sed. Cras semper auctor neque vitae tempus.
-          Eleifend quam adipiscing vitae proin. Nec ullamcorper sit amet risus
-          nullam eget. Quis lectus nulla at volutpat diam ut.
+          Have you ever ridden Whistler Mountain Bike Park in BC? If so, you
+          know what a gem of a place it is. There are endless trails that snake
+          through the mountains and forests, each one of them with its own
+          personality. Some are technical and challenging while others are
+          easier, more wide-open trails through the forest. Blue Velvet is one
+          of those easier trails. It's not a beginners trail by any means but
+          it's not too technical for intermediate riders to handle.
         </p>
 
         <img src={img1} alt="" className="object-cover lg:w-[75%]" />

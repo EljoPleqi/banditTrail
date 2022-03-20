@@ -30,7 +30,7 @@ const Header = ({ setModalOpen, setSearchModal }) => {
 
           <ul className=" hidden justify-center md:visible lg:flex">
             <div className="flex items-center">
-              <li className=" cursor-pointer border-r-2 border-neutral-100 px-5  hover:text-orange-500 active:text-green-600">
+              <li className=" hover:text-banditGreen-500 cursor-pointer border-r-2 border-neutral-100  px-5 active:text-green-600">
                 <Link
                   to="/about-us"
                   className="flex items-center justify-center gap-2"
@@ -38,7 +38,7 @@ const Header = ({ setModalOpen, setSearchModal }) => {
                   About Us <UserGroupIcon className="h-5 w-5" />
                 </Link>
               </li>
-              <li className=" cursor-pointer border-r-2 border-neutral-100 px-5  hover:text-orange-500 active:text-green-600">
+              <li className=" hover:text-banditGreen-500 cursor-pointer border-r-2 border-neutral-100  px-5 active:text-green-600">
                 <Link
                   to="/products/all-products"
                   className="flex items-center justify-center gap-2"
@@ -47,14 +47,14 @@ const Header = ({ setModalOpen, setSearchModal }) => {
                 </Link>
               </li>
               <li
-                className=" flex cursor-pointer items-center gap-2 px-5   hover:text-orange-500  active:text-green-600"
+                className=" hover:text-banditGreen-500 flex cursor-pointer items-center gap-2   px-5  active:text-green-600"
                 onClick={() => {
                   setSearchModal(true);
                 }}
               >
                 Search <SearchIcon className="h-5 w-5" />
               </li>
-              <li className=" cursor-pointer border-r-2 border-neutral-100 px-5  hover:text-orange-500 active:text-green-600">
+              <li className=" hover:text-banditGreen-500 cursor-pointer border-r-2 border-neutral-100  px-5 active:text-green-600">
                 <Link to="/cart" className="flex items-center gap-2">
                   Cart <ShoppingCartIcon className="h-5 w-5" />
                 </Link>
@@ -72,7 +72,7 @@ const Header = ({ setModalOpen, setSearchModal }) => {
                 </li>
               </Link>
             ) : (
-              <li className=" cursor-pointer px-5  hover:text-orange-500 active:text-green-600 ">
+              <li className=" hover:text-banditGreen-500 cursor-pointer  px-5 active:text-green-600 ">
                 <Link to="/login" className="flex items-center gap-2">
                   Log in
                   <LoginIcon className="h-5 w-5" />
@@ -106,7 +106,7 @@ const Header = ({ setModalOpen, setSearchModal }) => {
               </Link>
             </li>
             <li
-              className=" flex cursor-pointer items-center gap-2  hover:text-orange-500  active:text-green-600"
+              className=" hover:text-banditGreen-500 flex cursor-pointer items-center  gap-2  active:text-green-600"
               onClick={() => {
                 setSearchModal(true);
               }}
@@ -114,7 +114,7 @@ const Header = ({ setModalOpen, setSearchModal }) => {
               <SearchIcon className="h-5 w-5" /> Search
             </li>
 
-            <li className=" cursor-pointer   hover:text-orange-500 active:text-green-600 ">
+            <li className=" hover:text-banditGreen-500   cursor-pointer active:text-green-600 ">
               <Link to="/login" className="flex items-center gap-2">
                 <LoginIcon className="h-5 w-5" /> Log in
               </Link>

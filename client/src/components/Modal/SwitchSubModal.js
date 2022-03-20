@@ -25,7 +25,7 @@ const SwitchSubModal = ({ setSubModal, setUpdateSub }) => {
       </p>
       <button
         onClick={switchSubHandler}
-        className="rounded-md bg-green-600 py-2 px-4 text-white hover:bg-green-500 active:translate-y-1 active:bg-green-900"
+        className="bg-banditbanditGreen-600 hover:bg-banditGreen-500 active:bg-banditGreen-900 rounded-md py-2 px-4 text-white active:translate-y-1"
       >
         {' '}
         {sub.price > 9.99 ? 'upgrade' : ' downgrade'}{' '}

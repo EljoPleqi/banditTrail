@@ -29,8 +29,8 @@ const AddToCartButton = ({ product, setShowNotification }) => {
   return (
     <div>
       <button
-        className="w-full cursor-pointer rounded-md
-        border-2 border-green-600 bg-white py-4 px-8 text-center text-green-600 hover:bg-green-600 hover:text-white active:bg-green-900"
+        className="border-banditGreen-600 text-banditGreen-600 hover:bg-banditGreen-600
+        active:bg-banditGreen-900 w-full cursor-pointer rounded-md border-2 bg-white py-4 px-8 text-center hover:text-white"
         onClick={addToCart}
       >
         Add to cart

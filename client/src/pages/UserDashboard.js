@@ -25,7 +25,7 @@ const UserDashboard = ({ setListingModal, listingModal, setSearchModal }) => {
     <>
       {notification && (
         <Popup
-          type={'bg-green-500 p-8 text-center text-white transition-all'}
+          type={'bg-banditGreen-500 p-8 text-center text-white transition-all'}
           message={'Welcome Back 🤘'}
         />
       )}

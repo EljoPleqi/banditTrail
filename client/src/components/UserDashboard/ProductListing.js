@@ -77,8 +77,8 @@ const ProductListing = ({
             loggedUser.username.toLowerCase() === username.toLowerCase() && (
               <div className="flex gap-2 place-self-end">
                 <span
-                  className="my-4 flex cursor-pointer justify-center gap-2  rounded-md py-2 px-4 text-sm font-normal
-             hover:bg-green-500 hover:text-white active:bg-green-800"
+                  className="hover:bg-banditGreen-500 active:bg-banditGreen-800 my-4 flex cursor-pointer  justify-center gap-2 rounded-md py-2 px-4
+             text-sm font-normal hover:text-white"
                   onClick={(e) => {
                     editListingHandler();
                     setListingId(listing.id);
@@ -87,8 +87,8 @@ const ProductListing = ({
                   <PencilAltIcon className="h-5 w-5" /> Edit Listing
                 </span>
                 <span
-                  className="my-4 flex cursor-pointer justify-center gap-2  rounded-md py-2 px-4 text-sm font-normal
-             text-red-600 hover:bg-red-500 hover:text-white active:bg-red-800"
+                  className="text-banditOrange-600 hover:bg-banditOrange-500 active:bg-banditOrange-800 my-4 flex  cursor-pointer justify-center gap-2 rounded-md py-2
+             px-4 text-sm font-normal hover:text-white"
                   onClick={deleteListing}
                 >
                   <TrashIcon className="h-5 w-5" /> Delete Listing
@@ -106,7 +106,7 @@ const ProductListing = ({
     <>
       {notification && (
         <Popup
-          type={'bg-red-500 p-8 text-center text-white transition-all'}
+          type={'bg-banditOrange-500 p-8 text-center text-white transition-all'}
           message={'Listing Removed 🆇'}
         />
       )}

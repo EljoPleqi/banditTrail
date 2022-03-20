@@ -11,8 +11,9 @@ const Hero = () => {
       style={{ backgroundImage: `url(${Background})` }}
     >
       <h1 className=" text-center text-2xl text-white lg:text-5xl">
-        Riding That <span className="font-bold italic">Doesn't</span> Break The
-        Bank
+        Riding That{' '}
+        <span className="font-bold underline underline-offset-2">Doesn't</span>{' '}
+        Break The Bank
       </h1>
       <div
         onMouseEnter={() => setEmoji(true)}
@@ -21,7 +22,7 @@ const Hero = () => {
         <Button
           buttonText={`Sign Up ${emoji ? '🤙' : ''}`}
           destination={'/signup'}
-          hover={'hover:bg-green-600 hover:border-none'}
+          hover={'hover:bg-banditGreen-500 hover:border-none'}
         />
       </div>
     </div>
