@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { ArrowLeftIcon, PlusCircleIcon } from '@heroicons/react/outline';
 
-const PartsListingForm = () => {
+const PartsListingForm = ({ setType, type }) => {
   const [featuredImage, setFeatureImage] = useState('');
   const [productTitle, setProductTitle] = useState('');
   const [productDescription, setProductDescription] = useState('');
@@ -15,29 +16,22 @@ const PartsListingForm = () => {
   const [uploading, setUploading] = useState(true);
   const [images, setImages] = useState([]);
   return (
-    <div>
-      <form className="flex flex-col overflow-hidden bg-neutral-100 py-12 px-4 text-sm ">
-        <div>
-          <label>Title</label>
-          <input type="text" />
-          <label>Brand</label>
-          <input type="text" />
+    <>
+      <form className="flex w-full flex-col gap-4 overflow-hidden bg-neutral-100 py-12 px-4 text-sm ">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1">
+            <label>Brand</label>
+            <input type="text" className=" py-2 placeholder:px-4" />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label>Title</label>
+            <input type="text" className=" py-2 placeholder:px-4" />
+          </div>
         </div>
-        <div className="flex flex-col">
-          <label>Feature Image</label>
-          <input
-            className="  py-1"
-            type="file"
-            name="featuredImage"
-            onChange={(e) => {
-              setFeatureImage(e.target.files[0]);
-            }}
-          />
-        </div>
-        <div>
+        <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
             <label>Category</label>
-            <select>
+            <select className=" py-2 placeholder:px-4">
               <option value="" key=""></option>
               <option value="" key=""></option>
               <option value="" key=""></option>
@@ -46,8 +40,10 @@ const PartsListingForm = () => {
               <option value="" key=""></option>
             </select>
           </div>
-          <label>Price</label>
-          <input type="number" />
+          <div className="flex flex-col gap-1">
+            <label>Price</label>
+            <input type="number" className=" py-2 placeholder:px-4" />
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
@@ -70,10 +66,20 @@ const PartsListingForm = () => {
             />
           </div>
         </div>
-        <div>
-          {' '}
+        <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col">
-            <label>Product Images</label>
+            <label>Feature Image</label>
+            <input
+              className="  py-1"
+              type="file"
+              name="featuredImage"
+              onChange={(e) => {
+                setFeatureImage(e.target.files[0]);
+              }}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label>Gallery Images</label>
             <input
               className=" py-2 placeholder:px-4"
               type="file"
@@ -86,8 +92,31 @@ const PartsListingForm = () => {
             />
           </div>
         </div>
+        <div className="flex justify-between gap-2">
+          <button
+            onClick={() => {
+              setType('');
+            }}
+            className="flex  items-center gap-4  border-2 border-solid border-neutral-600 py-2 px-4 hover:bg-white active:translate-y-1 active:bg-neutral-200"
+          >
+            <ArrowLeftIcon className="h-6 w-6" /> Go back
+          </button>{' '}
+          {uploading ? (
+            <button
+              type="submit"
+              className=" bg-banditGreen-600 hover:bg-banditGreen-500 active:bg-banditGreen-900 flex items-center gap-2  border-2 py-2 px-8 text-white active:translate-y-1 "
+            >
+              List Item <PlusCircleIcon className="h-6 w-6" />
+            </button>
+          ) : (
+            <button className=" bg-[#283618] py-2 px-4" disabled on>
+              {' '}
+              'Uploading...'
+            </button>
+          )}
+        </div>
       </form>
-    </div>
+    </>
   );
 };
 

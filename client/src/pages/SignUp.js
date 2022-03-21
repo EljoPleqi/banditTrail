@@ -1,17 +1,14 @@
 import React from 'react';
 import SignUpForm from '../components/UserAuthentication/SignUpForm';
-import SignUpImg from '../img/miguel-mendes-EvrfZ9bAtY4-unsplash.webp';
+import SignUpImg from '../img/victoria-poveda-0DAwKglHOAY-unsplash.webp';
 
 const SignUp = () => {
   return (
-    <div className="grid min-h-full grid-cols-2 content-center">
-      <div className="flex items-center">
-        <SignUpForm />
-      </div>
-      <div
-        style={{ backgroundImage: `url(${SignUpImg})` }}
-        className="hidden h-screen bg-cover lg:block"
-      ></div>
+    <div
+      className="flex h-screen flex-col justify-center bg-neutral-600 bg-cover bg-center bg-blend-overlay md:items-end"
+      style={{ backgroundImage: `url(${SignUpImg})` }}
+    >
+      <SignUpForm />
     </div>
   );
 };

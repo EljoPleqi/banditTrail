@@ -21,8 +21,6 @@ const ProductDisplay = () => {
 
   let mobile = screenSize.matches;
 
-  console.log(mobile);
-
   useEffect(() => {
     if (mobile) setVisible(3);
   }, [mobile]);

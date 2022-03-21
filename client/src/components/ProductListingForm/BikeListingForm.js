@@ -7,7 +7,7 @@ import { ArrowLeftIcon, PlusCircleIcon } from '@heroicons/react/outline';
 
 import { bikeListingFormValidation } from '../../validations/Validations';
 
-const BikeListingForm = ({ setType }) => {
+const BikeListingForm = ({ setType, type }) => {
   const [featuredImage, setFeatureImage] = useState('');
   const [productTitle, setProductTitle] = useState('');
   const [productDescription, setProductDescription] = useState('');
@@ -31,6 +31,7 @@ const BikeListingForm = ({ setType }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const bike = new FormData();
+    bike.append('listingType', type);
     bike.append('featuredImage', featuredImage);
     bike.append('productTitle', productTitle);
     bike.append('productDescription', productDescription);
@@ -106,17 +107,6 @@ const BikeListingForm = ({ setType }) => {
               placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...."
               className=" pb-6 pt-4 placeholder:justify-self-start placeholder:px-4"
               onChange={(e) => setProductDescription(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col">
-            <label>Feature Image</label>
-            <input
-              className="  py-1"
-              type="file"
-              name="featuredImage"
-              onChange={(e) => {
-                setFeatureImage(e.target.files[0]);
-              }}
             />
           </div>
         </div>
@@ -236,7 +226,18 @@ const BikeListingForm = ({ setType }) => {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col">
-              <label>Product Images</label>
+              <label>Feature Image</label>
+              <input
+                className="  py-1"
+                type="file"
+                name="featuredImage"
+                onChange={(e) => {
+                  setFeatureImage(e.target.files[0]);
+                }}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label>Gallery Images</label>
               <input
                 className="   py-2 placeholder:px-4"
                 type="file"
@@ -266,7 +267,7 @@ const BikeListingForm = ({ setType }) => {
                 List Item <PlusCircleIcon className="h-6 w-6" />
               </button>
             ) : (
-              <button className=" bg-[#283618] py-2 px-4" disabled on>
+              <button className=" bg-[#283618] py-2 px-4">
                 {' '}
                 'Uploading...'
               </button>

@@ -39,15 +39,15 @@ const SignUpForm = () => {
   useUserRedirect(login);
 
   return (
-    <div className="flex flex-col items-center ">
-      <h1 className="p-6 text-center text-xl font-bold lg:text-left lg:text-5xl">
+    <div className=" flex h-screen flex-col items-center justify-center gap-2 bg-white/30 p-8 backdrop-blur-md lg:w-[50%]  ">
+      <h1 className="p-6 text-center text-xl font-bold   lg:text-4xl">
         Riding That Doesn't Break The Bank
       </h1>
-      <h2 className="px-6 text-center text-xl lg:text-left ">
+      <h2 className="px-6 text-center text-lg lg:text-left ">
         Join the biggest community of riders that want to make mountain biking
         affordable
       </h2>
-      <div className="mt-12 flex flex-col p-6 ">
+      <div className=" flex flex-col p-6 ">
         <form
           method="POST"
           encType="multipart/form-data"
@@ -57,7 +57,7 @@ const SignUpForm = () => {
             <label>Enter your Email</label>
             <input
               type="text"
-              className="rounded-md bg-neutral-50 py-4 px-16"
+              className=" bg-neutral-50 py-4 px-16"
               onChange={(e) => setEmail(e.target.value)}
             />
             <div className="">
@@ -66,7 +66,7 @@ const SignUpForm = () => {
                   <label>Enter your Username</label>
                   <input
                     type="text"
-                    className="rounded-md bg-neutral-50 py-4 px-16"
+                    className=" bg-neutral-50 py-4 px-16"
                     onChange={(e) => setUsername(e.target.value)}
                   />
                 </div>
@@ -74,7 +74,7 @@ const SignUpForm = () => {
                   <label>Enter your Password</label>
                   <input
                     type="password"
-                    className="rounded-md bg-neutral-50 py-4 px-16"
+                    className=" bg-neutral-50 py-4 px-16"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
@@ -85,7 +85,7 @@ const SignUpForm = () => {
               <div className="flex flex-col py-1">
                 <label>what is your riding experience</label>
                 <select
-                  className="rounded-md bg-neutral-50 py-4 px-16"
+                  className=" bg-neutral-50 py-4 px-16"
                   onChange={(e) => setUserRidingStyle(e.target.value)}
                 >
                   <option value="beginner">Beginner</option>
@@ -106,19 +106,19 @@ const SignUpForm = () => {
               </div>
             </div>
           </div>
-          <div className="mt-4 flex flex-col gap-4 lg:flex-row">
-            <a
-              href="login"
-              className="border-banditGreen-600 text-banditGreen-600 hover:bg-banditGreen-500 active:bg-banditGreen-800 rounded-md border-2 border-solid py-4 text-center lg:px-8"
-            >
-              Login
-            </a>
+          <div className="mt-4 flex flex-col items-center gap-8">
             <button
               type="submit"
-              className="bg-banditGreen-600 hover:bg-banditGreen-500 active:bg-banditGreen-800 rounded-md py-4 text-white lg:px-24"
+              className="active:bg-banditGreen-800 hover:bg-banditYellow-400 bg-banditYellow-600 flex w-full items-center justify-center gap-2 border-2  border-black py-4 px-16 text-black hover:text-black"
             >
               Sign Up
             </button>
+            <p>
+              Already have an account? {''}{' '}
+              <a href="login" className="underline">
+                Login
+              </a>
+            </p>
           </div>
         </form>
       </div>

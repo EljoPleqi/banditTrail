@@ -1,7 +1,8 @@
+const { raw } = require('express');
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const { Products } = require('../models');
+const { Bikes, Apparel, Parts, Products } = require('../models');
 
 exports.checkID = (req, res, next, val) => {
   if (!req.params.id) {
@@ -13,7 +14,11 @@ exports.checkID = (req, res, next, val) => {
 // GET ALL PRODUCT ENTRIES THAT HAVEN'T BEEN SOLD FROM THE DB
 
 exports.getAllProducts = async (req, res) => {
-  const allProducts = await Products.findAll({ where: { sold: false } });
+  const bikes = await Bikes.findAll({ where: { sold: false } });
+  const parts = await Parts.findAll({ where: { sold: false } });
+  const apparel = await Apparel.findAll({ where: { sold: false } });
+
+  const allProducts = [...bikes, ...parts, ...apparel];
 
   res.json(allProducts);
 };
@@ -22,17 +27,30 @@ exports.getAllProducts = async (req, res) => {
 
 exports.getSingleProduct = async (req, res) => {
   const id = req.params.id;
-  const product = await Products.findByPk(id);
-  res.json(product);
+
+  const bike = await Bikes.findByPk(id, { raw: true });
+  const part = await Parts.findByPk(id, { raw: true });
+  const apparel = await Apparel.findByPk(id, { raw: true });
+
+  if (bike) res.json(bike);
+  if (part) res.json(part);
+  if (apparel) res.json(apparel);
 };
 
 // DELETE Listing
 
 exports.deleteListing = async (req, res) => {
-  console.log(req.params);
   const id = req.params.id;
-  const product = await Products.findByPk(id);
-  product.destroy();
+
+  const bike = await Bikes.destroy({ where: { id }, raw: true });
+  const part = await Parts.destroy({ where: { id }, raw: true });
+  const apparel = await Apparel.destroy({ where: { id }, raw: true });
+
+  // console.log(bike, part, apparel);
+  // if (bike) bike.destroy();
+  // if (part) part.destroy();
+  // if (apparel) apparel.destroy();
+
   res.json('LISTING DELETE WAS SUCESSFUL ');
 };
 
@@ -40,14 +58,18 @@ exports.deleteListing = async (req, res) => {
 
 exports.updateListing = async (req, res) => {
   try {
-    let product = await Products.findOne({ where: { id: req.params.id } });
-
     const updatedProduct = { featuredImage: req.file.path, ...req.body };
 
-    Products.update((product = updatedProduct), {
+    Bikes.update(updatedProduct, {
       where: { id: req.params.id },
     });
-    res.json(product);
+    Apparel.update(updatedProduct, {
+      where: { id: req.params.id },
+    });
+    Parts.update(updatedProduct, {
+      where: { id: req.params.id },
+    });
+    res.json('Product Updated Successfully');
   } catch (error) {
     console.log(error);
   }
@@ -56,7 +78,15 @@ exports.updateListing = async (req, res) => {
 exports.getProductsByUserID = async (req, res) => {
   const userId = req.params.UserId;
 
-  const products = await Products.findAll({ where: { UserId: userId } });
+  const bikes = await Bikes.findAll({ where: { UserId: userId }, raw: true });
+  const parts = await Parts.findAll({ where: { UserId: userId }, raw: true });
+  const apparel = await Apparel.findAll({
+    where: { UserId: userId },
+    raw: true,
+  });
+
+  const products = [...bikes, ...parts, ...apparel];
+
   res.json(products);
 };
 
@@ -65,24 +95,30 @@ exports.getProductsByUserID = async (req, res) => {
 exports.getFilteredProducts = async (req, res) => {
   const { brand, type, ridingStyle, condition } = req.body;
 
-  let filteredRequest = { where: { sold: false } };
+  console.log(brand, type, ridingStyle, condition);
 
-  if (brand) filteredRequest.where.brand = brand;
-  if (type) filteredRequest.where.type = type;
-  if (ridingStyle) filteredRequest.where.ridingStyle = ridingStyle;
-  if (condition) filteredRequest.where.condition = condition;
+  let filteredRequest = { sold: false };
 
-  const filteredProducts = await Products.findAll(filteredRequest);
+  if (brand) filteredRequest.brand = brand;
+  if (type) filteredRequest.type = type;
+  if (ridingStyle) filteredRequest.ridingStyle = ridingStyle;
+  if (condition) filteredRequest.condition = condition;
 
-  res.json(filteredProducts);
+  const bikes = await Bikes.findAll({ where: filteredRequest, raw: true });
+  const parts = await Parts.findAll({ where: filteredRequest, raw: true });
+  const apparel = await Apparel.findAll({ where: filteredRequest, raw: true });
+  console.log(filteredRequest);
+  const filteredResponse = [...bikes, ...parts, ...apparel];
+
+  // console.log(filteredResponse);
+
+  res.json(filteredResponse);
 };
 // MARK PRODUCT AS SOLD
 
 exports.sellListings = async (req, res) => {
   try {
     const items = [...req.body];
-
-    console.log(items);
 
     for (const item of items) {
       Products.update({ sold: true }, { where: { id: item.id } });
@@ -98,9 +134,11 @@ exports.sellListings = async (req, res) => {
 exports.getSoldItems = async (req, res) => {
   const { UserId } = req.body;
 
-  const products = await Products.findAll({
-    where: { UserId: UserId, sold: true },
-  });
+  const bikes = await Bikes.findAll({ where: { sold: true } });
+  const parts = await Parts.findAll({ where: { sold: true } });
+  const apparel = await Apparel.findAll({ where: { sold: true } });
+  const products = [...bikes, ...apparel, ...parts];
+
   res.json(products);
 };
 
@@ -109,28 +147,71 @@ exports.listProduct = async (req, res) => {
   const imagePaths = req.files.images.map((file) => file.path).join('_');
 
   const [featuredImage] = req.files.featuredImage;
-  console.log(featuredImage);
+
+  const listingType = req.body.listingType;
+
+  console.log(req.body);
 
   try {
-    await Products.create({
-      featuredImage: featuredImage.path,
-      productTitle: req.body.productTitle,
-      price: req.body.price,
-      currency: req.body.currency,
-      productDescription: req.body.productDescription,
-      brand: req.body.brand,
-      type: req.body.type,
-      primaryColor: req.body.primaryColor,
-      secondaryColor: req.body.secondaryColor,
-      size: req.body.size,
-      gender: req.body.gender,
-      ridingStyle: req.body.ridingStyle,
-      wheelSize: req.body.wheelSize,
-      material: req.body.material,
-      condition: req.body.condition,
-      images: imagePaths,
-      UserId: req.body.UserId,
-    });
+    if (listingType === 'Bike') {
+      await Bikes.create({
+        featuredImage: featuredImage.path,
+        productTitle: req.body.productTitle,
+        price: req.body.price,
+        currency: req.body.currency,
+        productDescription: req.body.productDescription,
+        brand: req.body.brand,
+        type: req.body.type,
+        primaryColor: req.body.primaryColor,
+        secondaryColor: req.body.secondaryColor,
+        size: req.body.size,
+        gender: req.body.gender,
+        ridingStyle: req.body.ridingStyle,
+        wheelSize: req.body.wheelSize,
+        material: req.body.material,
+        condition: req.body.condition,
+        images: imagePaths,
+        UserId: req.body.UserId,
+      });
+    } else if (listingType === 'Part') {
+      await Parts.create({
+        featuredImage: featuredImage.path,
+        productTitle: req.body.productTitle,
+        category: req.body.category,
+        price: req.body.price,
+        currency: req.body.currency,
+        productDescription: req.body.productDescription,
+        brand: req.body.brand,
+        type: req.body.type,
+        primaryColor: req.body.primaryColor,
+        secondaryColor: req.body.secondaryColor,
+        material: req.body.material,
+        condition: req.body.condition,
+        images: imagePaths,
+        UserId: req.body.UserId,
+      });
+    } else if (listingType === 'Apparel') {
+      await Apparel.create({
+        featuredImage: featuredImage.path,
+        productTitle: req.body.productTitle,
+        price: req.body.price,
+        currency: req.body.currency,
+        productDescription: req.body.productDescription,
+        brand: req.body.brand,
+        type: req.body.type,
+        primaryColor: req.body.primaryColor,
+        secondaryColor: req.body.secondaryColor,
+        size: req.body.size,
+        gender: req.body.gender,
+        material: req.body.material,
+        condition: req.body.condition,
+        images: imagePaths,
+        UserId: req.body.UserId,
+      });
+    } else {
+      console.log('PLEASE ENTER A LISTING TYPE');
+    }
+
     res.json(req.body);
   } catch (error) {
     console.log(error);

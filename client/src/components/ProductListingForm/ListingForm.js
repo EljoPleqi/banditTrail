@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ApparelListingForm from './ApparelListingForm';
 import BikeListingForm from './BikeListingForm';
 import PartsListingForm from './PartsListingForm';
 import { ArrowRightIcon } from '@heroicons/react/outline';
@@ -6,8 +7,6 @@ import { ArrowRightIcon } from '@heroicons/react/outline';
 const ListingForm = () => {
   const [type, setType] = useState('');
   const [displayForm, setDisplayForm] = useState('');
-  console.log(type);
-  console.log(displayForm);
 
   //
 
@@ -23,6 +22,9 @@ const ListingForm = () => {
               setType(e.target.value);
             }}
           >
+            <option value="" key="Select">
+              Select
+            </option>
             <option value="Bike" key="bike">
               Bike
             </option>
@@ -45,8 +47,15 @@ const ListingForm = () => {
           </button>
         </div>
       )}
-      {displayForm === 'Bike' && <BikeListingForm setType={setType} />}
-      {displayForm === 'Parts' && <PartsListingForm setType={setType} />}
+      {displayForm === 'Apparel' && (
+        <ApparelListingForm setType={setType} type={type} />
+      )}
+      {displayForm === 'Bike' && (
+        <BikeListingForm setType={setType} type={type} />
+      )}
+      {displayForm === 'Parts' && (
+        <PartsListingForm setType={setType} type={type} />
+      )}
     </div>
   );
 };

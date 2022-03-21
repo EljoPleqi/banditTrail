@@ -1,5 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define('Users', {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
+    },
     avatar: { type: DataTypes.STRING, allowNull: false },
     username: {
       type: DataTypes.STRING,
@@ -27,9 +33,9 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Users.associate = (models) => {
-    Users.hasMany(models.Products, {
-      onDelete: 'cascade',
-    });
+    Users.hasMany(models.Bikes, { onDelete: 'cascade' });
+    Users.hasMany(models.Apparel, { onDelete: 'cascade' });
+    Users.hasMany(models.Parts, { onDelete: 'cascade' });
     Users.hasMany(models.PaymentOptions, { onDelete: 'cascade' });
     Users.hasOne(models.Subscription, { onDelete: 'cascade' });
   };
