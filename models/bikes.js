@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     featuredImage: { type: DataTypes.STRING, allowNULL: false },
     productTitle: { type: DataTypes.STRING, allowNull: false },
+    listingType: { type: DataTypes.STRING, allowNull: false },
     price: { type: DataTypes.FLOAT, allowNull: false },
     currency: { type: DataTypes.STRING, defaultValue: '€' },
     productDescription: { type: DataTypes.TEXT, allowNull: false },

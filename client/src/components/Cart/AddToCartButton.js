@@ -4,6 +4,8 @@ import { setAddToCart } from '../../features/cart';
 import { setNotification } from '../../features/notifications';
 import { useSelector } from 'react-redux';
 
+import { ShoppingCartIcon } from '@heroicons/react/outline';
+
 const AddToCartButton = ({ product, setShowNotification }) => {
   const cart = useSelector((state) => state.cart);
   const login = useSelector((state) => state.login);
@@ -29,11 +31,11 @@ const AddToCartButton = ({ product, setShowNotification }) => {
   return (
     <div>
       <button
-        className="border-banditGreen-600 text-banditGreen-600 hover:bg-banditGreen-600
-        active:bg-banditGreen-900 w-full cursor-pointer rounded-md border-2 bg-white py-4 px-8 text-center hover:text-white"
+        className=" hover:bg-banditYellow-600 active:bg-banditYellow-800 flex gap-2 place-self-center border-2 border-black px-8 py-3
+"
         onClick={addToCart}
       >
-        Add to cart
+        <ShoppingCartIcon className="h-6 w-6" /> Add to cart
       </button>
     </div>
   );

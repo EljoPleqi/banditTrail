@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setProduct } from '../../features/product';
 import { Link } from 'react-router-dom';
+import { ChevronDownIcon } from '@heroicons/react/outline';
 
 const ProductDisplay = () => {
   const dispatch = useDispatch();
@@ -64,8 +65,8 @@ const ProductDisplay = () => {
         ) : (
           <Link
             to="/products/all-products"
-            className=" hover:bg-banditGreen-600 active:bg-banditGreen-900 hover:border-banditGreen-600 place-self-center border-2
-                  border-black px-8 py-3 hover:text-white active:translate-y-1"
+            className=" hover:bg-banditYellow-600 active:bg-banditYellow-800 place-self-center border-2 border-black
+                  px-8 py-3 hover:border-black  active:translate-y-1"
           >
             View All items
           </Link>

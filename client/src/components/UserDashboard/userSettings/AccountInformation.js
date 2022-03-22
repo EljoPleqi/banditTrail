@@ -94,7 +94,7 @@ const AccountInformation = ({
         )}
         <button
           type="submit"
-          className="bg-banditGreen-500 hover:bg-banditGreen-400 active:bg-banditGreen-800 mt-4 place-self-end rounded-md py-4 px-10 text-white"
+          className="hover:bg-banditYellow-500 active:bg-banditYellow-800 mt-4 place-self-end border-2 border-black  py-3 px-8"
         >
           Save Changes
         </button>

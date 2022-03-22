@@ -211,14 +211,14 @@ const ApparelListingForm = ({ setType, type }) => {
             onClick={() => {
               setType('');
             }}
-            className="flex  items-center gap-4  border-2 border-solid border-neutral-600 py-2 px-4 hover:bg-white active:translate-y-1 active:bg-neutral-200"
+            className="flex items-center gap-4  border-2 border-black py-2 px-4 hover:bg-white active:translate-y-1 active:bg-neutral-200"
           >
             <ArrowLeftIcon className="h-6 w-6" /> Go back
           </button>{' '}
           {uploading ? (
             <button
               type="submit"
-              className=" bg-banditGreen-600 hover:bg-banditGreen-500 active:bg-banditGreen-900 flex items-center gap-2  border-2 py-2 px-8 text-white active:translate-y-1 "
+              className="  hover:bg-banditYellow-500 active:bg-banditYellow-900 flex items-center gap-2  border-2 border-black py-2 px-8  active:translate-y-1 "
             >
               List Item <PlusCircleIcon className="h-6 w-6" />
             </button>

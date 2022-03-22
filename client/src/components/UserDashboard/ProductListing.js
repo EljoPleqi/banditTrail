@@ -55,7 +55,7 @@ const ProductListing = ({
       return (
         <div
           className="flex  flex-col border-b-2 border-neutral-50 py-4 font-light "
-          key={Number(new Date() * listing.id)}
+          key={i}
         >
           <div className="mt-12 flex justify-between">
             <img
@@ -77,8 +77,8 @@ const ProductListing = ({
             loggedUser.username.toLowerCase() === username.toLowerCase() && (
               <div className="flex gap-2 place-self-end">
                 <span
-                  className="hover:bg-banditGreen-500 active:bg-banditGreen-800 my-4 flex cursor-pointer  justify-center gap-2 rounded-md py-2 px-4
-             text-sm font-normal hover:text-white"
+                  className="hover:bg-banditYellow-500 active:bg-banditYellow-800 my-4 flex cursor-pointer  justify-center gap-2 border-2 border-black py-2 px-4
+             text-sm font-normal "
                   onClick={(e) => {
                     editListingHandler();
                     setListingId(listing.id);
@@ -87,7 +87,7 @@ const ProductListing = ({
                   <PencilAltIcon className="h-5 w-5" /> Edit Listing
                 </span>
                 <span
-                  className="text-banditOrange-600 hover:bg-banditOrange-500 active:bg-banditOrange-800 my-4 flex  cursor-pointer justify-center gap-2 rounded-md py-2
+                  className=" hover:bg-banditOrange-500 active:bg-banditOrange-800 my-4 flex  cursor-pointer justify-center gap-2 border-2 border-black py-2
              px-4 text-sm font-normal hover:text-white"
                   onClick={deleteListing}
                 >

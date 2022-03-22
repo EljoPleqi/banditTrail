@@ -24,12 +24,14 @@ const ProductGallery = ({ gallery }) => {
     if (gallery) {
       const images = gallery.split('_');
       console.log(images);
-      setFeaturedImg(images[images.length - 1]);
+      setFeaturedImg(`http://localhost:8000/${images[images.length - 1]}`);
     }
   }, [gallery]);
 
   function getImg(e) {
-    console.log(e.target.src);
+    const img = e.target.src;
+
+    console.log(e.target.src.length);
     setFeaturedImg(e.target.src);
   }
 
@@ -37,7 +39,7 @@ const ProductGallery = ({ gallery }) => {
     <div className="mx-4 flex flex-col items-center gap-4">
       <div>
         <img
-          src={`http://localhost:8000/${featuredImg}`}
+          src={`${featuredImg}`}
           alt=""
           className=" object-cover
               lg:h-[28rem]"

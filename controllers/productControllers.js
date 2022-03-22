@@ -158,6 +158,7 @@ exports.listProduct = async (req, res) => {
         featuredImage: featuredImage.path,
         productTitle: req.body.productTitle,
         price: req.body.price,
+        listingType: req.body.listingType,
         currency: req.body.currency,
         productDescription: req.body.productDescription,
         brand: req.body.brand,
@@ -177,7 +178,7 @@ exports.listProduct = async (req, res) => {
       await Parts.create({
         featuredImage: featuredImage.path,
         productTitle: req.body.productTitle,
-        category: req.body.category,
+        listingType: req.body.listingType,
         price: req.body.price,
         currency: req.body.currency,
         productDescription: req.body.productDescription,
@@ -194,6 +195,7 @@ exports.listProduct = async (req, res) => {
       await Apparel.create({
         featuredImage: featuredImage.path,
         productTitle: req.body.productTitle,
+        listingType: req.body.listingType,
         price: req.body.price,
         currency: req.body.currency,
         productDescription: req.body.productDescription,

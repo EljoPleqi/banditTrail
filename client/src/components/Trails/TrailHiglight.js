@@ -21,7 +21,7 @@ const TrailHiglight = () => {
             it's not too technical for intermediate riders to handle.
           </p>
           <Link to={'/featured-trail'} className="mt-8 ">
-            <span className="  cursor-pointer   rounded-md border-2 border-solid border-black px-8 py-3 hover:bg-white ">
+            <span className="  cursor-pointer  border-2 border-solid border-black px-8 py-3 hover:bg-white ">
               Read More
             </span>
           </Link>

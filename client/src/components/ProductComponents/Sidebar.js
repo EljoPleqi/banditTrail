@@ -68,7 +68,7 @@ const Sidebar = (
               setFilteredData([]);
               setLoaded(false);
             }}
-            className="hover:bg-banditOrange-500 flex items-center gap-2 rounded-md border-2 border-black px-2 py-2 hover:border-white hover:text-white"
+            className="hover:bg-banditOrange-500  flex items-center  gap-2 border-2 border-black px-8 py-3"
           >
             <XCircleIcon className="h-6 w-6" /> Clear Filters
           </span>

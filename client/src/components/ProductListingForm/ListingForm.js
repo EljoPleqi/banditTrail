@@ -28,7 +28,7 @@ const ListingForm = () => {
             <option value="Bike" key="bike">
               Bike
             </option>
-            <option value="Parts" key="parts">
+            <option value="Part" key="parts">
               Parts
             </option>
             <option value="Apparel" key="apparel">
@@ -53,7 +53,7 @@ const ListingForm = () => {
       {displayForm === 'Bike' && (
         <BikeListingForm setType={setType} type={type} />
       )}
-      {displayForm === 'Parts' && (
+      {displayForm === 'Part' && (
         <PartsListingForm setType={setType} type={type} />
       )}
     </div>

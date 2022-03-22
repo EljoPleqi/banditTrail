@@ -29,7 +29,22 @@ const ProductFeatured = ({ setShowNotification }) => {
         />
       </div>
       <div className="drop-shadow-productPage z-10 mt-4 bg-white p-8 lg:p-24">
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:px-36">
+        <div className="flex flex-col lg:flex-row lg:justify-between">
+          <div className="item-center flex flex-col gap-8">
+            <h1 className="text-5xl font-bold">{product.productTitle}</h1>
+            <div className=" flex flex-col  ">
+              <span className=" flex gap-1">
+                <p className="mt-4 text-xl">Price: {product.price}</p>
+                <p className="mt-4 text-xl">{product.currency}</p>
+              </span>
+              <p className=" mt-4  text-xl">Size: {product.size}</p>
+            </div>{' '}
+            <p className="lg:w-[44rem]">{product.productDescription}</p>
+            <AddToCartButton
+              product={product}
+              setShowNotification={setShowNotification}
+            />
+          </div>
           <div className="">
             {user ? (
               <div className="flex flex-col gap-4">
@@ -54,21 +69,6 @@ const ProductFeatured = ({ setShowNotification }) => {
             ) : (
               'LOADING....'
             )}
-          </div>
-          <div className="item-center flex flex-col gap-4 lg:items-end">
-            <h1 className="text-5xl font-bold">{product.productTitle}</h1>
-            <div className="flex gap-2">
-              <span className="flex gap-1">
-                <p className="mt-4 text-xl">{product.price}</p>
-                <p className="mt-4 text-xl">{product.currency}</p>
-              </span>
-              <p className="mt-4 text-xl">Size: {product.size}</p>
-            </div>{' '}
-            <p className="lg:w-96">{product.productDescription}</p>
-            <AddToCartButton
-              product={product}
-              setShowNotification={setShowNotification}
-            />
           </div>
         </div>
       </div>

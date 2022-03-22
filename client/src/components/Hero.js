@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Background from '../img/lachlan-cruickshank-S9v_EPJfGys-unsplash.webp';
 import Button from './Button';
 
 const Hero = () => {
-  const [emoji, setEmoji] = useState(false);
-
   return (
     <div
       className="flex flex-col items-center justify-center gap-10 bg-neutral-600  bg-cover  bg-bottom bg-no-repeat p-16 bg-blend-overlay lg:h-screen"
@@ -15,14 +13,13 @@ const Hero = () => {
         <span className="font-bold underline underline-offset-2">Doesn't</span>{' '}
         Break The Bank
       </h1>
-      <div
-        onMouseEnter={() => setEmoji(true)}
-        onMouseOut={() => setEmoji(false)}
-      >
+      <div>
         <Button
-          buttonText={`Sign Up ${emoji ? '🤙' : ''}`}
+          buttonText={`Sign Up`}
           destination={'/signup'}
-          hover={'hover:bg-banditGreen-500 hover:border-none'}
+          hover={
+            'hover:bg-banditYellow-500 hover:border-black hover:text-black'
+          }
         />
       </div>
     </div>

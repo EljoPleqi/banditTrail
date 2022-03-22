@@ -59,7 +59,7 @@ const SoldItems = ({ UserId }) => {
       "
       >
         {displaySoldItems ? displaySoldItems : 'LOADING'}
-        <div className="  mt-4 rounded-md bg-neutral-200 p-4 ">
+        <div className="  mt-4 border-2 border-black bg-neutral-200 p-4 ">
           <div className="flex justify-between ">
             <h3>Total Earnings</h3>
             <span className="flex gap-2">
