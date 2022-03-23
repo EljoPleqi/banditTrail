@@ -2,7 +2,7 @@
 
 Bandit Trail is an e-commerce social media platform for mountain bikers to socialise, share trails and sell or gear
 
-The project can be found live at: http://localhost:8000/
+The project can be found live at: https://bandit-trail.herokuapp.com/
 
 HOMEPAGE
 ![Screenshot 2022-03-18 at 10 48 35 AM](https://user-images.githubusercontent.com/89164482/158980930-1dd58f83-3f21-4901-bbaa-3b697009d4d2.png)
