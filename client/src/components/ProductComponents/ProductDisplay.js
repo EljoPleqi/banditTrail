@@ -11,9 +11,15 @@ const ProductDisplay = () => {
   const dispatch = useDispatch();
 
   const [brand, setBrand] = useState('');
+  const [priceRange, setPriceRange] = useState(function () {});
+  const [gender, setGender] = useState('');
   const [type, setType] = useState('');
+  const [size, setSize] = useState('');
+  const [listingType, setListingType] = useState('');
   const [ridingStyle, setRidingStyle] = useState('');
+  const [wheelSize, setWheelSize] = useState();
   const [condition, setCondition] = useState();
+
   const [filteredData, setFilteredData] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [visible, setVisible] = useState(8);
@@ -36,16 +42,27 @@ const ProductDisplay = () => {
     <div className="lg:grid-cols-products grid">
       <Sidebar
         setType={setType}
+        setSize={setSize}
+        setPriceRange={setPriceRange}
+        setGender={setGender}
+        setWheelSize={setWheelSize}
         setBrand={setBrand}
         setRidingStyle={setRidingStyle}
         setCondition={setCondition}
+        setListingType={setListingType}
         setFilteredData={setFilteredData}
         setLoaded={setLoaded}
+        listingType={listingType}
       />
       <div className="flex flex-col items-center justify-center lg:py-8">
         <ProductCard
+          size={size}
+          wheelSize={wheelSize}
+          priceRange={priceRange}
+          gender={gender}
           brand={brand}
           type={type}
+          listingType={listingType}
           ridingStyle={ridingStyle}
           condition={condition}
           filteredData={filteredData}

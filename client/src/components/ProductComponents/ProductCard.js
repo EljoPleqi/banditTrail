@@ -13,54 +13,94 @@ const ProductCard = ({
   setLoaded,
   loaded,
   visible,
+  listingType,
+  size,
+  wheelSize,
+  gender,
+  priceRange,
   setVisible,
 }) => {
   // Get all default state from the DB
   const productData = useSelector((state) => state.products);
   const [sorting, setSorting] = useState('');
-  const [sortingFunction, setSortingFunction] = useState('');
+  const [sortingFunction, setSortingFunction] = useState(function () {
+    return function (a, b) {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    };
+  });
 
   // get filtered data from the server
-  const x = useCallback(() => {
+  useEffect(() => {
     const filteredRequest = {
       brand: brand,
+      listingType: listingType,
       type: type,
       ridingStyle: ridingStyle,
       condition: condition,
+      size: size,
     };
     axios
       .post(' http://localhost:8000/api/products/filtered', filteredRequest)
       .then((res) => setFilteredData(res.data));
     setLoaded(true);
     return () => setLoaded(false);
-  }, [type, brand, ridingStyle, condition, setFilteredData, setLoaded]);
+  }, [
+    type,
+    brand,
+    ridingStyle,
+    condition,
+    setFilteredData,
+    setLoaded,
+    listingType,
+    size,
+    wheelSize,
+    gender,
+    priceRange,
+  ]);
 
-  // declare the function that returns the sorting logic
+  // create the high level function that returns the sorting logic function
 
   useEffect(() => {
     const sortingLogic = () => {
       if (sorting === 'Newest' || '')
-        setSortingFunction(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
+        setSortingFunction(function () {
+          return function (a, b) {
+            return new Date(b.createdAt) - new Date(a.createdAt);
+          };
+        });
       if (sorting === 'Oldest')
-        setSortingFunction(
-          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-        );
+        setSortingFunction(function () {
+          return function (a, b) {
+            return new Date(a.createdAt) - new Date(b.createdAt);
+          };
+        });
+
       if (sorting === 'Price (Low to High)')
-        setSortingFunction((a, b) => a.price - b.price);
+        setSortingFunction(function () {
+          return function (a, b) {
+            return a.price - b.price;
+          };
+        });
+
       if (sorting === 'Price (High to Low)')
-        setSortingFunction((a, b) => b.price - a.price);
+        setSortingFunction(function () {
+          return function (a, b) {
+            return b.price - a.price;
+          };
+        });
     };
+
     sortingLogic();
   }, [sorting]);
+  console.log(sortingFunction);
+  console.log(sorting);
 
   const displayData =
     // if the length of filtered data is greater than 0 then map over the filtered array if not map over the default product data
     (filteredData.length > 0 ? filteredData : productData)
 
       .slice(0, visible)
-      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // sort items by newest first
+      .sort(sortingFunction) // sort items by newest first
       .map((data, i) => (
         <Link
           to={`products/${data.id}`}
@@ -131,7 +171,7 @@ const ProductCard = ({
           </div>
         </div>
       )}
-      <div className="grid grid-cols-1 gap-3 py-8 px-12 md:grid-cols-2 lg:grid-cols-4 lg:py-6">
+      <div className="grid grid-cols-1 gap-3 overscroll-auto py-8 px-12 md:grid-cols-2 lg:grid-cols-4 lg:py-6">
         {displayData}
       </div>
     </div>

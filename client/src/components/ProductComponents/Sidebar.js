@@ -6,10 +6,16 @@ const Sidebar = (
   {
     setBrand,
     setCondition,
+    setWheelSize,
+    setPriceRange,
+    setGender,
     setLoaded,
     setType,
+    setSize,
     setRidingStyle,
+    setListingType,
     setFilteredData,
+    listingType,
   },
   products
 ) => {
@@ -35,31 +41,55 @@ const Sidebar = (
   };
 
   return (
-    <div className="hidden flex-col items-center bg-neutral-100 md:visible lg:flex lg:h-full lg:pt-8">
+    <div className="hidden flex-col items-center bg-neutral-100 md:visible lg:flex lg:h-full lg:py-8">
       <div className="flex flex-col gap-4 ">
-        <label htmlFor="type">Search by Bike Type</label>
+        <label>Search by Product Type</label>
         <select
-          name="type"
           className="px-2 py-4"
-          onChange={(e) => setType(e.target.value)}
+          onChange={(e) => setListingType(e.target.value)}
         >
-          {displayItems(createSet(getProductDetails('type')))}
+          {displayItems(createSet(getProductDetails('listingType')))}
         </select>
         <label htmlFor="Brand">Search by Brand</label>
         <select
-          name="brand"
           className="px-2 py-4"
           onChange={(e) => setBrand(e.target.value)}
         >
           {displayItems(createSet(getProductDetails('brand')))}
         </select>
+        <label htmlFor="Brand">Search by Price Range</label>
+        <select
+          className="px-2 py-4"
+          onChange={(e) => setPriceRange(e.target.value)}
+        >
+          {displayItems(createSet(getProductDetails('priceRange')))}
+        </select>
+
         <label htmlFor="ridingStyle">Search by Riding Style</label>
         <select
-          name="ridingStyle"
           className="px-2 py-4"
           onChange={(e) => setRidingStyle(e.target.value)}
         >
           {displayItems(createSet(getProductDetails('ridingStyle')))}
+        </select>
+
+        <label htmlFor="ridingStyle">Search by Sub-type</label>
+        <select className="px-2 py-4" onChange={(e) => setType(e.target.value)}>
+          {displayItems(createSet(getProductDetails('type')))}
+        </select>
+        <label>Search by Gender</label>
+        <select
+          className="px-2 py-4"
+          onChange={(e) => setGender(e.target.value)}
+        >
+          {displayItems(createSet(getProductDetails('gender')))}
+        </select>
+        <label>Search by Wheel Size</label>
+        <select
+          className="px-2 py-4"
+          onChange={(e) => setWheelSize(e.target.value)}
+        >
+          {displayItems(createSet(getProductDetails('wheelSize')))}
         </select>
 
         <div className="cursor-pointer  hover:rounded-md hover:bg-neutral-300">

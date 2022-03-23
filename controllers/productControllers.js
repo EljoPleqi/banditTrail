@@ -1,5 +1,3 @@
-const { raw } = require('express');
-const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const { Bikes, Apparel, Parts, Products } = require('../models');
@@ -93,21 +91,22 @@ exports.getProductsByUserID = async (req, res) => {
 // GET FILTERED PRODUCTS
 
 exports.getFilteredProducts = async (req, res) => {
-  const { brand, type, ridingStyle, condition } = req.body;
-
-  console.log(brand, type, ridingStyle, condition);
-
   let filteredRequest = { sold: false };
 
-  if (brand) filteredRequest.brand = brand;
-  if (type) filteredRequest.type = type;
-  if (ridingStyle) filteredRequest.ridingStyle = ridingStyle;
-  if (condition) filteredRequest.condition = condition;
+  if (req.body.brand) filteredRequest.brand = req.body.brand;
+  if (req.body.gender) filteredRequest.gender = req.body.gender;
+  if (req.body.priceRange) filteredRequest.priceRange = req.body.priceRange;
+  if (req.body.size) filteredRequest.size = req.body.size;
+  if (req.body.type) filteredRequest.type = req.body.type;
+  if (req.body.ridingStyle) filteredRequest.ridingStyle = req.body.ridingStyle;
+  if (req.body.condition) filteredRequest.condition = req.body.condition;
+  if (req.body.listingType) filteredRequest.listingType = req.body.listingType;
 
   const bikes = await Bikes.findAll({ where: filteredRequest, raw: true });
   const parts = await Parts.findAll({ where: filteredRequest, raw: true });
   const apparel = await Apparel.findAll({ where: filteredRequest, raw: true });
   console.log(filteredRequest);
+
   const filteredResponse = [...bikes, ...parts, ...apparel];
 
   // console.log(filteredResponse);
